@@ -1,0 +1,51 @@
+:host {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 10px;
+  header {
+    padding: 20px 20px 20px 100px;
+    background-color: #fff;
+    position: relative;
+    border-radius: 5px;
+    overflow: hidden;
+    z-index: 1;
+    display: block;
+    box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
+    img {
+      filter: grayscale(50%);
+      opacity: 0.4;
+      position: absolute;
+      left: -72px;
+      top: -81px;
+      width: 1050px;
+      z-index: -1;
+    }
+    i {
+      position: absolute;
+      left: 40px;
+      top: 32px;
+      opacity: 0.5;
+      font-size: 30px;
+      cursor: pointer;
+    }
+    h1 {
+      margin: 0;
+      font-size: 25px;
+      font-weight: 600;
+    }
+    h2 {
+      margin: 0;
+      font-size: 16px;
+      opacity: 0.5;
+      font-weight: 200;
+    }
+  }
+
+  form {
+    padding-top: 20px;
+    span > i {
+      color: #3bad2d;
+    }
+  }
+}

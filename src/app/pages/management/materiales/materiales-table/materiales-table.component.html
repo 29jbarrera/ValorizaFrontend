@@ -1,0 +1,214 @@
+<div
+  *ngIf="loading"
+  id="loading-table"
+  class="car p-4 col-12 km-table-valoriza-app"
+>
+  <p-progressBar mode="indeterminate" [style]="{ height: '6px' }" />
+</div>
+<div class="col-12 km-table-valoriza-app">
+  <!-- Buscador -->
+  <app-search-form-table
+    title="Búsqueda de Maquinaria"
+    [search_model]="search_model"
+    [search_options]="search_options"
+    [search_fields]="search_fields"
+    (search)="search($event)"
+  >
+  </app-search-form-table>
+
+  <app-button-create-and-export-to-excel
+    id="create-material"
+    (click_to_create)="open_modal_to_create_material()"
+    _id="materiales-export-excel"
+    (click_to_excel)="export_excel()"
+  >
+  </app-button-create-and-export-to-excel>
+
+  <p-table
+    #dt
+    [value]="materiales"
+    dataKey="id"
+    styleClass="p-datatable-sm"
+    [rowsPerPageOptions]="[5, 10, 20]"
+    [paginator]="true"
+    [rows]="5"
+    *ngIf="!loading"
+    [expandedRowKeys]="expandedRowsMateriales"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th pSortableColumn="referencia">
+          <div>
+            <p-sortIcon class="order" field="referencia" />
+            Referencia
+            <p-columnFilter
+              type="text"
+              field="referencia"
+              class="filter"
+              display="menu"
+            />
+          </div>
+        </th>
+        <th pSortableColumn="descripcion">
+          <div>
+            <p-sortIcon class="order" field="descripcion" />
+            Descripción
+            <p-columnFilter
+              type="text"
+              field="descripcion"
+              class="filter"
+              display="menu"
+            />
+          </div>
+        </th>
+        <th pSortableColumn="codigoCategoria">
+          <div>
+            <p-sortIcon class="order" field="codigoCategoria" />
+            Categoría
+            <p-columnFilter
+              type="text"
+              field="codigoCategoria"
+              class="filter"
+              display="menu"
+            />
+          </div>
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-material let-expanded="expanded">
+      <tr class="body-table" [id]="'material-' + material?.id">
+        <td class="buttons">
+          <p-button
+            type="button"
+            pRipple
+            [pRowToggler]="material"
+            [text]="true"
+            [rounded]="true"
+            [plain]="true"
+            [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"
+            [id]="'material-expand-row-' + material?.id"
+          />
+        </td>
+        <td class="buttons">
+          <p-button
+            icon="fas fa-pen"
+            severity="success"
+            [text]="true"
+            (click)="edit_material(material)"
+            [id]="'material-edit-' + material?.id"
+          />
+        </td>
+        <td class="buttons">
+          <p-button
+            icon="fas fa-trash"
+            severity="danger"
+            [text]="true"
+            (click)="confirm_delete(material)"
+            [id]="'material-delete-' + material?.id"
+          />
+        </td>
+        <td class="material-referencia">{{ material?.referencia }}</td>
+        <td class="material-descripcion">{{ material?.descripcion }}</td>
+        <td class="material-categoria">
+          {{ material?.codigoCategoria }}
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="rowexpansion" let-material>
+      <tr class="no-style-background">
+        <td colspan="6">
+          <!-- TODO: Tabla Subfamilias -->
+          <div class="pl-4 py-5 surface-50">
+            <h2 class="m-0 text-teal-700">Subfamilias</h2>
+            <app-button-create
+              [_id]="'material-subfamilia-button-create-' + material?.id"
+              (_click)="open_modal_to_create_subfamilia(material?.id)"
+            >
+            </app-button-create>
+          </div>
+          <!-- Tabla Marcas -->
+          <div class="pl-4 py-5 surface-50">
+            <h2 class="m-0 text-teal-700">Marcas</h2>
+            <app-button-create
+              [_id]="'material-marca-button-create-' + material?.id"
+              (_click)="open_modal_to_create_marca(material)"
+            >
+            </app-button-create>
+
+            <p-table
+              [value]="material.marcaReferenciaMateriales"
+              dataKey="id"
+              styleClass="p-datatable-sm"
+            >
+              <ng-template pTemplate="header">
+                <tr>
+                  <th></th>
+                  <th></th>
+                  <th>Nombre Marca</th>
+                </tr>
+              </ng-template>
+              <ng-template pTemplate="body" let-marcaReferencia>
+                <tr
+                  class="body-table"
+                  [id]="
+                    'material-' + material?.id + 'marca-' + marcaReferencia?.id
+                  "
+                >
+                  <td>
+                    <p-button
+                      icon="fas fa-pen"
+                      severity="success"
+                      [text]="true"
+                      [id]="'marca-edit-' + marcaReferencia?.id"
+                    />
+                  </td>
+                  <td>
+                    <p-button
+                      icon="fas fa-trash"
+                      severity="danger"
+                      [text]="true"
+                      [id]="'marca-delete-' + marcaReferencia?.id"
+                      (click)="confirm_delete_marca(marcaReferencia?.id)"
+                    />
+                  </td>
+                  <td>
+                    {{ marcaReferencia?.marca?.descripcion }}
+                  </td>
+                </tr>
+              </ng-template>
+              <ng-template pTemplate="footer">
+                <tr>
+                  <td colspan="5">
+                    <div class="pl-2">
+                      Resultado totales:
+                      <span class="font-bold" id="total-length-marcas">{{
+                        material.marcaReferenciaMateriales.length || 0
+                      }}</span>
+                    </div>
+                  </td>
+                </tr>
+              </ng-template>
+            </p-table>
+          </div>
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="footer">
+      <tr>
+        <td colspan="7">
+          <div class="pl-2">
+            Resultado totales:
+            <span class="font-bold" id="total-length-materiales">
+              {{ materiales.length || 0 }}
+            </span>
+          </div>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+  <p-confirmDialog [style]="{ width: '50vw' }"></p-confirmDialog>
+  <p-toast></p-toast>
+</div>

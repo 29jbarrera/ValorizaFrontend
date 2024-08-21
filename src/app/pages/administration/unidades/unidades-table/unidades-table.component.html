@@ -1,0 +1,114 @@
+<div
+  *ngIf="loading"
+  id="loading-table"
+  class="car p-4 col-12 km-table-valoriza-app"
+>
+  <p-progressBar mode="indeterminate" [style]="{ height: '6px' }" />
+</div>
+<div class="col-12 km-table-valoriza-app">
+  <app-button-create-and-export-to-excel
+    id_create="create-unit"
+    id_export_excel="unidade-export-excel"
+    (click_to_create)="open_modal_to_create()"
+    (click_to_excel)="export_excel()"
+  >
+  </app-button-create-and-export-to-excel>
+
+  <p-table
+    [value]="unidades"
+    dataKey="id"
+    styleClass="p-datatable-sm"
+    [rowsPerPageOptions]="[5, 10, 20]"
+    [paginator]="true"
+    [rows]="10"
+    *ngIf="!loading"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th></th>
+        <th></th>
+        <th pSortableColumn="codTipoCombustible">
+          <div>
+            <p-sortIcon class="order" field="codTipoCombustible" />
+            Tipo Combustible
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="codTipoCombustible"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="descripcion">
+          <div>
+            <p-sortIcon class="order" field="descripcion" />
+            Unidades
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="descripcion"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="abreviatura">
+          <div>
+            <p-sortIcon class="order" field="abreviatura" />
+            Simbolo
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="abreviatura"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-unidades>
+      <tr class="body-table" [id]="'unidad-' + unidades?.id">
+        <td>
+          <p-button
+            icon="fas fa-pen"
+            severity="success"
+            [text]="true"
+            (click)="edit(unidades)"
+            [id]="'unidad-edit-' + unidades?.id"
+          />
+        </td>
+        <td>
+          <p-button
+            icon="fas fa-trash"
+            severity="danger"
+            [text]="true"
+            (click)="confirm_delete(unidades)"
+            [id]="'unidad-delete-' + unidades?.id"
+          />
+        </td>
+        <td class="unidad-codTipoCombustible text-center">
+          {{ get_combustible_type(unidades.codTipoCombustible) }}
+        </td>
+        <td class="unidad-descripcion text-center">
+          {{ get_description(unidades) }}
+        </td>
+        <td class="unidad-abreviatura text-center">
+          {{ get_abreviatura(unidades) }}
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="footer">
+      <tr>
+        <td colspan="5">
+          <div class="pl-2">
+            Resultado totales:
+            <span class="font-bold" id="total-length-unidades">{{
+              unidades.length || 0
+            }}</span>
+          </div>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+  <p-confirmDialog [style]="{ width: '50vw' }"></p-confirmDialog>
+  <p-toast></p-toast>
+</div>

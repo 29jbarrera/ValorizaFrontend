@@ -1,0 +1,132 @@
+<div
+  *ngIf="loading"
+  id="loading-table"
+  class="car p-4 col-12 km-table-valoriza-app"
+>
+  <p-progressBar mode="indeterminate" [style]="{ height: '6px' }" />
+</div>
+<div class="col-12 km-table-valoriza-app">
+  <app-button-create
+    _id="tabla-global-create"
+    (_click)="open_modal_to_create()"
+  >
+  </app-button-create>
+
+  <p-table
+  #dt
+[value]="value"
+dataKey="id"
+styleClass="p-datatable-sm"
+[lazy]="lazy"
+[rows]="rows"
+[rowsPerPageOptions]="rowsPerPageOptions"
+[loading]="loading"
+[totalRecords]="totalRecords"
+[paginator]="paginator"
+[showCurrentPageReport]="showCurrentPageReport"
+[currentPageReportTemplate]="currentPageReportTemplate"
+(onLazyLoad)="loadData($event)"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th></th>
+        <th></th>
+        <th pSortableColumn="name">
+          <div>
+            <p-sortIcon class="order" field="name" />
+            Nombre
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="name"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="codeLength">
+          <div>
+            <p-sortIcon class="order" field="codeLength" />
+            Longitud Codigo
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="codeLength"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="accessType">
+          <div>
+            <p-sortIcon class="order" field="accessType" />
+            Tipo Acceso
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="accessType"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="session">
+          <div>
+            <p-sortIcon class="order" field="session" />
+            Sesiones
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="session"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="task">
+          <div>
+            <p-sortIcon class="order" field="task" />
+            Tareas
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="task"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-globales>
+      <tr class="body-table" [id]="'tabla-global-' + globales?.id">
+        <td>
+          <p-button
+            icon="fas fa-pen"
+            severity="success"
+            [text]="true"
+            (click)="edit(globales)"
+            [id]="'tabla-global-edit-' + globales?.id"
+          />
+        </td>
+        <td>
+          <p-button
+            icon="fas fa-trash"
+            severity="danger"
+            [text]="true"
+            (click)="confirm_delete(globales)"
+            [id]="'tabla-global-delete-' + globales?.id"
+          />
+        </td>
+        <td class="tabla-global-name text-center">{{ globales.name }}</td>
+        <td class="tabla-global-codeLength text-center">
+          {{ globales.codeLength }}
+        </td>
+        <td class="tabla-global-accessType text-center">
+          {{ globales.accessType }}
+        </td>
+        <td class="tabla-global-bySession text-center">
+          <i class="pi" [ngClass]="get_icon_session(globales.bySession)"></i>
+        </td>
+        <td class="tabla-global-codeTask">{{ globales.codeTask }}</td>
+      </tr>
+    </ng-template>
+  </p-table>
+  <p-confirmDialog [style]="{ width: '50vw' }"></p-confirmDialog>
+  <p-toast></p-toast>
+</div>

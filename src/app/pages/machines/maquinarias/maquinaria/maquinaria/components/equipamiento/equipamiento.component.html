@@ -1,0 +1,34 @@
+<div class="col-12">
+  <p-accordion>
+    <p-accordionTab>
+      <ng-template pTemplate="header">
+        <div class="ml-2 flex align-items-center gap-2">
+          <img src="/assets/icons/chasis.svg" class="w-2rem" />
+          <div class="flex flex-column">
+            <span class="font-bold text-xl"> Equipamiento </span>
+            <span class="text-600 text-sm">
+              Información General del elemento
+            </span>
+          </div>
+        </div>
+      </ng-template>
+      <ng-template pTemplate="body">
+        <p-tabView>
+          <p-tabPanel header="Chasis">
+            <!-- Tabla Chasis -->
+            <app-tabla-chasis [chasis]="maquinaria.chasis"></app-tabla-chasis>
+          </p-tabPanel>
+          <p-tabPanel header="Equipo">
+            <!-- TODO: Tabla Equipo -->
+          </p-tabPanel>
+          <p-tabPanel header="Implementos">
+            <!-- TODO: Tabla Implementos -->
+          </p-tabPanel>
+          <p-tabPanel header="Observaciones">
+            <!-- TODO: Tabla Observaciones -->
+          </p-tabPanel>
+        </p-tabView>
+      </ng-template>
+    </p-accordionTab>
+  </p-accordion>
+</div>

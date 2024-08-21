@@ -1,0 +1,82 @@
+<div
+  *ngIf="loading"
+  id="loading-table"
+  class="car p-4 col-12 km-table-valoriza-app"
+>
+  <p-progressBar mode="indeterminate" [style]="{ height: '6px' }" />
+</div>
+<div class="col-12 km-table-valoriza-app">
+  <app-button-create-and-export-to-excel
+    id="create-marca"
+    (click_to_create)="open_modal_to_create()"
+    _id="marcas-export-excel"
+    (click_to_excel)="export_excel()"
+  >
+  </app-button-create-and-export-to-excel>
+
+  <p-table
+    #dt
+    [value]="marcas"
+    styleClass="p-datatable-sm"
+    [rowsPerPageOptions]="[5, 10, 20]"
+    [paginator]="true"
+    [rows]="5"
+    *ngIf="!loading"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th></th>
+        <th></th>
+        <th pSortableColumn="empresa.nombre">
+          <div>
+            <p-sortIcon class="order" field="empresa.nombre" />
+            Nombre
+            <p-columnFilter
+              type="text"
+              field="empresa.nombre"
+              class="filter"
+              display="menu"
+            />
+          </div>
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-marcas>
+      <tr class="body-table" [id]="'marca-' + marcas?.id">
+        <td>
+          <p-button
+            icon="fas fa-pen"
+            severity="success"
+            [text]="true"
+            (click)="edit(marcas)"
+            [id]="'marca-edit-' + marcas?.id"
+          />
+        </td>
+        <td>
+          <p-button
+            icon="fas fa-trash"
+            severity="danger"
+            [text]="true"
+            (click)="confirm_delete(marcas)"
+            [id]="'marca-delete-' + marcas?.id"
+          />
+        </td>
+        <td class="marca-descripcion">{{ marcas?.descripcion }}</td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="footer">
+      <tr>
+        <td colspan="7">
+          <div class="pl-2">
+            Resultado totales:
+            <span class="font-bold" id="total-length-marcas">{{
+              marcas.length || 0
+            }}</span>
+          </div>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+  <p-confirmDialog [style]="{ width: '50vw' }"></p-confirmDialog>
+  <p-toast></p-toast>
+</div>

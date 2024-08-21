@@ -1,0 +1,141 @@
+<form class="col-12">
+  <div
+    class="p-2 grid mx-2 surface-ground border-round-xl surface-border border-2 border-dashed"
+  >
+    <!-- Centro -->
+    <div class="col-12 lg:col-6">
+      <div class="text-left text-xs mb-2 pl-1 font-light text-700">Centro</div>
+      <span class="p-input-icon-left w-full">
+        <i class="fa fa-building"></i>
+        <input
+          id="centro"
+          formControlName="centro"
+          type="text"
+          class="w-full input-text-valoriza"
+          placeholder="Introduce centro..."
+          pInputText
+        />
+      </span>
+    </div>
+    <!-- Nombre Centro -->
+    <div class="col-12 lg:col-6">
+      <div class="text-left text-xs mb-2 pl-1 font-light text-700">
+        Nombre Centro
+      </div>
+      <span class="p-input-icon-left w-full">
+        <i class="fa fa-building"></i>
+        <input
+          id="nombre-centro"
+          formControlName="nombre-centro"
+          type="text"
+          class="w-full input-text-valoriza"
+          placeholder="Introduce nombre centro..."
+          pInputText
+          [disabled]="true"
+        />
+      </span>
+    </div>
+    <!-- Familia -->
+    <div class="col-12">
+      <div class="text-left text-xs mb-2 pl-1 font-light text-700">Familia</div>
+      <p-dropdown
+        id="familia"
+        formControlName="familia"
+        placeholder="Selecciona familia..."
+        [options]="[
+          { label: 'Todas', value: 0 },
+          { label: 'Familia 1', value: 1 },
+          { label: 'Familia 2', value: 2 }
+        ]"
+        optionLabel="label"
+        optionValue="value"
+        styleClass="w-full dropdown-valoriza"
+        [showClear]="true"
+      ></p-dropdown>
+    </div>
+    <!-- Maquinaria -->
+    <div class="col-12 lg:col-6">
+      <div class="text-left text-xs mb-2 pl-1 font-light text-700">
+        Maquinaria
+      </div>
+      <span class="p-input-icon-left w-full">
+        <i class="fa fa-building"></i>
+        <input
+          id="maquinaria"
+          formControlName="maquinaria"
+          type="text"
+          class="w-full input-text-valoriza"
+          placeholder="Introduce maquinaria..."
+          pInputText
+        />
+      </span>
+    </div>
+    <!-- Bastidor -->
+    <div class="col-12 lg:col-6">
+      <div class="text-left text-xs mb-2 pl-1 font-light text-700">
+        Bastidor
+      </div>
+      <span class="p-input-icon-left w-full">
+        <i class="fa fa-building"></i>
+        <input
+          id="bastidor"
+          formControlName="bastidor"
+          type="text"
+          class="w-full input-text-valoriza"
+          placeholder="Introduce bastidor..."
+          pInputText
+          [disabled]="true"
+        />
+      </span>
+    </div>
+    <!-- Fecha desde -->
+    <div class="col-12 lg:col-6">
+      <div class="text-left text-xs mb-2 pl-1 font-light text-700">
+        Fecha desde
+      </div>
+      <p-calendar
+        selectionMode="single"
+        [firstDayOfWeek]="1"
+        styleClass="w-full input-calendar-valoriza"
+        [showIcon]="true"
+        dateFormat="dd/mm/yy"
+        placeholder="dd/mm/yy"
+        pRipple
+      ></p-calendar>
+    </div>
+    <!-- Fecha hasta -->
+    <div class="col-12 lg:col-6">
+      <div class="text-left text-xs mb-2 pl-1 font-light text-700">
+        Fecha hasta
+      </div>
+      <p-calendar
+        selectionMode="single"
+        [firstDayOfWeek]="1"
+        styleClass="w-full input-calendar-valoriza"
+        [showIcon]="true"
+        dateFormat="dd/mm/yy"
+        placeholder="dd/mm/yy"
+        pRipple
+      ></p-calendar>
+    </div>
+    <!-- Botones -->
+    <div class="col-12">
+      <div
+        class="flex flex-column lg:flex-row lg:justify-content-end gap-3 align-items-center justify-content-center"
+      >
+        <button
+          pButton
+          type="reset"
+          label="Limpiar búsqueda"
+          class="km-button-secondary-valoriza-app"
+        ></button>
+        <button
+          pButton
+          type="button"
+          label="Buscar"
+          class="km-button-primary-valoriza-app"
+        ></button>
+      </div>
+    </div>
+  </div>
+</form>

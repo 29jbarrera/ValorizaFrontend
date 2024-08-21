@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title class="ion-text-center"> {{ title }} </ion-title>
+    <ion-button
+      slot="end"
+      (click)="closeModal()"
+      fill="clear"
+      id="modal-subfamilies-button-close-modal"
+    >
+      <i class="fas fa-times"></i>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-row>
+    <ion-col class="my-3" size="12">
+      <div class="text-left text-xs mb-2 pl-1 font-light text-700">
+        Selecciona Marca
+      </div>
+      <p-dropdown
+        placeholder="Selecciona Marca..."
+        [options]="marcas"
+        styleClass="w-full dropdown-valoriza "
+        [showClear]="true"
+        [(ngModel)]="selected_marca"
+        optionValue="id"
+        optionLabel="descripcion"
+      >
+      </p-dropdown>
+    </ion-col>
+  </ion-row>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-button
+      expand="block"
+      (click)="save()"
+      id="modal-subfamilies-button-save-changes"
+    >
+      <strong> {{ submit_text }} </strong>
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

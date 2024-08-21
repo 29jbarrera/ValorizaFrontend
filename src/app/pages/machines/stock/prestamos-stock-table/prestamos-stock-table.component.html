@@ -1,0 +1,150 @@
+<!-- <div
+  *ngIf="loading"
+  id="loading-table"
+  class="car p-4 col-12 km-table-valoriza-app"
+>
+  <p-progressBar mode="indeterminate" [style]="{ height: '6px' }" />
+</div> -->
+<div class="col-12 km-table-valoriza-app">
+  <div class="flex align-items-center justify-content-between mb-3">
+    <app-button-create
+      _id="stock-prestamos-button-create"
+      (_click)="open_modal_to_create()"
+    >
+    </app-button-create>
+    <app-button-download-excel
+      _id="prestamos-stock-export-excel"
+      (_click)="export_excel()"
+    >
+    </app-button-download-excel>
+  </div>
+
+  <!-- TODO: ADD VALUE CORRECT -->
+  <p-table
+    #dt
+    [value]="prestamosStock"
+    dataKey="id"
+    styleClass="p-datatable-sm"
+    [rowsPerPageOptions]="[5, 10, 20]"
+    [paginator]="true"
+    [rows]="5"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th></th>
+        <!-- <th></th> -->
+        <th pSortableColumn="centro-origen">
+          <div>
+            <p-sortIcon class="order" field="centro-origen" />
+            Centro origen
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="centro-origen"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="centro-destino">
+          <div>
+            <p-sortIcon class="order" field="centro-destino  " />
+            Centro destino
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="centro-destino"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="nombre">
+          <div>
+            <p-sortIcon class="order" field="nombre" />
+            Nombre referencia material
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="nombre"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="descripcion">
+          <div>
+            <p-sortIcon class="order" field="descripcion" />
+            Descripción referencia material
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="descripcion"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="cantidad">
+          <div>
+            <p-sortIcon class="order" field="cantidad" />
+            Cantidad
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="cantidad"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-prestamoStock>
+      <tr class="body-table" [id]="'stock-' + prestamoStock?.id">
+        <!-- <td>
+          <p-button
+            icon="fas fa-pen"
+            severity="success"
+            [text]="true"
+            (click)="edit(stock)"
+            [id]="'stock-edit-' + stock?.id"
+          />
+        </td> -->
+        <td>
+          <p-button
+            icon="fas fa-trash"
+            severity="danger"
+            [text]="true"
+            (click)="confirm_delete(prestamoStock)"
+            [id]="'stock-delete-' + prestamoStock?.id"
+          />
+        </td>
+        <td class="stock-prestamos-stock-centro-origen text-center">
+          {{ prestamoStock.centroOrigen.grupoCentro.nombre }}
+        </td>
+        <td class="stock-prestamos-stock-centro-destino text-center">
+          {{ prestamoStock.centroDestino.nombre }}
+        </td>
+        <td
+          class="stock-prestamos-stock-nombre-referenciaMaterial text-center"
+        ></td>
+        <td
+          class="stock-prestamos-stock-descripcion-referenciaMaterial text-center"
+        ></td>
+        <td class="stock-prestamos-stock-cantidad text-center">
+          {{ prestamoStock.valor }}
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="footer">
+      <tr>
+        <td colspan="8">
+          <div class="pl-2">
+            Resultado totales:
+            <span class="font-bold" id="total-length-stock">{{
+              prestamosStock.length || 0
+            }}</span>
+          </div>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+  <p-confirmDialog [style]="{ width: '50vw' }"></p-confirmDialog>
+  <p-toast></p-toast>
+</div>

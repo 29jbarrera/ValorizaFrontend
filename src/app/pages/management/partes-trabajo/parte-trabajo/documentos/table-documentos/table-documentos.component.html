@@ -1,0 +1,87 @@
+<div class="col-12 km-table-valoriza-app">
+  <app-button-create-and-export-to-excel
+    id="parte-trabajo-button-add-document"
+    (click_to_create)="open_modal_to_create()"
+    _id="parte-trabajo-button-export-excel-documents"
+    (click_to_excel)="export_excel()"
+  >
+  </app-button-create-and-export-to-excel>
+
+  <p-table
+    #dt
+    [value]="documentos"
+    [tableStyle]="{ 'min-width': '50rem' }"
+    dataKey="id"
+    styleClass="p-datatable-sm"
+    [rowsPerPageOptions]="[5, 10, 20]"
+    [paginator]="true"
+    [showCurrentPageReport]="true"
+    currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} entradas"
+    [rows]="5"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th></th>
+        <th></th>
+        <th pSortableColumn="documento">
+          <div>
+            <p-sortIcon class="order" field="documento" />
+            Documento
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="documento"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="fecha">
+          <div>
+            <p-sortIcon class="order" field="fecha" />
+            Fecha
+            <p-columnFilter
+              class="filter"
+              type="date"
+              field="fecha"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-documento>
+      <tr>
+        <td class="buttons">
+          <p-button
+            icon="fas fa-download"
+            severity="success"
+            [text]="true"
+            [id]="'parte-trabajo-documentos-button-download-' + documento?.id"
+          />
+        </td>
+        <td class="buttons">
+          <p-button
+            icon="fas fa-trash"
+            severity="danger"
+            [text]="true"
+            [id]="'parte-trabajo-documentos-button-delete-' + documento?.id"
+          />
+        </td>
+        <td class="no-buttons text-center">{{ documento.documento }}</td>
+        <td class="no-buttons text-center">{{ documento.fecha }}</td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="footer">
+      <tr>
+        <td colspan="4">
+          <div class="pl-2">
+            Resultado totales:
+            <span class="font-bold" id="total-length-familiasSubfamilias">{{
+              documentos.length || 0
+            }}</span>
+          </div>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>

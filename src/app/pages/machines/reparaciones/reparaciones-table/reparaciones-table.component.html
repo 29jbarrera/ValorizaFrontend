@@ -1,0 +1,212 @@
+<div
+  *ngIf="loading"
+  id="loading-table"
+  class="car p-4 col-12 km-table-valoriza-app"
+>
+  <p-progressBar mode="indeterminate" [style]="{ height: '6px' }" />
+</div>
+<div class="col-12 km-table-valoriza-app">
+  <app-search-form-table
+    title="Búsqueda de Maquinaria"
+    [search_model]="search_model"
+    [search_options]="search_options"
+    [search_fields]="search_fields"
+    (search)="search($event)"
+  >
+  </app-search-form-table>
+
+  <p-table
+    #dt
+    [value]="value"
+    dataKey="id"
+    styleClass="p-datatable-sm"
+    [lazy]="lazy"
+    [rows]="rows"
+    [rowsPerPageOptions]="rowsPerPageOptions"
+    [loading]="loading"
+    [totalRecords]="totalRecords"
+    [paginator]="paginator"
+    [showCurrentPageReport]="showCurrentPageReport"
+    [currentPageReportTemplate]="currentPageReportTemplate"
+    (onLazyLoad)="loadData($event)"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th></th>
+        <th></th>
+        <th pSortableColumn="centro.nombre ">
+          <div>
+            <p-sortIcon class="order" field="centro.nombre " />
+            Centro reparación
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="centro.nombre"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="maquinaria.matricula ">
+          <div>
+            <p-sortIcon class="order" field="maquinaria.matricula " />
+            Maquinaria
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="maquinaria.matricula "
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="codTipoReparacion">
+          <div>
+            <p-sortIcon class="order" field="codTipoReparacion" />
+            Tipo Actuación
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="codTipoReparacion"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="typeMaintenance">
+          <div>
+            <p-sortIcon class="order" field="typeMaintenance" />
+            Tipo Mantenimiento
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="typeMaintenance"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="fecha">
+          <div>
+            <p-sortIcon class="order" field="fecha" />
+            Fecha
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="fecha"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="proveedor.nombre">
+          <div>
+            <p-sortIcon class="order" field="proveedor.nombre" />
+            Proveedor
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="proveedor.nombre"
+              display="menu"
+              ><div
+                *ngIf="loading"
+                id="loading-table"
+                class="car p-4 col-12 km-table-valoriza-app"
+              >
+                <p-progressBar
+                  mode="indeterminate"
+                  [style]="{ height: '6px' }"
+                />
+              </div>
+            </p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="otros">
+          <div>
+            <p-sortIcon class="order" field="otros " />
+            Coste
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="otros "
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="codMoneda ">
+          <div>
+            <p-sortIcon class="order" field="codMoneda " />
+            Divisa
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="codMoneda "
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="descripcion">
+          <div>
+            <p-sortIcon class="order" field="descripcion" />
+            Descripción
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="descripcion"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="comentarios">
+          <div>
+            <p-sortIcon class="order" field="comentarios" />
+            Comentarios
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="comentarios"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+      </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body" let-reparaciones>
+      <tr class="body-table" [id]="'reparacion-' + reparaciones?.id">
+        <td>
+          <p-button
+            icon="fas fa-pen"
+            severity="success"
+            [text]="true"
+            (click)="edit(reparaciones)"
+            [id]="'reparacion-edit-' + reparaciones?.id"
+          />
+        </td>
+        <td>
+          <p-button
+            icon="fas fa-trash"
+            severity="danger"
+            [text]="true"
+            (click)="confirm_delete(reparaciones)"
+            [id]="'reparacion-delete-' + reparaciones?.id"
+          />
+        </td>
+        <td>{{ reparaciones?.centro?.nombre }}</td>
+        <!-- TODO: ADD TIPO ACTUACIÓN ,TIPO DE MANTENIMIENTO, ALBARÁN,   -->
+        <td class="reparacion- text-center"></td>
+        <td class="reparacion- text-center"></td>
+        <td class="reparacion- text-center"></td>
+        <td class="reparacion-fecha text-center">{{ reparaciones?.fecha }}</td>
+        <td class="reparacion-nombre text-center">
+          {{ reparaciones?.proveedor?.nombre }}
+        </td>
+        <td class="reparacion- text-center"></td>
+        <td class="reparacion-otros text-center">{{ reparaciones?.otros }}</td>
+        <td class="reparacion-codMoneda text-center">
+          {{ reparaciones?.codMoneda }}
+        </td>
+        <td class="reparacion-comentarios">
+          {{ reparaciones?.comentarios }}
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+  <p-confirmDialog [style]="{ width: '50vw' }"></p-confirmDialog>
+  <p-toast></p-toast>
+</div>

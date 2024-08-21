@@ -1,0 +1,21 @@
+<section class="container-router-outlet">
+  <app-header
+    title="Stock"
+    description="Unidades disponibles para el taller"
+  ></app-header>
+  <div class="col-12">
+    <p-tabView>
+      <p-tabPanel header="Stock">
+        <app-stock-form></app-stock-form>
+        <app-stock-table></app-stock-table>
+      </p-tabPanel>
+      <p-tabPanel header="Regularización Stock">
+        <app-stock-form></app-stock-form>
+        <app-regularizacion-stock-table></app-regularizacion-stock-table>
+      </p-tabPanel>
+      <p-tabPanel header="Préstamos Stock">
+        <app-prestamos-stock-table></app-prestamos-stock-table>
+      </p-tabPanel>
+    </p-tabView>
+  </div>
+</section>

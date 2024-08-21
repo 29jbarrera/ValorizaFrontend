@@ -1,0 +1,160 @@
+<div
+  *ngIf="loading"
+  id="loading-table"
+  class="car p-4 col-12 km-table-valoriza-app"
+>
+  <p-progressBar mode="indeterminate" [style]="{ height: '6px' }" />
+</div>
+<div class="col-12 km-table-valoriza-app">
+  <!-- Buscador -->
+  <app-search-form-table
+    title="Búsqueda de Maquinaria"
+    [search_model]="search_model"
+    [search_options]="search_options"
+    [search_fields]="search_fields"
+    (search)="search($event)"
+  >
+  </app-search-form-table>
+
+  <app-button-download-excel
+    _id="impuestos-export-excel"
+    (_click)="export_excel()"
+  >
+  </app-button-download-excel>
+
+  <p-table
+    #dt
+    [value]="impuestos"
+    dataKey="id"
+    styleClass="p-datatable-sm"
+    [rowsPerPageOptions]="[5, 10, 20]"
+    [paginator]="true"
+    [rows]="5"
+    *ngIf="!loading"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th></th>
+        <!-- <th></th> -->
+        <th pSortableColumn="nombreCentro">
+          <div>
+            <p-sortIcon class="order" field="nombreCentro" />
+            Centro
+            <p-columnFilter
+              type="text"
+              field="nombreCentro"
+              class="filter"
+              display="menu"
+            />
+          </div>
+        </th>
+        <th pSortableColumn="nombreGrupo">
+          <div>
+            <p-sortIcon class="order" field="nombreGrupo" />
+            Dirección
+            <p-columnFilter
+              type="text"
+              field="nombreGrupo"
+              class="filter"
+              display="menu"
+            />
+          </div>
+        </th>
+        <th pSortableColumn="matricula">
+          <div>
+            <p-sortIcon class="order" field="matricula" />
+            Matrícula
+            <p-columnFilter
+              type="text"
+              field="matricula"
+              class="filter"
+              display="menu"
+            />
+          </div>
+        </th>
+        <th pSortableColumn="importe">
+          <div>
+            <p-sortIcon class="order" field="importe" />
+            Impuesto
+            <p-columnFilter
+              type="text"
+              field="importe"
+              class="filter"
+              display="menu"
+            />
+          </div>
+        </th>
+        <th pSortableColumn="codMoneda">
+          <div>
+            <p-sortIcon class="order" field="codMoneda" />
+            Divisa
+            <p-columnFilter
+              type="text"
+              field="codMoneda"
+              class="filter"
+              display="menu"
+            />
+          </div>
+        </th>
+        <th pSortableColumn="fecha">
+          <div>
+            <p-sortIcon class="order" field="fecha" />
+            Fecha
+            <p-columnFilter
+              type="text"
+              field="fecha"
+              class="filter"
+              display="menu"
+            />
+          </div>
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-impuesto>
+      <tr class="body-table" [id]="'impuesto-' + impuesto?.id">
+        <td>
+          <!-- <p-button
+            icon="fas fa-pen"
+            severity="success"
+            [text]="true"
+            (click)="edit(impuesto)"
+            [id]="'button-impuesto-edit-' + impuesto?.id"
+          /> -->
+        </td>
+        <!-- <td>
+          <p-button
+            icon="fas fa-trash"
+            severity="danger"
+            [text]="true"
+            (click)="confirm_delete(impuesto)"
+            [id]="'button-impuesto-delete-' + impuesto?.id"
+          />
+        </td> -->
+        <td class="impuesto-nombre-centro">{{ impuesto?.nombreCentro }}</td>
+        <td class="impuesto-nombre-grupo">{{ impuesto?.nombreGrupo }}</td>
+        <td class="impuesto-matricula">{{ impuesto?.matricula }}</td>
+        <td class="impuesto-importe">
+          {{ format_price_amount(impuesto?.importe) }}
+        </td>
+        <td class="impuesto-codMoneda">{{ impuesto?.codMoneda }}</td>
+        <td class="impuesto-fecha">
+          {{ impuesto?.fecha | date : "dd/MM/yyyy" }}
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="footer">
+      <tr>
+        <td colspan="8">
+          <div class="pl-2">
+            Resultado totales:
+            <span class="font-bold" id="total-length-impuestos">{{
+              impuestos.length || 0
+            }}</span>
+          </div>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+  <p-confirmDialog [style]="{ width: '50vw' }"></p-confirmDialog>
+  <p-toast></p-toast>
+</div>

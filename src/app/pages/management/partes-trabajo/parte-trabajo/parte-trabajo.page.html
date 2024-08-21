@@ -1,0 +1,61 @@
+<section class="container-router-outlet">
+  <!-- Loader -->
+  <div
+    *ngIf="loading"
+    id="loading-parte-trabajo"
+    class="car p-4 col-12 km-table-valoriza-app"
+  >
+    <p-progressBar mode="indeterminate" [style]="{ height: '6px' }" />
+  </div>
+
+  <!-- Contenido -->
+  <div class="" *ngIf="!loading">
+    <!-- TODO: Estado -->
+    <div class="col-12">
+      <div class="text-xl text-center">
+        <span class="font-bold">Estado: </span>
+        {{ parte?.codEstado }}
+      </div>
+    </div>
+
+    <!-- TODO: Component Parte de Trabajo -->
+    <div class="col-12">
+      <app-divider
+        title="Parte de trabajo"
+        icon="pi-pen-to-square"
+      ></app-divider>
+
+      <div
+        class="surface-ground surface-border border-2 border-dashed col-12 py-4 border-round-xl"
+      >
+        <form [formGroup]="form">
+          <formly-form
+            [form]="form"
+            [fields]="fields"
+            [model]="model"
+            [options]="options"
+          ></formly-form>
+        </form>
+      </div>
+    </div>
+
+    <!-- TODO: Component Mecanicos -->
+    <div class="col-12">
+      <app-divider title="Mecánicos" icon="pi-users"></app-divider>
+      <app-mecanicos></app-mecanicos>
+    </div>
+
+    <!-- TODO: Component Materiales -->
+
+    <div class="col-12">
+      <app-divider title="Materiales" icon="pi-list-check"></app-divider>
+      <app-materiales></app-materiales>
+    </div>
+
+    <!-- TODO: Component Documentos -->
+    <div class="col-12">
+      <app-divider title="Documentos" icon="pi-file-plus"></app-divider>
+      <app-documentos></app-documentos>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,53 @@
+<section class="container-router-outlet">
+  <p-toast></p-toast>
+  <!-- Loader -->
+  <div
+    *ngIf="loading"
+    id="loading-parte-trabajo"
+    class="car p-4 col-12 km-table-valoriza-app"
+  >
+    <p-progressBar mode="indeterminate" [style]="{ height: '6px' }" />
+  </div>
+
+  <div class="p-4" *ngIf="!loading">
+    <!-- Maquinaria -->
+    <app-header [maquinaria]="maquinaria"></app-header>
+
+    <!-- Componentes -->
+    <div class="py-3">
+      <!-- Datos Generales -->
+      <app-datos-generales
+        [maquinaria]="maquinaria"
+        [centros]="centros"
+        [centros_compras]="centros_compras"
+        [familias]="familias"
+        [subfamilias]="subfamilias"
+        [combutibles]="combutibles"
+        [emisiones]="emisiones"
+        [servicios]="servicios"
+        [estados_maquinaria]="estados_maquinaria"
+        (save)="save_changes_datos_generales($event)"
+      ></app-datos-generales>
+
+      <!-- Equipamiento -->
+      <app-equipamiento [maquinaria]="maquinaria"></app-equipamiento>
+
+      <!-- Seguro e impuesto -->
+      <app-seguro-e-impuesto
+        [seguro]="seguro"
+        [tipos_seguros]="tipos_seguros"
+        [estados_seguros]="estados_seguros"
+        (save)="save_changes_seguros_e_impuestos($event)"
+      ></app-seguro-e-impuesto>
+
+      <!-- Mantenimiento -->
+      <app-mantenimiento [maquinaria]="maquinaria"></app-mantenimiento>
+
+      <!-- Documentación -->
+      <app-documentacion [maquinaria]="maquinaria"></app-documentacion>
+
+      <!-- Imágenes -->
+      <app-imagenes [maquinaria]="maquinaria"></app-imagenes>
+    </div>
+  </div>
+</section>

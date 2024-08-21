@@ -1,0 +1,155 @@
+<div class="col-12 km-table-valoriza-app">
+  <!-- Buscador -->
+  <app-search-form-table
+    title="Búsqueda de Maquinaria"
+    [search_model]="search_model"
+    [search_options]="search_options"
+    [search_fields]="search_fields"
+    (search)="search($event)"
+  >
+  </app-search-form-table>
+
+  <app-button-download-excel
+    _id="tacografos-export-excel"
+    (_click)="export_excel()"
+  >
+  </app-button-download-excel>
+
+  <p-table
+    #dt
+    [value]="value"
+    dataKey="id"
+    styleClass="p-datatable-sm"
+    [lazy]="lazy"
+    [rows]="rows"
+    [rowsPerPageOptions]="rowsPerPageOptions"
+    [loading]="loading"
+    [totalRecords]="totalRecords"
+    [paginator]="paginator"
+    [showCurrentPageReport]="showCurrentPageReport"
+    [currentPageReportTemplate]="currentPageReportTemplate"
+    (onLazyLoad)="loadData($event)"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th></th>
+        <!-- <th></th> -->
+        <th pSortableColumn="matricula ">
+          <div>
+            <p-sortIcon class="order" field="matricula " />
+            Maquinaria
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="matricula "
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="nombreCentro ">
+          <div>
+            <p-sortIcon class="order" field="nombreCentro " />
+            Centro
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="nombreCentro "
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="nombreGrupoCentro">
+          <div>
+            <p-sortIcon class="order" field="nombreGrupoCentro" />
+            Delegación
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="nombreGrupoCentro"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="familia">
+          <div>
+            <p-sortIcon class="order" field="familia" />
+            Familia
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="familia"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="subFamilia">
+          <div>
+            <p-sortIcon class="order" field="subFamilia" />
+            Subfamilia
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="subFamilia"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="fecha">
+          <div>
+            <p-sortIcon class="order" field="fecha" />
+            Fecha Próxima
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="fecha"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+      </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body" let-tacografo>
+      <tr class="body-table" [id]="'tacografos-' + tacografo?.id">
+        <td>
+          <p-button
+            icon="fas fa-pen"
+            severity="success"
+            [text]="true"
+            (click)="edit(tacografo)"
+            [id]="'button-tacografo-edit-' + tacografo?.id"
+          />
+        </td>
+        <!-- <td>
+          <p-button
+            icon="fas fa-trash"
+            severity="danger"
+            [text]="true"
+            (click)="confirm_delete(tacografo)"
+            [id]="'button-tacografo-delete-' + tacografo?.id"
+          />
+        </td> -->
+        <td class="tacografo-matricula text-center">
+          {{ tacografo?.maquinaria?.matricula }}
+        </td>
+        <td class="tacografo-centro">
+          {{ tacografo?.maquinaria?.nombreCentro }}
+        </td>
+        <td class="tacografo-delegacion">
+          {{ tacografo?.maquinaria?.nombreGrupoCentro }}
+        </td>
+        <td class="tacografo-familia text-center">
+          {{ get_tacografo_family_descripcion(tacografo) }}
+        </td>
+        <td class="tacografo-subfamilia text-center">
+          {{ get_tacografo_subFamily_descripcion(tacografo) }}
+        </td>
+        <td class="tacografo-fecha text-center">
+          {{ tacografo.fecha | date : "dd/MM/yyyy" }}
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+  <p-confirmDialog [style]="{ width: '50vw' }"></p-confirmDialog>
+  <p-toast></p-toast>
+</div>

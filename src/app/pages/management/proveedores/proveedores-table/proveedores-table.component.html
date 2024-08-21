@@ -1,0 +1,163 @@
+<div class="col-12 km-table-valoriza-app">
+  <!-- Buscador -->
+  <app-search-form-table
+    title="Búsqueda de Maquinaria"
+    [search_model]="search_model"
+    [search_options]="search_options"
+    [search_fields]="search_fields"
+    (search)="search($event)"
+  >
+  </app-search-form-table>
+
+  <app-button-create-and-export-to-excel
+    id="create-proveedor"
+    (click_to_create)="open_modal_to_create()"
+    _id="proveedorES-export-excel"
+    (click_to_excel)="export_excel()"
+  >
+  </app-button-create-and-export-to-excel>
+
+  <p-table
+    #dt
+    [value]="proveedores"
+    styleClass="p-datatable-sm"
+    [lazy]="lazy"
+    [rows]="rows"
+    [rowsPerPageOptions]="rowsPerPageOptions"
+    [loading]="loading"
+    [totalRecords]="totalRecords"
+    [paginator]="paginator"
+    [showCurrentPageReport]="showCurrentPageReport"
+    [currentPageReportTemplate]="currentPageReportTemplate"
+    (onLazyLoad)="loadData($event)"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th></th>
+        <th></th>
+        <th pSortableColumn="docIdentificacion">
+          <div>
+            <p-sortIcon class="order" field="docIdentificacion" />
+            Doc. Identificación
+            <p-columnFilter
+              type="text"
+              field="docIdentificacion"
+              class="filter"
+              display="menu"
+            />
+          </div>
+        </th>
+        <th pSortableColumn="nombre">
+          <div>
+            <p-sortIcon class="order" field="nombre" />
+            Nombre
+            <p-columnFilter
+              type="text"
+              field="nombre"
+              class="filter"
+              display="menu"
+            />
+          </div>
+        </th>
+        <th pSortableColumn="direccion">
+          <div>
+            <p-sortIcon class="order" field="direccion" />
+            Dirección
+            <p-columnFilter
+              type="text"
+              field="direccion"
+              class="filter"
+              display="menu"
+            />
+          </div>
+        </th>
+        <th pSortableColumn="telefono">
+          <div>
+            <p-sortIcon class="order" field="telefono" />
+            Teléfono
+            <p-columnFilter
+              type="text"
+              field="telefono"
+              class="filter"
+              display="menu"
+            />
+          </div>
+        </th>
+        <th pSortableColumn="comentarios">
+          <div>
+            <p-sortIcon class="order" field="comentarios" />
+            Comentarios
+            <p-columnFilter
+              type="text"
+              field="comentarios"
+              class="filter"
+              display="menu"
+            />
+          </div>
+        </th>
+        <th pSortableColumn="sap">
+          <div>
+            <p-sortIcon class="order" field="sap" />
+            SAP
+            <p-columnFilter
+              type="text"
+              field="sap"
+              class="filter"
+              display="menu"
+            />
+          </div>
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-proveedores>
+      <tr class="body-table" [id]="'proveedor-' + proveedores?.id">
+        <td>
+          <p-button
+            icon="fas fa-pen"
+            severity="success"
+            [text]="true"
+            (click)="edit(proveedores)"
+            [id]="'proveedor-edit-' + proveedores?.id"
+          />
+        </td>
+        <td>
+          <p-button
+            icon="fas fa-trash"
+            severity="danger"
+            [text]="true"
+            (click)="confirm_delete(proveedores)"
+            [id]="'proveedor-delete-' + proveedores?.id"
+          />
+        </td>
+        <td class="proveedor-docIdentificacion">
+          {{ proveedores?.docIdentificacion }}
+        </td>
+        <td class="proveedor-nombre text-center">{{ proveedores?.nombre }}</td>
+        <td class="proveedor-direccion text-center">
+          {{ proveedores?.direccion }}
+        </td>
+        <td class="proveedor-telefono text-center">
+          {{ proveedores?.telefono }}
+        </td>
+        <td class="proveedor-comentarios text-center">
+          {{ proveedores?.comentarios }}
+        </td>
+        <td class="proveedor-sap text-center">{{ proveedores?.sap }}</td>
+      </tr>
+    </ng-template>
+    <!-- <ng-template pTemplate="footer">
+      <tr>
+        <td colspan="8">
+          <div class="pl-2">
+            Resultado totales:
+            <span class="font-bold" id="total-length-proveedores">{{
+              proveedores.length || 0
+            }}</span>
+          </div>
+        </td>
+      </tr>
+    </ng-template> -->
+  </p-table>
+  <p-confirmDialog [style]="{ width: '50vw' }"></p-confirmDialog>
+  <p-toast></p-toast>
+</div>

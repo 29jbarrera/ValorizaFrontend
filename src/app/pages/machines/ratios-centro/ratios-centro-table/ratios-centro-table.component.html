@@ -1,0 +1,214 @@
+<div
+  *ngIf="loading"
+  id="loading-table"
+  class="car p-4 col-12 km-table-valoriza-app"
+>
+  <p-progressBar mode="indeterminate" [style]="{ height: '6px' }" />
+</div>
+<div class="col-12 km-table-valoriza-app">
+  <!-- Buscador -->
+  <app-search-form-table
+    title="Búsqueda de Maquinaria"
+    [search_model]="search_model"
+    [search_options]="search_options"
+    [search_fields]="search_fields"
+    (search)="search($event)"
+  >
+  </app-search-form-table>
+
+  <p-table
+    #dt
+    [value]="value"
+    dataKey="id"
+    [lazy]="lazy"
+    [rows]="rows"
+    [rowsPerPageOptions]="rowsPerPageOptions"
+    [loading]="loading"
+    [totalRecords]="totalRecords"
+    [paginator]="paginator"
+    [showCurrentPageReport]="showCurrentPageReport"
+    [currentPageReportTemplate]="currentPageReportTemplate"
+    (onLazyLoad)="loadData($event)"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th></th>
+        <th></th>
+        <th pSortableColumn="dateDesde">
+          <div>
+            <p-sortIcon class="order" field="dateDesde" />
+            Desde
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="dateDesde"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="dateUntil">
+          <div>
+            <p-sortIcon class="order" field="dateUntil" />
+            Hasta
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="dateUntil"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="centre">
+          <div>
+            <p-sortIcon class="order" field="centre" />
+            Centro
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="centre"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="repairs">
+          <div>
+            <p-sortIcon class="order" field="repairs" />
+            Reparaciones
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="repairs"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="insurance">
+          <div>
+            <p-sortIcon class="order" field="insurance" />
+            Seguro
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="insurance"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="tax">
+          <div>
+            <p-sortIcon class="order" field="tax" />
+            Impuesto
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="tax"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="Amortization">
+          <div>
+            <p-sortIcon class="order" field="Amortization" />
+            Amortización
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="Amortization"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="financial">
+          <div>
+            <p-sortIcon class="order" field="financial" />
+            Financiero
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="financial"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="rate">
+          <div>
+            <p-sortIcon class="order" field="rate" />
+            Tasa
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="rate"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="ratio">
+          <div>
+            <p-sortIcon class="order" field="ratio" />
+            Ratio
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="ratio"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="currency">
+          <div>
+            <p-sortIcon class="order" field="currency" />
+            Divisa
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="currency"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+      </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body" let-ratiosCentro>
+      <tr class="body-table" [id]="'ratio-centro-' + ratiosCentro?.id">
+        <td>
+          <p-button
+            icon="fas fa-pen"
+            severity="success"
+            [text]="true"
+            (click)="confirm_edit(ratiosCentro)"
+            [id]="'ratio-centro-edit-' + ratiosCentro?.id"
+          />
+        </td>
+        <td>
+          <p-button
+            icon="fas fa-trash"
+            severity="danger"
+            [text]="true"
+            (click)="confirm_delete(ratiosCentro)"
+            [id]="'ratio-centro-delete-' + ratiosCentro?.id"
+          />
+        </td>
+        <td class="ratio-centro-fechaDesde">
+          {{ ratiosCentro.dateFrom | date : "dd/MM/yyyy" }}
+        </td>
+        <td class="ratio-centro-FechaHasta">
+          {{ ratiosCentro.dateUntil | date : "dd/MM/yyyy" }}
+        </td>
+        <td class="ratio-centro-centro">{{ ratiosCentro.centre }}</td>
+        <td class="ratio-centro-reparaciones">{{ ratiosCentro.repairs }}</td>
+        <td class="ratio-centro-seguro">{{ ratiosCentro.insurance }}</td>
+        <td class="ratio-centro-impuesto">{{ ratiosCentro.tax }}</td>
+        <td class="ratio-centro-amortizacion">
+          {{ ratiosCentro.Amortization }}
+        </td>
+        <td class="ratio-centro-financiero">{{ ratiosCentro.financial }}</td>
+        <td class="ratio-centro-tasa">{{ ratiosCentro.rate }}</td>
+        <td class="ratio-centro-ratio">{{ ratiosCentro.ratio }}</td>
+        <td class="ratio-centro-divisa">{{ ratiosCentro.currency }}</td>
+      </tr>
+    </ng-template>
+  </p-table>
+  <p-confirmDialog [style]="{ width: '50vw' }"></p-confirmDialog>
+  <p-toast></p-toast>
+</div>

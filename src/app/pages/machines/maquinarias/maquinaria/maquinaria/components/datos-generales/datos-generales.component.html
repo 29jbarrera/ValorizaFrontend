@@ -1,0 +1,36 @@
+<div class="col-12">
+  <p-accordion [activeIndex]="0">
+    <p-accordionTab>
+      <ng-template pTemplate="header">
+        <div class="ml-2 flex align-items-center gap-2">
+          <img src="/assets/icons/overview.svg" class="w-2rem" />
+          <div class="flex flex-column">
+            <span class="font-bold text-xl"> Datos Generales </span>
+            <span class="text-600 text-sm">
+              Información General del elemento
+            </span>
+          </div>
+        </div>
+      </ng-template>
+      <ng-template pTemplate="body">
+        <form [formGroup]="form_datos_generales">
+          <formly-form
+            [form]="form_datos_generales"
+            [fields]="fields_datos_generales"
+            [model]="model_datos_generales"
+            [options]="options_datos_generales"
+          ></formly-form>
+        </form>
+        <div class="text-right">
+          <button
+            pButton
+            pRipple
+            label="Guardar"
+            (click)="save_changes()"
+            class="p-button-success"
+          ></button>
+        </div>
+      </ng-template>
+    </p-accordionTab>
+  </p-accordion>
+</div>

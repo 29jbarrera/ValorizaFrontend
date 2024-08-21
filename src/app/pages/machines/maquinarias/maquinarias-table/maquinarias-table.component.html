@@ -1,0 +1,185 @@
+<div
+  *ngIf="loading"
+  id="loading-table"
+  class="car p-4 col-12 km-table-valoriza-app"
+>
+  <p-progressBar mode="indeterminate" [style]="{ height: '6px' }" />
+</div>
+
+<p-confirmDialog [style]="{ width: '50vw' }"></p-confirmDialog>
+<p-toast></p-toast>
+
+<div class="col-12" *ngIf="!loading">
+  <!-- Buscador -->
+  <app-search-form-table
+    title="Búsqueda de Maquinaria"
+    [search_model]="search_model"
+    [search_options]="search_options"
+    [search_fields]="search_fields"
+    (search)="search($event)"
+  ></app-search-form-table>
+
+  <!-- Tabla -->
+  <div class="col-12 km-table-valoriza-app">
+    <!-- Boton crear y descargar -->
+    <app-button-create-and-export-to-excel
+      id_create="maquinaria-button-create-maquinaria"
+      id_export_excel="maquinarias-button-export-excel"
+      (click_to_create)="create_maquinaria()"
+      (click_to_excel)="export_excel()"
+    >
+    </app-button-create-and-export-to-excel>
+
+    <p-table
+      #dt
+      [value]="maquinarias"
+      dataKey="id"
+      styleClass="p-datatable-sm"
+      [rowsPerPageOptions]="[5, 10, 20]"
+      [paginator]="true"
+      [rows]="5"
+      *ngIf="!loading"
+    >
+      <ng-template pTemplate="header">
+        <tr>
+          <th></th>
+          <th pSortableColumn="matricula">
+            <div>
+              <p-sortIcon class="order" field="matricula" />
+              Matrícula
+              <p-columnFilter
+                class="filter"
+                type="text"
+                field="matricula"
+                display="menu"
+              ></p-columnFilter>
+            </div>
+          </th>
+          <th pSortableColumn="bastidor">
+            <div>
+              <p-sortIcon class="order" field="bastidor" />
+              Bastidor
+              <p-columnFilter
+                class="filter"
+                type="text"
+                field="bastidor"
+                display="menu"
+              ></p-columnFilter>
+            </div>
+          </th>
+
+          <th pSortableColumn="centrosCoste.grupoCentro.nombre">
+            <div>
+              <p-sortIcon
+                class="order"
+                field="centrosCoste.grupoCentro.nombre"
+              />
+              Delegación
+              <p-columnFilter
+                class="filter"
+                type="text"
+                field="centrosCoste.grupoCentro.nombre"
+                display="menu"
+              ></p-columnFilter>
+            </div>
+          </th>
+          <th pSortableColumn="centrosCoste.nombre">
+            <div>
+              <p-sortIcon class="order" field="centrosCoste.nombre" />
+              Centro
+              <p-columnFilter
+                class="filter"
+                type="text"
+                field="centrosCoste.nombre"
+                display="menu"
+              ></p-columnFilter>
+            </div>
+          </th>
+          <th pSortableColumn="">
+            <div>
+              <p-sortIcon class="order" field="" />
+              Subfamilia
+              <p-columnFilter
+                class="filter"
+                type="text"
+                field=""
+                display="menu"
+              ></p-columnFilter>
+            </div>
+          </th>
+          <th pSortableColumn="servicio">
+            <div>
+              <p-sortIcon class="order" field="servicio" />
+              Servicio
+              <p-columnFilter
+                class="filter"
+                type="text"
+                field="servicio"
+                display="menu"
+              ></p-columnFilter>
+            </div>
+          </th>
+          <th pSortableColumn="codEstadoMaquinaria">
+            <div>
+              <p-sortIcon class="order" field="codEstadoMaquinaria" />
+              Estado Maquinaria
+              <p-columnFilter
+                class="filter"
+                type="text"
+                field="codEstadoMaquinaria"
+                display="menu"
+              ></p-columnFilter>
+            </div>
+          </th>
+        </tr>
+      </ng-template>
+
+      <ng-template pTemplate="body" let-maquinaria>
+        <tr class="body-table" [id]="'maquinarias-' + maquinaria.id">
+          <td class="buttons text-center">
+            <p-button
+              icon="fas fa-eye"
+              severity="success"
+              [text]="true"
+              [id]="'maquinarias-button-view-' + maquinaria.id"
+              (click)="go_to_maquinaria(maquinaria.id)"
+            />
+          </td>
+          <td class="no-buttons text-center">
+            {{ maquinaria.matricula }}
+          </td>
+          <td class="text-center">
+            {{ maquinaria.bastidor }}
+          </td>
+          <td class="text-center">
+            {{ maquinaria.centrosCoste.grupoCentro.nombre }}
+          </td>
+          <td class="text-center">
+            {{ maquinaria.centrosCoste.nombre }}
+          </td>
+          <td class="text-center">
+            {{ get_description_subfamily(maquinaria.subFamilia) }}
+          </td>
+          <td class="text-center">
+            {{ maquinaria.servicio }}
+          </td>
+          <td class="text-center">
+            {{ maquinaria.codEstadoMaquinaria }}
+          </td>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="footer">
+        <tr>
+          <td colspan="8">
+            <div class="pl-2 text-left">
+              Resultado totales:
+              <span class="font-bold" id="total-length-maquinarias">{{
+                maquinarias.length || 0
+              }}</span>
+            </div>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+</div>

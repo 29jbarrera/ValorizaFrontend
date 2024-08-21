@@ -1,0 +1,93 @@
+<div class="col-12 km-table-valoriza-app">
+  <!-- Buscador -->
+  <app-search-form-table
+    title="Búsqueda de Niveles de acción"
+    [search_model]="search_model"
+    [search_options]="search_options"
+    [search_fields]="search_fields"
+    (search)="search($event)"
+  ></app-search-form-table>
+
+  <app-button-create
+    _id="tabla-global-create"
+    (_click)="open_modal_to_create()"
+  >
+  </app-button-create>
+
+  <p-table
+    #dt
+    [value]="value"
+    dataKey="id"
+    styleClass="p-datatable-sm"
+    [lazy]="lazy"
+    [rows]="rows"
+    [rowsPerPageOptions]="rowsPerPageOptions"
+    [loading]="loading"
+    [totalRecords]="totalRecords"
+    [paginator]="paginator"
+    [showCurrentPageReport]="showCurrentPageReport"
+    [currentPageReportTemplate]="currentPageReportTemplate"
+    (onLazyLoad)="loadData($event)"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th></th>
+        <th></th>
+        <th class="text-center">
+          <!-- <div> -->
+          <!-- <p-sortIcon class="order" field="idGrupo" /> -->
+          Acción
+          <!-- <p-columnFilter
+              class="filter"
+              type="text"
+              field="idGrupo"
+              display="menu"
+            ></p-columnFilter> -->
+          <!-- </div> -->
+        </th>
+        <th class="text-center">
+          <!-- <div> -->
+          <!-- <p-sortIcon class="order" field="grupo.nombre " /> -->
+          Grupo
+          <!-- <p-columnFilter
+              class="filter"
+              type="text"
+              field="grupo.nombre "
+              display="menu"
+            ></p-columnFilter> -->
+          <!-- </div> -->
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-nivelesAccion>
+      <tr class="body-table" [id]="'nivelAccion-' + nivelesAccion?.id">
+        <td>
+          <p-button
+            icon="fas fa-pen"
+            severity="success"
+            [text]="true"
+            (click)="edit_niveles_accion(nivelesAccion)"
+            [id]="'nivelAccion-edit-' + nivelesAccion?.id"
+          />
+        </td>
+        <td>
+          <p-button
+            icon="fas fa-trash"
+            severity="danger"
+            [text]="true"
+            (click)="confirm_delete(nivelesAccion)"
+            [id]="'nivelAccion-delete-' + nivelesAccion?.id"
+          />
+        </td>
+        <td class="nivelAccion-accion text-center">
+          {{ nivelesAccion?.accion }}
+        </td>
+        <td class="nivelAccion-grupo text-center">
+          {{ nivelesAccion?.grupo }}
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+  <p-confirmDialog [style]="{ width: '50vw' }"></p-confirmDialog>
+  <p-toast></p-toast>
+</div>

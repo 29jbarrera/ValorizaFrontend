@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="left-column">
+    <app-home-data-group
+      [title]="'Inspecciones periódicas obligatorias'"
+      [data]="dataInspecciones"
+    ></app-home-data-group>
+    <app-home-data-group
+      [title]="'Horas y KM Tracking'"
+      [data]="dataHorasKM"
+    ></app-home-data-group>
+  </div>
+
+  <div class="right-column">
+    <app-home-data-group
+      [title]="'Partes de Trabajo'"
+      [data]="dataPartes"
+    ></app-home-data-group>
+    <app-home-data-group
+      [title]="'Alertas Estado Maquinarias'"
+      [data]="dataAlertasEstadoMaquinaria"
+    ></app-home-data-group>
+    <app-home-data-group
+      [title]="'Mantenimiento preventivo'"
+      [data]="dataMantenimiento"
+    ></app-home-data-group>
+    <app-home-data-group
+      [title]="''"
+      [data]="data"
+    ></app-home-data-group>
+  </div>
+</div>

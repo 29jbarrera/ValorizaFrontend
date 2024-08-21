@@ -1,0 +1,13 @@
+<app-doc></app-doc>
+<app-menu id="app-sidebar"></app-menu>
+
+<!-- Botón abrir / cerrar menu-->
+<div class="menu-button" id="app-menu-button-handle" (click)="handleMenu()">
+  <i
+    class="pi"
+    [ngClass]="{
+      'pi-chevron-left': deployed_menu,
+      'pi-chevron-right': !deployed_menu
+    }"
+  ></i>
+</div>

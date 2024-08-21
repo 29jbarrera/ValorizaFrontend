@@ -1,0 +1,163 @@
+<form class="col-12">
+    <div
+      class="p-2 grid mx-2 surface-ground border-round-xl surface-border border-2 border-dashed"
+    >
+
+    <div class="col-12 lg:col-6">
+        <div class="text-left text-xs mb-2 pl-1 font-light text-700">
+          Centro
+        </div>
+        <span class="p-input-icon-left w-full">
+          <i class="fa fa-building"></i>
+          <input
+            id="centerMachine"
+            formControlName="centerMachine"
+            type="text"
+            class="w-full input-text-valoriza"
+            placeholder="Introduce centro..."
+            pInputText
+          />
+        </span>
+      </div>
+
+      <div class="col-12 lg:col-6">
+        <div class="text-left text-xs mb-2 pl-1 font-light text-700">
+          Depósito
+        </div>
+        <span class="p-input-icon-left w-full">
+          <i class="fa fa-building"></i>
+          <input
+            id="deposit"
+            formControlName="deposit"
+            type="text"
+            class="w-full input-text-valoriza"
+            placeholder="-"
+            disabled
+            pInputText
+          />
+        </span>
+      </div>
+
+      <div class="col-12 lg:col-6">
+        <div class="text-left text-xs mb-2 pl-1 font-light text-700">
+          Maquinaria
+        </div>
+        <span class="p-input-icon-left w-full">
+          <i class="fa fa-building"></i>
+          <input
+            id="machine"
+            formControlName="machine"
+            type="text"
+            class="w-full input-text-valoriza"
+            placeholder="Introduce maquinaria..."
+            pInputText
+          />
+        </span>
+      </div>
+
+      <div class="col-12 lg:col-6">
+        <div class="text-left text-xs mb-2 pl-1 font-light text-700">
+          Bidones
+        </div>
+        <span class="p-input-icon-left w-full">
+          <i class="fa fa-building"></i>
+          <input
+            id="bidon"
+            formControlName="bidon"
+            type="text"
+            class="w-full input-text-valoriza"
+            placeholder="Introduce bidon..."
+            pInputText
+          />
+        </span>
+      </div>
+
+      <div class="col-12 lg:col-6">
+        <div class="text-left text-xs mb-2 pl-1 font-light text-700">
+            Cantidad Desde
+        </div>
+        <span class="p-input-icon-left w-full">
+          <i class="fa fa-building"></i>
+          <input
+            id="amount"
+            formControlName="amount"
+            type="number"
+            class="w-full input-text-valoriza"
+            placeholder="Introduce cantidad desde..."
+            pInputText
+          />
+        </span>
+      </div>
+
+      <div class="col-12 lg:col-6">
+        <div class="text-left text-xs mb-2 pl-1 font-light text-700">
+          Fecha Desde
+        </div>
+        <span class="p-input-icon-left w-full">
+          <i class="fa fa-building"></i>
+          <p-calendar
+            selectionMode="single"
+            [firstDayOfWeek]="1"
+            styleClass="w-full input-calendar-valoriza"
+            [showIcon]="true"
+            dateFormat="dd/mm/yy"
+            placeholder="dd/mm/yy"
+            pRipple
+          />
+        </span>
+      </div>
+
+      <div class="col-12 lg:col-6">
+        <div class="text-left text-xs mb-2 pl-1 font-light text-700">
+            Cantidad Hasta
+        </div>
+        <span class="p-input-icon-left w-full">
+          <i class="fa fa-building"></i>
+          <input
+            id="amount"
+            formControlName="amount"
+            type="number"
+            class="w-full input-text-valoriza"
+            placeholder="Introduce cantidad hasta..."
+            pInputText
+          />
+        </span>
+      </div>
+
+      <div class="col-12 lg:col-6">
+        <div class="text-left text-xs mb-2 pl-1 font-light text-700">
+          Fecha Hasta
+        </div>
+        <span class="p-input-icon-left w-full">
+          <i class="fa fa-building"></i>
+          <p-calendar
+            selectionMode="single"
+            [firstDayOfWeek]="1"
+            styleClass="w-full input-calendar-valoriza"
+            [showIcon]="true"
+            dateFormat="dd/mm/yy"
+            placeholder="dd/mm/yy"
+            pRipple
+          />
+        </span>
+      </div>
+
+    <div class="col-12">
+        <div
+          class="flex flex-column lg:flex-row lg:justify-content-end gap-3 align-items-center justify-content-center">
+          <button
+            pButton
+            type="reset"
+            label="Limpiar búsqueda"
+            class="km-button-secondary-valoriza-app">
+        </button>
+          <button
+            pButton
+            type="button"
+            label="Buscar"
+            class="km-button-primary-valoriza-app">
+        </button>
+        </div>
+      </div>
+    </div>
+</form>

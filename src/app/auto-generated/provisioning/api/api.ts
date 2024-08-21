@@ -1,0 +1,17 @@
+export * from './azureFunctions.service';
+import { AzureFunctionsService } from './azureFunctions.service';
+export * from './devices.service';
+import { DevicesService } from './devices.service';
+export * from './devicesExternalServices.service';
+import { DevicesExternalServicesService } from './devicesExternalServices.service';
+export * from './devicesLocations.service';
+import { DevicesLocationsService } from './devicesLocations.service';
+export * from './devicesNotProvisioned.service';
+import { DevicesNotProvisionedService } from './devicesNotProvisioned.service';
+export * from './externalServices.service';
+import { ExternalServicesService } from './externalServices.service';
+export * from './serviceApiProviders.service';
+import { ServiceApiProvidersService } from './serviceApiProviders.service';
+export * from './tracking.service';
+import { TrackingService } from './tracking.service';
+export const APIS = [AzureFunctionsService, DevicesService, DevicesExternalServicesService, DevicesLocationsService, DevicesNotProvisionedService, ExternalServicesService, ServiceApiProvidersService, TrackingService];

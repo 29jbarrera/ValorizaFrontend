@@ -1,0 +1,114 @@
+<form class="col-12">
+  <div
+    class="p-2 grid mx-2 surface-ground border-round-xl surface-border border-2 border-dashed"
+  >
+  <div class="col-12 lg:col-6">
+    <div class="text-left text-xs mb-2 pl-1 font-light text-700">
+      SubFamilias
+    </div>
+    <p-dropdown
+      id="SubFamily"
+      formControlName="SubFamily"
+      placeholder="Selecciona subfamilia..."
+      [options]="[
+        { label: 'Todas', value: 0 },
+        { label: 'SubFamilia 1', value: 1 },
+        { label: 'SubFamilia 2', value: 2 }
+      ]"
+      optionLabel="label"
+      optionValue="value"
+      styleClass="w-full dropdown-valoriza"
+      [showClear]="true">
+  </p-dropdown>
+  </div>
+
+  <div class="col-12 lg:col-6">
+    <div class="text-left text-xs mb-2 pl-1 font-light text-700">
+      Descripción
+    </div>
+    <span class="p-input-icon-left w-full">
+      <i class="fa fa-building"></i>
+      <input
+        id="description"
+        formControlName="description"
+        type="text"
+        class="w-full input-text-valoriza"
+        placeholder="Introduce descripción..."
+        pInputText
+      />
+    </span>
+  </div>
+
+  <div class="col-12 lg:col-6">
+    <div class="text-left text-xs mb-2 pl-1 font-light text-700">
+      Categoría
+    </div>
+    <span class="p-input-icon-left w-full">
+      <i class="fa fa-building"></i>
+      <input
+        id="category"
+        formControlName="category"
+        type="text"
+        class="w-full input-text-valoriza"
+        placeholder="Introduce categoría..."
+        pInputText
+      />
+    </span>
+  </div>
+
+  <div class="col-12 lg:col-6">
+    <div class="text-left text-xs mb-2 pl-1 font-light text-700">
+      Referencia
+    </div>
+    <span class="p-input-icon-left w-full">
+      <i class="fa fa-building"></i>
+      <input
+        id="reference"
+        formControlName="reference"
+        type="text"
+        class="w-full input-text-valoriza"
+        placeholder="Introduce refrencia..."
+        pInputText
+      />
+    </span>
+  </div>
+
+  <div class="col-12">
+    <div class="text-left text-xs mb-2 pl-1 font-light text-700">
+      Marcas
+    </div>
+    <p-dropdown
+      id="brand"
+      formControlName="brand"
+      placeholder="Selecciona marca..."
+      [options]="[
+        { label: 'Todas', value: 0 },
+        { label: 'Marca 1', value: 1 },
+        { label: 'Marca 2', value: 2 }
+      ]"
+      optionLabel="label"
+      optionValue="value"
+      styleClass="w-full dropdown-valoriza"
+      [showClear]="true">
+  </p-dropdown>
+  </div>
+
+  <div class="col-12">
+    <div
+      class="flex flex-column lg:flex-row lg:justify-content-end gap-3 align-items-center justify-content-center">
+      <button
+        pButton
+        type="reset"
+        label="Limpiar búsqueda"
+        class="km-button-secondary-valoriza-app">
+    </button>
+      <button
+        pButton
+        type="button"
+        label="Buscar"
+        class="km-button-primary-valoriza-app">
+    </button>
+    </div>
+  </div>
+</div>
+</form>

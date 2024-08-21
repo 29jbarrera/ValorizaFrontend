@@ -1,0 +1,14 @@
+.app-card-information-container, .app-card-list-container {
+  margin: 0 auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 97%;
+  display: flex;
+  background-color: #f8f8f8;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.app-card {
+  flex: 1;
+}

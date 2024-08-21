@@ -1,0 +1,287 @@
+<div class="col-12 km-table-valoriza-app">
+  <p-table
+    #dt
+    [value]="value"
+    dataKey="id"
+    styleClass="p-datatable-sm"
+    [lazy]="lazy"
+    [rows]="rows"
+    [rowsPerPageOptions]="rowsPerPageOptions"
+    [loading]="loading"
+    [totalRecords]="totalRecords"
+    [paginator]="paginator"
+    [showCurrentPageReport]="showCurrentPageReport"
+    [currentPageReportTemplate]="currentPageReportTemplate"
+    (onLazyLoad)="loadData($event)"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th></th>
+        <th></th>
+        <th pSortableColumn="maquinaria.seguro.fechaInicio">
+          <div>
+            <p-sortIcon class="order" field="maquinaria.seguro.fechaInicio" />
+            Fecha Desde
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="maquinaria.seguro.fechaInicio"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="maquinaria.seguro.fechaFin ">
+          <div>
+            <p-sortIcon class="order" field="maquinaria.seguro.fechaFin " />
+            Fecha Hasta
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="maquinaria.seguro.fechaFin "
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="maquinaria.empresa.nombre ">
+          <div>
+            <p-sortIcon class="order" field="maquinaria.empresa.nombre " />
+            Centro
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="maquinaria.empresa.nombre "
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="maquinaria.subfamilia.changedAt">
+          <div>
+            <p-sortIcon class="order" field="maquinaria.subfamilia.changedAt" />
+            SubFamilia
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="maquinaria.subfamilia.changedAt"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="maquinaria.matricula">
+          <div>
+            <p-sortIcon class="order" field="maquinaria.matricula" />
+            Matricula
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="maquinaria.matricula"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="maquinaria.bastidor">
+          <div>
+            <p-sortIcon class="order" field="maquinaria.bastidor" />
+            Bastidor
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="maquinaria.bastidor"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="chasi.tasa ">
+          <div>
+            <p-sortIcon class="order" field="chasi.tasa " />
+            Tasa Total
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="chasi.tasa "
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="tasaChasis">
+          <div>
+            <p-sortIcon class="order" field="tasaChasis" />
+            Tasa chasis
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="tasaChasis"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="maquinaria.codMoneda ">
+          <div>
+            <p-sortIcon class="order" field="maquinaria.codMoneda " />
+            Divisa
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="maquinaria.codMoneda "
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="modeloImplemento1">
+          <div>
+            <p-sortIcon class="order" field="modeloImplemento1" />
+            Implemento 1
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="modeloImplemento1"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="tasaImplemento1">
+          <div>
+            <p-sortIcon class="order" field="tasaImplemento1" />
+            Tasa 1
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="tasaImplemento1"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="codMonedaTasaImplemento1">
+          <div>
+            <p-sortIcon class="order" field="codMonedaTasaImplemento1" />
+            Divisa 1
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="codMonedaTasaImplemento1"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="modeloImplemento2">
+          <div>
+            <p-sortIcon class="order" field="modeloImplemento2" />
+            Implemento 2
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="modeloImplemento2"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="tasaImplemento2">
+          <div>
+            <p-sortIcon class="order" field="tasaImplemento2" />
+            Tasa 2
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="tasaImplemento2"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="codMonedaTasaImplemento2">
+          <div>
+            <p-sortIcon class="order" field="codMonedaTasaImplemento2" />
+            Divisa 2
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="codMonedaTasaImplemento2"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="modeloImplemento3">
+          <div>
+            <p-sortIcon class="order" field="modeloImplemento3" />
+            Implemento 3
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="modeloImplemento2"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="tasaImplemento3">
+          <div>
+            <p-sortIcon class="order" field="tasaImplemento3" />
+            Tasa 3
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="tasaImplemento2"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="codMonedaTasaImplemento3">
+          <div>
+            <p-sortIcon class="order" field="codMonedaTasaImplemento3" />
+            Divisa 3
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="codMonedaTasaImplemento3"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+      </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body" let-tasas>
+      <tr class="body-table" [id]="'tasa-' + tasas?.id">
+        <td>
+          <p-button
+            icon="fas fa-pen"
+            severity="success"
+            [text]="true"
+            (click)="confirm_edit(tasas)"
+            [id]="'tasa-edit' + tasas?.id"
+          />
+        </td>
+        <td>
+          <p-button
+            icon="fas fa-trash"
+            severity="danger"
+            [text]="true"
+            (click)="confirm_delete(tasas)"
+            [id]="'tasa-delete' + tasas?.id"
+          />
+        </td>
+        <td class="tasa-fechaInicio">
+          {{ tasas.maquinaria.seguro.fechaInicio }}
+        </td>
+        <td class="tasa-fechaHasta">{{ tasas.maquinaria.seguro.fechaFin }}</td>
+        <td class="tasa-nombre">{{ tasas.maquinaria.empresa.nombre }}</td>
+        <td class="tasa-subfamilia">
+          {{ tasas.maquinaria.subfamilia.changedAt }}
+        </td>
+        <td class="tasa-matricula">{{ tasas.maquinaria.matricula }}</td>
+        <td class="tasa-bastidor">{{ tasas.maquinaria.bastidor }}</td>
+        <td class="tasa-total-rate">{{ tasas.chasi.tasa }}</td>
+        <td class="tasa-chasis">{{ tasas.tasaChasis }}</td>
+        <td class="tasa-codMoneda">{{ tasas.maquinaria.codMoneda }}</td>
+        <td class="tasa-implemento1">{{ tasas.modeloImplemento1 }}</td>
+        <td class="tasa-tasa1">{{ tasas.tasaImplemento1 }}</td>
+        <td class="tasa-divisa1">{{ tasas.codMonedaTasaImplemento1 }}</td>
+        <td class="tasa-implemento2">{{ tasas.modeloImplemento2 }}</td>
+        <td class="tasa-tasa2">{{ tasas.tasaImplemento2 }}</td>
+        <td class="tasa-divisa2">{{ tasas.codMonedaTasaImplemento2 }}</td>
+        <td class="tasa-implemento3">{{ tasas.modeloImplemento3 }}</td>
+        <td class="tasa-tasa3">{{ tasas.tasaImplemento3 }}</td>
+        <td class="tasa-divisa3">{{ tasas.codMonedaTasaImplemento3 }}</td>
+      </tr>
+    </ng-template>
+  </p-table>
+  <p-confirmDialog [style]="{ width: '50vw' }"></p-confirmDialog>
+  <p-toast></p-toast>
+</div>

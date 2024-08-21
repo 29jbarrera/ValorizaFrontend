@@ -1,0 +1,250 @@
+<div class="col-12 km-table-valoriza-app">
+  <p-confirmDialog [style]="{ width: '50vw' }"></p-confirmDialog>
+  <p-toast></p-toast>
+
+  <app-button-create
+    (_click)="create_familia()"
+    [_id]="'familias-subfamilias-button-create-familia'"
+  ></app-button-create>
+
+  <p-table
+    #dt
+    [value]="value"
+    dataKey="id"
+    styleClass="p-datatable-sm"
+    [lazy]="lazy"
+    [rows]="rows"
+    [rowsPerPageOptions]="rowsPerPageOptions"
+    [loading]="loading"
+    [totalRecords]="totalRecords"
+    [paginator]="paginator"
+    [showCurrentPageReport]="showCurrentPageReport"
+    [currentPageReportTemplate]="currentPageReportTemplate"
+    (onLazyLoad)="loadData($event)"
+    [expandedRowKeys]="expandedRowsFamilias"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th>
+          <div>Descripción</div>
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-familia let-expanded="expanded">
+      <tr class="body-table" [id]="'familia-subfamilia-row-' + familia.id">
+        <td class="buttons">
+          <p-button
+            type="button"
+            pRipple
+            [pRowToggler]="familia"
+            [text]="true"
+            [rounded]="true"
+            [plain]="true"
+            [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"
+            [id]="'familia-subfamilia-button-expand-row-familia-' + familia.id"
+          />
+        </td>
+        <td class="buttons">
+          <p-button
+            icon="fas fa-pen"
+            severity="success"
+            [text]="true"
+            (click)="edit_familia(familia)"
+            [id]="'familia-subfamilia-familia-button-edit-' + familia.id"
+          />
+        </td>
+        <td class="buttons">
+          <p-button
+            icon="fas fa-trash"
+            severity="danger"
+            [text]="true"
+            (click)="confirm_delete_familia(familia)"
+            [id]="'familia-subfamilia-familia-button-delete-' + familia.id"
+          />
+        </td>
+        <td class="familiaSubfamilia-descripcion">
+          {{ get_name_family(familia) }}
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="rowexpansion" let-familia>
+      <tr class="no-style-background">
+        <td colspan="6">
+          <div class="pl-4 py-5 surface-50">
+            <h2 class="m-0 text-teal-700">Subfamilias</h2>
+            <app-button-create
+              [_id]="
+                'familia-subfamilia-subfamilia-button-create-' + familia.id
+              "
+              (click)="create_subfamilia(familia)"
+            >
+            </app-button-create>
+            <p-table
+              [value]="familia.subFamilias"
+              dataKey="id"
+              styleClass="p-datatable-sm"
+            >
+              <ng-template pTemplate="header">
+                <tr>
+                  <th></th>
+                  <th></th>
+                  <th>M.C</th>
+                  <th>M.E</th>
+                  <th>M.I</th>
+                  <th>Descripción</th>
+                  <th class="text-center">Grua</th>
+                  <th class="text-center">F.T.</th>
+                  <th class="text-center">ITV</th>
+                  <th class="text-center">P.C</th>
+                  <th class="text-center">Seg.</th>
+                  <th class="text-center">T.T.</th>
+                  <th class="text-center">Tacóg.</th>
+                  <th class="text-center">CE</th>
+                  <th class="text-center">Peso</th>
+                  <th class="text-center">GNC</th>
+                  <th class="text-center">Impl.</th>
+                </tr>
+              </ng-template>
+              <ng-template pTemplate="body" let-subfamilia>
+                <tr class="body-table">
+                  <td class="buttons">
+                    <p-button
+                      icon="fas fa-pen"
+                      severity="success"
+                      [text]="true"
+                      [id]="
+                        'familia-subfamilia-subfamilia-button-edit-' +
+                        subfamilia.id
+                      "
+                      (click)="edit_subfamilia(subfamilia)"
+                    />
+                  </td>
+                  <td class="buttons">
+                    <p-button
+                      icon="fas fa-trash"
+                      severity="danger"
+                      [text]="true"
+                      [id]="
+                        'familia-subfamilia-subfamilia-button-delete-' +
+                        subfamilia.id
+                      "
+                       (click)="confirm_delete_subfamilia(subfamilia)"
+                    />
+                  </td>
+                  <td>{{subfamilia.nivelMantenimientoChasis?.codigo}}</td>
+                  <td>{{subfamilia.nivelMantenimientoEquipo?.codigo}}</td>
+                  <td>{{subfamilia.nivelMantenimientoImplemento?.codigo}}</td>
+                  <td>
+                    {{ get_name_subfamiliy(subfamilia) }}
+                  </td>
+                  <td class="text-center">
+                    <i
+                      class="pi"
+                      [ngClass]="get_icon_check_or_unchecked(subfamilia.grua)"
+                    ></i>
+                  </td>
+                  <td class="text-center">
+                    <i
+                      class="pi"
+                      [ngClass]="
+                        get_icon_check_or_unchecked(subfamilia.fichaTecnica)
+                      "
+                    ></i>
+                  </td>
+                  <td class="text-center">
+                    <i
+                      class="pi"
+                      [ngClass]="
+                        get_icon_check_or_unchecked(
+                          subfamilia.inspeccionTecnica
+                        )
+                      "
+                    ></i>
+                  </td>
+                  <td class="text-center">
+                    <i
+                      class="pi"
+                      [ngClass]="
+                        get_icon_check_or_unchecked(
+                          subfamilia.permisoCirculacion
+                        )
+                      "
+                    ></i>
+                  </td>
+                  <td class="text-center">
+                    <i
+                      class="pi"
+                      [ngClass]="get_icon_check_or_unchecked(subfamilia.seguro)"
+                    ></i>
+                  </td>
+                  <td class="text-center">
+                    <i
+                      class="pi"
+                      [ngClass]="
+                        get_icon_check_or_unchecked(
+                          subfamilia.tarjetaTransporte
+                        )
+                      "
+                    ></i>
+                  </td>
+                  <td class="text-center">
+                    <i
+                      class="pi"
+                      [ngClass]="
+                        get_icon_check_or_unchecked(subfamilia.tacografo)
+                      "
+                    ></i>
+                  </td>
+                  <td class="text-center">
+                    <i
+                      class="pi"
+                      [ngClass]="
+                        get_icon_check_or_unchecked(subfamilia.marcadoCe)
+                      "
+                    ></i>
+                  </td>
+                  <td class="text-center">
+                    <i
+                      class="pi"
+                      [ngClass]="get_icon_check_or_unchecked(subfamilia.peso)"
+                    ></i>
+                  </td>
+                  <td class="text-center">
+                    <i
+                      class="pi"
+                      [ngClass]="get_icon_check_or_unchecked(subfamilia.gnc)"
+                    ></i>
+                  </td>
+                  <!-- // Impl ???? -->
+                  <td class="text-center">
+                    <i
+                      class="pi"
+                      [ngClass]="
+                        get_icon_check_or_unchecked(subfamilia.esImplemento)
+                      "
+                    ></i>
+                  </td>
+                </tr>
+              </ng-template>
+              <ng-template pTemplate="footer">
+                <tr>
+                  <td colspan="17">
+                    <div class="pl-2">
+                      Resultado totales:
+                      <span class="font-bold" id="total-length-marcas">
+                        {{ familia.subFamilias.length || 0 }}
+                      </span>
+                    </div>
+                  </td>
+                </tr>
+              </ng-template>
+            </p-table>
+          </div>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>

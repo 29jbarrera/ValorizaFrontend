@@ -1,0 +1,120 @@
+<div class="col-12 km-table-valoriza-app">
+  <!-- Buscador -->
+  <app-search-form-table
+    title="Búsqueda de Depósitos"
+    [search_model]="search_model"
+    [search_options]="search_options"
+    [search_fields]="search_fields"
+    (search)="search($event)"
+  >
+  </app-search-form-table>
+  <p-table
+    #dt
+    [value]="value"
+    dataKey="id"
+    styleClass="p-datatable-sm"
+    [lazy]="lazy"
+    [rows]="rows"
+    [rowsPerPageOptions]="rowsPerPageOptions"
+    [loading]="loading"
+    [totalRecords]="totalRecords"
+    [paginator]="paginator"
+    [showCurrentPageReport]="showCurrentPageReport"
+    [currentPageReportTemplate]="currentPageReportTemplate"
+    (onLazyLoad)="loadData($event)"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th></th>
+        <th></th>
+        <th pSortableColumn="centro.nombre">
+          <div>
+            <p-sortIcon class="order" field="centro.nombre" />
+            Centro
+            <p-columnFilter
+              type="text"
+              field="centro.nombre"
+              class="filter"
+              display="menu"
+            />
+          </div>
+        </th>
+        <th pSortableColumn="descripcion">
+          <div>
+            <p-sortIcon class="order" field="descripcion" />
+            Descripción
+            <p-columnFilter
+              type="text"
+              field="descripcion"
+              class="filter"
+              display="menu"
+            />
+          </div>
+        </th>
+        <th pSortableColumn="capacidad">
+          <div>
+            <p-sortIcon class="order" field="capacidad" />
+            Capacidad
+            <p-columnFilter
+              type="text"
+              field="capacidad"
+              class="filter"
+              display="menu"
+            />
+          </div>
+        </th>
+        <th class="col-1" pSortableColumn="comun">
+          <div>
+            <p-sortIcon class="order" field="comun" />
+            Común
+            <p-columnFilter
+              type="text"
+              field="comun"
+              class="filter"
+              display="menu"
+            />
+          </div>
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-depositos>
+      <tr class="body-table" [id]="'deposito-' + depositos?.id">
+        <td>
+          <p-button
+            icon="fas fa-pen"
+            severity="success"
+            [text]="true"
+            (click)="edit(depositos)"
+            [id]="'deposito-edit-' + depositos?.id"
+          />
+        </td>
+        <td>
+          <p-button
+            icon="fas fa-trash"
+            severity="danger"
+            [text]="true"
+            (click)="confirm_delete(depositos)"
+            [id]="'deposito-delete-' + depositos?.id"
+          />
+        </td>
+        <td class="deposito-nombre text-center">
+          {{ depositos?.nombre }}
+        </td>
+        <td class="deposito-descripcion text-center">
+          {{ depositos?.descripcion }}
+        </td>
+        <td class="deposito-capacidad text-center">
+          {{ depositos?.capacidad }}
+        </td>
+        <td class="deposito-comun text-center">
+          <i
+            class="pi"
+            [ngClass]="get_icon_depositos_comun(depositos?.comun)"
+          ></i>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+  <p-confirmDialog [style]="{ width: '50vw' }"></p-confirmDialog>
+  <p-toast></p-toast>
+</div>

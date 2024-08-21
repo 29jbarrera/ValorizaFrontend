@@ -1,0 +1,70 @@
+<div class="col-12 km-table-valoriza-app">
+
+  <app-button-create-and-export-to-excel
+  id="parte-trabajo-button-add-mecanico"
+  (click_to_create)="open_modal_to_create()"
+  _id="parte-trabajo-button-export-excel-mecanicos"
+  (click_to_excel)="export_excel()"
+>
+</app-button-create-and-export-to-excel>
+
+  <p-table
+    #dt
+    [value]="mecanicos"
+    [tableStyle]="{ 'min-width': '50rem' }"
+    dataKey="id"
+    styleClass="p-datatable-sm"
+    [rowsPerPageOptions]="[5, 10, 20]"
+    [paginator]="true"
+    [showCurrentPageReport]="true"
+    currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} entradas"
+    [rows]="5"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th pSortableColumn="nombre">
+          <div>
+            <p-sortIcon class="order" field="nombre" />
+            Nombre del mecánico
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="nombre"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="horas">
+          <div>
+            <p-sortIcon class="order" field="horas" />
+            Horas de reparación
+            <p-columnFilter
+              class="filter"
+              type="number"
+              field="horas"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-mecanico>
+      <tr>
+        <td class="no-buttons text-center">{{ mecanico.nombre }}</td>
+        <td class="no-buttons text-center">{{ mecanico.horas }}</td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="footer">
+      <tr>
+        <td colspan="4">
+          <div class="pl-2">
+            Resultado totales:
+            <span class="font-bold" id="total-length-familiasSubfamilias">{{
+              mecanicos.length || 0
+            }}</span>
+          </div>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>

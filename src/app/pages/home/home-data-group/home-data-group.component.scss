@@ -1,0 +1,21 @@
+.data-group {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.data-group-header {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.data-group-body {
+  display: flex;
+  flex-direction: column;
+  background-color: #f8f8f8;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 5px;
+  padding-top: 20px;
+}

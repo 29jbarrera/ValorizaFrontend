@@ -1,0 +1,159 @@
+<div class="col-12 km-table-valoriza-app">
+  <!-- Buscador -->
+  <app-search-form-table
+    title="Búsqueda de Maquinaria"
+    [search_model]="search_model"
+    [search_options]="search_options"
+    [search_fields]="search_fields"
+    (search)="search($event)"
+  >
+  </app-search-form-table>
+
+  <app-button-download-excel _id="gnc-export-excel" (_click)="export_excel()">
+  </app-button-download-excel>
+
+  <p-table
+    #dt
+    [value]="value"
+    dataKey="id"
+    styleClass="p-datatable-sm"
+    [lazy]="lazy"
+    [rows]="rows"
+    [rowsPerPageOptions]="rowsPerPageOptions"
+    [loading]="loading"
+    [totalRecords]="totalRecords"
+    [paginator]="paginator"
+    [showCurrentPageReport]="showCurrentPageReport"
+    [currentPageReportTemplate]="currentPageReportTemplate"
+    (onLazyLoad)="loadData($event)"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th></th>
+        <!-- <th></th> -->
+        <th pSortableColumn="matricula ">
+          <div>
+            <p-sortIcon class="order" field="matricula " />
+            Maquinaria
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="matricula "
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="nombre">
+          <div>
+            <p-sortIcon class="order" field="nombre" />
+            Nombre del centro
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="nombre"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="nombreGrupoCentro ">
+          <div>
+            <p-sortIcon class="order" field="nombreGrupoCentro " />
+            Delegación
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="nombreGrupoCentro "
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="familia ">
+          <div>
+            <p-sortIcon class="order" field="familia " />
+            Familia
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="familia "
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="subfamilia">
+          <div>
+            <p-sortIcon class="order" field="subfamilia" />
+            Subfamilia
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="subfamilia"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="fecha">
+          <div>
+            <p-sortIcon class="order" field="fecha" />
+            Fecha Próxima
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="fecha"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th></th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-gnc>
+      <tr class="body-table" [id]="'gnc-' + gnc?.id">
+        <td>
+          <p-button
+            icon="fas fa-pen"
+            severity="success"
+            [text]="true"
+            (click)="edit(gnc)"
+            [id]="'gnc-button-edit-' + gnc?.id"
+          />
+        </td>
+        <!-- <td>
+          <p-button
+            icon="fas fa-trash"
+            severity="danger"
+            [text]="true"
+            (click)="confirm_delete(gnc)"
+            [id]="'gnc-' + gnc?.id"
+          />
+        </td> -->
+        <td class="text-center gnc-matricula">
+          {{ gnc?.maquinaria?.matricula }}
+        </td>
+        <td class="text-center gnc-nombre">
+          {{ gnc?.maquinaria?.nombreCentro }}
+        </td>
+        <td class="text-center gnc-direccion">
+          {{ gnc?.maquinaria?.nombreGrupoCentro }}
+        </td>
+        <td class="text-center gnc-familia">
+          {{ get_gnc_family_descripcion(gnc) }}
+        </td>
+        <td class="text-center gnc-subfamilia">
+          {{ get_gnc_subFamily_descripcion(gnc) }}
+        </td>
+        <td class="text-center gnc-fecha-proxima text-center">
+          {{ gnc?.fecha }}
+        </td>
+        <td class="text-center gnc-upload-file text-center">
+          <p-button
+            type="button"
+            [text]="true"
+            icon="fas fa-cloud-upload-alt fa-lg"
+          ></p-button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+  <p-confirmDialog [style]="{ width: '50vw' }"></p-confirmDialog>
+  <p-toast></p-toast>
+</div>

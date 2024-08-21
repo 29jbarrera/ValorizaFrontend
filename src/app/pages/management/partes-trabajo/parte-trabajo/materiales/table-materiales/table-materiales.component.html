@@ -1,0 +1,110 @@
+<div class="col-12 km-table-valoriza-app">
+  <app-button-create-and-export-to-excel
+    id="parte-trabajo-button-add-material"
+    (click_to_create)="open_modal_to_create()"
+    _id="parte-trabajo-button-export-excel-materiales"
+    (click_to_excel)="export_excel()"
+  >
+  </app-button-create-and-export-to-excel>
+
+  <p-table
+    #dt
+    [value]="materiales"
+    [tableStyle]="{ 'min-width': '50rem' }"
+    dataKey="id"
+    styleClass="p-datatable-sm"
+    [rowsPerPageOptions]="[5, 10, 20]"
+    [paginator]="true"
+    [showCurrentPageReport]="true"
+    currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} entradas"
+    [rows]="5"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th pSortableColumn="nombre">
+          <div>
+            <p-sortIcon class="order" field="nombre" />
+            Nombre referencia material
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="nombre"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="descripcion_ref">
+          <div>
+            <p-sortIcon class="order" field="descripcion_ref" />
+            Descripcion referencia material
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="descripcion_ref"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="cantidad">
+          <div>
+            <p-sortIcon class="order" field="cantidad" />
+            Cantidad
+            <p-columnFilter
+              class="filter"
+              type="number"
+              field="cantidad"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="gasto">
+          <div>
+            <p-sortIcon class="order" field="gasto" />
+            Gasto conmutable
+            <p-columnFilter
+              class="filter"
+              type="number"
+              field="gasto"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="descripcion_mat">
+          <div>
+            <p-sortIcon class="order" field="descripcion_mat" />
+            Descripcion del material
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="descripcion_mat"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-material>
+      <tr>
+        <td class="no-buttons text-center">
+          {{ material.nombre_ref_material }}
+        </td>
+        <td class="no-buttons text-center">{{ material.desc_ref_material }}</td>
+        <td class="no-buttons text-center">{{ material.cantidad }}</td>
+        <td class="no-buttons text-center">{{ material.gasto }}</td>
+        <td class="no-buttons text-center">{{ material.desc_material }}</td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="footer">
+      <tr>
+        <td colspan="4">
+          <div class="pl-2">
+            Resultado totales:
+            <span class="font-bold" id="total-length-familiasSubfamilias">{{
+              materiales.length || 0
+            }}</span>
+          </div>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>

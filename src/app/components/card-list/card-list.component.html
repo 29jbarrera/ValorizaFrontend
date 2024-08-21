@@ -1,0 +1,14 @@
+<div class="card">
+  <div class="card-header">{{ title }}</div>
+  <div class="card-body">
+    <div *ngFor="let item of data" class="card-item">
+      <div class="card-item-content">
+        <div class="item-text">{{ item.text }}</div>
+        <div *ngIf="item.date !== null" class="item-date">{{ item.date }}</div>
+        <div *ngIf="item.icon !== null" class="item-icon">
+          <img [src]="item.icon" alt="icon" />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,139 @@
+<div
+  *ngIf="loading"
+  id="loading-table"
+  class="car p-4 col-12 km-table-valoriza-app"
+>
+  <p-progressBar mode="indeterminate" [style]="{ height: '6px' }" />
+</div>
+<div class="col-12 km-table-valoriza-app">
+  <p-table
+    [value]="niveles"
+    dataKey="id"
+    styleClass="p-datatable-sm"
+    [rowsPerPageOptions]="[5, 10, 20]"
+    [paginator]="true"
+    [rows]="5"
+    *ngIf="!loading"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th></th>
+        <th></th>
+        <th pSortableColumn="codigo">
+          <div>
+            <p-sortIcon class="order" field="codigo" />
+            Codigo
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="codigo"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="frecuencia">
+          <div>
+            <p-sortIcon class="order" field="frecuencia" />
+            Frecuencia
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="frecuencia"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="tipo">
+          <div>
+            <p-sortIcon class="order" field="tipo" />
+            Tipo
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="tipo"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="media">
+          <div>
+            <p-sortIcon class="order" field="media" />
+            Media
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="media"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="esPeriodico">
+          <div>
+            <p-sortIcon class="order" field="esPeriodico" />
+            Es Periódico
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="esPeriodico"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="fechaInicio">
+          <div>
+            <p-sortIcon class="order" field="fechaInicio" />
+            Fecha Inicio
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="fechaInicio"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-niveles>
+      <tr class="body-table" [id]="'nivel-' + niveles?.id">
+        <td>
+          <p-button
+            icon="fas fa-pen"
+            severity="success"
+            [text]="true"
+            (click)="confirm_edit(niveles)"
+            [id]="'nivel-edit-' + niveles?.id"
+          />
+        </td>
+        <td>
+          <p-button
+            icon="fas fa-trash"
+            severity="danger"
+            [text]="true"
+            (click)="confirm_delete(niveles)"
+            [id]="'nivel-delete-' + niveles?.id"
+          />
+        </td>
+        <td class="nivel-codigo text-center">{{ niveles.codigo }}</td>
+        <td class="nivel-frecuencia text-center">{{ niveles.frecuencia }}</td>
+        <td class="nivel-tipo text-center">{{ niveles.tipo }}</td>
+        <td class="nivel-media text-center">{{ niveles.media }}</td>
+        <td class="nivel-periodico text-center">{{ niveles.esPeriodico }}</td>
+        <td class="nivel-fechaFin text-center">{{ niveles.fechaInicio }}</td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="footer">
+      <tr>
+        <td colspan="8">
+          <div class="pl-2">
+            Resultado totales:
+            <span class="font-bold" id="total-length-niveles">{{
+              niveles.length || 0
+            }}</span>
+          </div>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+  <p-confirmDialog [style]="{ width: '50vw' }"></p-confirmDialog>
+  <p-toast></p-toast>
+</div>

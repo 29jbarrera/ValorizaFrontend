@@ -1,0 +1,190 @@
+<div class="col-12 km-table-valoriza-app">
+  <!-- Buscador -->
+  <app-search-form-table
+    title="Búsqueda de Maquinaria"
+    [search_model]="search_model"
+    [search_options]="search_options"
+    [search_fields]="search_fields"
+    (search)="search($event)"
+  >
+  </app-search-form-table>
+
+  <p-table
+    #dt
+    [value]="value"
+    dataKey="id"
+    styleClass="p-datatable-sm"
+    [lazy]="lazy"
+    [rows]="rows"
+    [rowsPerPageOptions]="rowsPerPageOptions"
+    [loading]="loading"
+    [totalRecords]="totalRecords"
+    [paginator]="paginator"
+    [showCurrentPageReport]="showCurrentPageReport"
+    [currentPageReportTemplate]="currentPageReportTemplate"
+    (onLazyLoad)="loadData($event)"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th></th>
+        <th></th>
+        <th pSortableColumn="machineCenter">
+          <div>
+            <p-sortIcon class="order" field="machineCenter" />
+            Centro
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="machineCenter"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="subfamily">
+          <div>
+            <p-sortIcon class="order" field="subfamily" />
+            SubFamilia
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="subfamily"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="machinery">
+          <div>
+            <p-sortIcon class="order" field="machinery" />
+            Maquinaria
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="machinery"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="nivel">
+          <div>
+            <p-sortIcon class="order" field="nivel" />
+            Nivel
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="nivel"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="position">
+          <div>
+            <p-sortIcon class="order" field="position" />
+            Posición
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="position"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="horometroIni">
+          <div>
+            <p-sortIcon class="order" field="horometroIni" />
+            Horom Maint
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="horometroIni"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="horometroFin">
+          <div>
+            <p-sortIcon class="order" field="horometroFin" />
+            Horom Final
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="horometroFin"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="kilometroIni">
+          <div>
+            <p-sortIcon class="order" field="kilometroIni" />
+            kmMaint
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="kilometroIni"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="kilometroFin">
+          <div>
+            <p-sortIcon class="order" field="kilometroFin" />
+            KmFinal
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="kilometroFin"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="fecha">
+          <div>
+            <p-sortIcon class="order" field="fecha" />
+            Fecha
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="fecha"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+      </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body" let-preventivo>
+      <tr class="body-table" [id]="'preventivo-' + preventivo?.id">
+        <td>
+          <p-button
+            icon="fas fa-pen"
+            severity="success"
+            [text]="true"
+            (click)="edit(preventivo)"
+            [id]="'preventivo-edit-' + preventivo?.id"
+          />
+        </td>
+        <td>
+          <p-button
+            icon="fas fa-trash"
+            severity="danger"
+            [text]="true"
+            (click)="confirm_delete(preventivo)"
+            [id]="'preventivo-delete-' + preventivo?.id"
+          />
+        </td>
+        <!-- TODO: Add Centro, Subfamilia, Maquianria, Posición -->
+        <td class="preventivo">{{ preventivo }}</td>
+        <td class="preventivo">{{ preventivo }}</td>
+        <td class="preventivo">{{ preventivo }}</td>
+        <td class="preventivo-nivel">{{ preventivo?.nivel }}</td>
+        <td class="preventivo">{{ preventivo }}</td>
+        <td class="preventivo-hm-inicial">{{ preventivo?.horometroIni }}</td>
+        <td class="preventivo-hm-final">{{ preventivo?.horometroFin }}</td>
+        <td class="preventivo-km-inicial">{{ preventivo?.kilometroIni }}</td>
+        <td class="preventivo-km-final">{{ preventivo?.kilometroFin }}</td>
+        <td class="preventivo-km-fecha">{{ preventivo?.fecha }}</td>
+      </tr>
+    </ng-template>
+  </p-table>
+  <p-confirmDialog [style]="{ width: '50vw' }"></p-confirmDialog>
+  <p-toast></p-toast>
+</div>

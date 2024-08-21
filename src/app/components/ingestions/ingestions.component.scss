@@ -1,0 +1,110 @@
+:host {
+    background-color: rgb(13, 27, 32);
+    position: absolute;
+    z-index: 12220;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    h3{
+        color: #fff;
+        background-color: rgb(15, 43, 52);
+        margin: 0; padding: 10px ;
+        font-size: 16px;
+        display: flex;
+        align-items: center;
+        font-size: 12px;
+        i{
+            margin-right: 10px;
+            font-size: 20px; opacity: 0.5;
+
+        }
+        b{
+            margin-left: auto;
+                font-weight: 100;
+                font-size: 10px;
+            text-transform: uppercase;
+        }
+    }
+    ul{
+        max-height: 200px;
+        overflow-y: auto;
+        margin:0;
+        padding: 20px; display: flex;
+        gap:5px;
+        flex-direction: column;
+        li{
+            background: #ffffff16;
+            border-radius:5px;
+            padding:4px 4px;
+            gap: 10px;
+            position: relative;
+            align-items: center;
+            display: flex;
+            color: #fff;
+            em{
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                right: 54px;
+                border:1px solid rgba(255, 166, 0, 0.429);
+                border-radius:20px;
+                display: block;
+                background-color: rgba(255, 166, 0, 0.05);
+                font-size: 8px;
+                padding: 3px 6px;
+                margin:0;
+            }
+            div{
+                display: flex;
+                flex-direction: column;
+                b{
+                    font-size: 11px; font-weight: 600;
+                }
+                span{
+                    font-size: 9px;
+                    opacity: 0.3;
+                    margin-top: -2px;
+                }
+            }
+            i{
+                width: 21px;
+                height:21px;
+                display: flex;
+                margin-left: 2px;
+                justify-content: center;
+                align-items: center;
+                border-radius: 50%;
+                background: #00000032;
+                color: #1fe274;
+                border: 1px solid #ffffff42;
+                font-size: 12px;
+                
+                &.fa-times{
+                    color: #ff0000;
+                    border:1px solid #ff0000;
+                }
+
+                &.fa-download{
+                    position: absolute;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    right: 20px;
+                    background: none;
+                    color: rgba(255,255,255,0.4);
+                    font-size: 12px;
+                    border: none;
+                }
+                &.fa-ellipsis-v{
+                    position: absolute;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    right: 0px;
+                    background: none;
+                    color: rgba(255,255,255,0.4);
+                    font-size: 12px;
+                    border: none;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,47 @@
+.Dock {
+  height: 100%;
+  display: flex;
+  background: rgb(15, 43, 52);
+  .selected-item {
+    background-color: #3bad2d;
+  }
+  flex: 1;
+  padding: 15px;
+  gap: 5px;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  > i {
+    height: 40px;
+    width: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.05);
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    border-radius: 4px;
+    position: relative;
+    b {
+      position: absolute;
+      top: -8px;
+      right: -8px;
+      height: 20px;
+      width: 20px;
+      background-color: rgb(59, 173, 45);
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 8px;
+      font-weight: 500;
+      width: 20px;
+    }
+  }
+  > i:nth-child(4) {
+    margin-top: auto;
+  }
+}

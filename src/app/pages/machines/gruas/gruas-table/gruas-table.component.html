@@ -1,0 +1,146 @@
+<div class="col-12 km-table-valoriza-app">
+  <!-- Buscador -->
+  <app-search-form-table
+    title="Búsqueda de Maquinaria"
+    [search_model]="search_model"
+    [search_options]="search_options"
+    [search_fields]="search_fields"
+    (search)="search($event)"
+  >
+  </app-search-form-table>
+  <app-button-download-excel _id="grua-export-excel" (_click)="export_excel()">
+  </app-button-download-excel>
+
+  <p-table
+    #dt
+    [value]="value"
+    dataKey="id"
+    styleClass="p-datatable-sm"
+    [lazy]="lazy"
+    [rows]="rows"
+    [rowsPerPageOptions]="rowsPerPageOptions"
+    [loading]="loading"
+    [totalRecords]="totalRecords"
+    [paginator]="paginator"
+    [showCurrentPageReport]="showCurrentPageReport"
+    [currentPageReportTemplate]="currentPageReportTemplate"
+    (onLazyLoad)="loadData($event)"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th></th>
+        <th></th>
+        <th pSortableColumn="idGrua">
+          <div>
+            <p-sortIcon class="order" field="idGrua" />
+            Maquinaria
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="idGrua"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="nombre">
+          <div>
+            <p-sortIcon class="order" field="nombre" />
+            Centro
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="nombre"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="grua.idEmpresa ">
+          <div>
+            <p-sortIcon class="order" field="grua.idEmpresa " />
+            Delegación
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="grua.idEmpresa "
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="family">
+          <div>
+            <p-sortIcon class="order" field="family" />
+            Familia
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="family"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="subFamily">
+          <div>
+            <p-sortIcon class="order" field="subFamily" />
+            SubFamilia
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="subFamily"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="grua.fecha">
+          <div>
+            <p-sortIcon class="order" field="grua.fecha" />
+            Fecha Próxima
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="grua.fecha"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-grua>
+      <tr class="body-table" [id]="'grua-' + grua?.id">
+        <td>
+          <p-button
+            icon="fas fa-pen"
+            severity="success"
+            [text]="true"
+            (click)="edit(grua)"
+            [id]="'grua-edit-' + grua?.id"
+          />
+        </td>
+        <td>
+          <p-button
+            icon="fas fa-trash"
+            severity="danger"
+            [text]="true"
+            (click)="confirm_delete(grua)"
+            [id]="'grua-delete-' + grua?.id"
+          />
+        </td>
+        <td class="grua-matricula text-center">
+          {{ grua?.maquinaria?.matricula }}
+        </td>
+        <td class="grua-nombreCentro">{{ grua?.maquinaria?.nombreCentro }}</td>
+        <td class="grua-nombreGrupoCentro">
+          {{ grua?.maquinaria?.nombreGrupoCentro }}
+        </td>
+        <td class="grua-familia">
+          {{ get_gruas_familia_descripcion(grua) }}
+        </td>
+        <td class="grua-subFamilia">
+          {{ get_gruas_subFamilia_descripcion(grua) }}
+        </td>
+        <td class="grua-fecha text-center">{{ grua?.fecha }}</td>
+      </tr>
+    </ng-template>
+  </p-table>
+  <p-confirmDialog [style]="{ width: '50vw' }"></p-confirmDialog>
+  <p-toast></p-toast>
+</div>

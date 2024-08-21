@@ -1,0 +1,4433 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+        "title": "Valoriza IoT API",
+        "version": "v1"
+    },
+    "paths": {
+        "/api/features/v1/azureFunctions/{id}": {
+            "get": {
+                "tags": [
+                    "AzureFunctions"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AzureFunctionDto"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AzureFunctionDto"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AzureFunctionDto"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "AzureFunctions"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "type": "integer",
+                                    "format": "int32"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "type": "integer",
+                                    "format": "int32"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "type": "integer",
+                                    "format": "int32"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/features/v1/azureFunctions": {
+            "get": {
+                "tags": [
+                    "AzureFunctions"
+                ],
+                "parameters": [
+                    {
+                        "name": "ActualPage",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "PageSize",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "Sort",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "Filters",
+                        "in": "query",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AzureFunctionDtoPagedResultDto"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AzureFunctionDtoPagedResultDto"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AzureFunctionDtoPagedResultDto"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "AzureFunctions"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateAzureFunctionDto"
+                            }
+                        },
+                        "text/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateAzureFunctionDto"
+                            }
+                        },
+                        "application/*+json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateAzureFunctionDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AzureFunctionDto"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AzureFunctionDto"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AzureFunctionDto"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "AzureFunctions"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateAzureFunctionDto"
+                            }
+                        },
+                        "text/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateAzureFunctionDto"
+                            }
+                        },
+                        "application/*+json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateAzureFunctionDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AzureFunctionDto"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AzureFunctionDto"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AzureFunctionDto"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/features/v1/devices/{id}": {
+            "get": {
+                "tags": [
+                    "Devices"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DeviceDto"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DeviceDto"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DeviceDto"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Devices"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "type": "integer",
+                                    "format": "int32"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "type": "integer",
+                                    "format": "int32"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "type": "integer",
+                                    "format": "int32"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/features/v1/devices/GetByDeviceUniqueId": {
+            "get": {
+                "tags": [
+                    "Devices"
+                ],
+                "parameters": [
+                    {
+                        "name": "deviceUniqueId",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DeviceDto"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DeviceDto"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DeviceDto"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/features/v1/devices": {
+            "get": {
+                "tags": [
+                    "Devices"
+                ],
+                "parameters": [
+                    {
+                        "name": "ActualPage",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "PageSize",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "Sort",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "Filters",
+                        "in": "query",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DeviceDtoPagedResultDto"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DeviceDtoPagedResultDto"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DeviceDtoPagedResultDto"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Devices"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateDeviceDto"
+                            }
+                        },
+                        "text/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateDeviceDto"
+                            }
+                        },
+                        "application/*+json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateDeviceDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DeviceDto"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DeviceDto"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DeviceDto"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Devices"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateDeviceDto"
+                            }
+                        },
+                        "text/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateDeviceDto"
+                            }
+                        },
+                        "application/*+json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateDeviceDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DeviceDto"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DeviceDto"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DeviceDto"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/features/v1/devicesExternalServices/{id}": {
+            "get": {
+                "tags": [
+                    "DevicesExternalServices"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DeviceExternalServiceDto"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DeviceExternalServiceDto"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DeviceExternalServiceDto"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "DevicesExternalServices"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "type": "integer",
+                                    "format": "int32"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "type": "integer",
+                                    "format": "int32"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "type": "integer",
+                                    "format": "int32"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/features/v1/devicesExternalServices": {
+            "get": {
+                "tags": [
+                    "DevicesExternalServices"
+                ],
+                "parameters": [
+                    {
+                        "name": "ActualPage",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "PageSize",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "Sort",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "Filters",
+                        "in": "query",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DeviceExternalServiceDtoPagedResultDto"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DeviceExternalServiceDtoPagedResultDto"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DeviceExternalServiceDtoPagedResultDto"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "DevicesExternalServices"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateDeviceExternalServiceDto"
+                            }
+                        },
+                        "text/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateDeviceExternalServiceDto"
+                            }
+                        },
+                        "application/*+json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateDeviceExternalServiceDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DeviceExternalServiceDto"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DeviceExternalServiceDto"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DeviceExternalServiceDto"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "DevicesExternalServices"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateDeviceExternalServiceDto"
+                            }
+                        },
+                        "text/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateDeviceExternalServiceDto"
+                            }
+                        },
+                        "application/*+json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateDeviceExternalServiceDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DeviceExternalServiceDto"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DeviceExternalServiceDto"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DeviceExternalServiceDto"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/features/v1/devicesLocations/{id}": {
+            "get": {
+                "tags": [
+                    "DevicesLocations"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DeviceLocationDto"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DeviceLocationDto"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DeviceLocationDto"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "DevicesLocations"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "type": "integer",
+                                    "format": "int32"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "type": "integer",
+                                    "format": "int32"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "type": "integer",
+                                    "format": "int32"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/features/v1/devicesLocations": {
+            "get": {
+                "tags": [
+                    "DevicesLocations"
+                ],
+                "parameters": [
+                    {
+                        "name": "ActualPage",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "PageSize",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "Sort",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "Filters",
+                        "in": "query",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DeviceLocationDtoPagedResultDto"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DeviceLocationDtoPagedResultDto"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DeviceLocationDtoPagedResultDto"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "DevicesLocations"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateDeviceLocationDto"
+                            }
+                        },
+                        "text/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateDeviceLocationDto"
+                            }
+                        },
+                        "application/*+json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateDeviceLocationDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DeviceLocationDto"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DeviceLocationDto"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DeviceLocationDto"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "DevicesLocations"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateDeviceLocationDto"
+                            }
+                        },
+                        "text/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateDeviceLocationDto"
+                            }
+                        },
+                        "application/*+json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateDeviceLocationDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DeviceLocationDto"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DeviceLocationDto"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DeviceLocationDto"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/features/v1/devicesLocations/{regNo}": {
+            "get": {
+                "tags": [
+                    "DevicesLocations"
+                ],
+                "parameters": [
+                    {
+                        "name": "regNo",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "minLength": 1,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "ActualPage",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "PageSize",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "Sort",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "Filters",
+                        "in": "query",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DeviceLocationDtoPagedResultDto"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DeviceLocationDtoPagedResultDto"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DeviceLocationDtoPagedResultDto"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/features/v1/devicesNotProvisioned/{id}": {
+            "get": {
+                "tags": [
+                    "DevicesNotProvisioned"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DeviceNotProvisionedDto"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DeviceNotProvisionedDto"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DeviceNotProvisionedDto"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "DevicesNotProvisioned"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "type": "integer",
+                                    "format": "int32"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "type": "integer",
+                                    "format": "int32"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "type": "integer",
+                                    "format": "int32"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/features/v1/devicesNotProvisioned": {
+            "get": {
+                "tags": [
+                    "DevicesNotProvisioned"
+                ],
+                "parameters": [
+                    {
+                        "name": "ActualPage",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "PageSize",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "Sort",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "Filters",
+                        "in": "query",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DeviceNotProvisionedDtoPagedResultDto"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DeviceNotProvisionedDtoPagedResultDto"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DeviceNotProvisionedDtoPagedResultDto"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "DevicesNotProvisioned"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateDeviceNotProvisionedDto"
+                            }
+                        },
+                        "text/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateDeviceNotProvisionedDto"
+                            }
+                        },
+                        "application/*+json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateDeviceNotProvisionedDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DeviceNotProvisionedDto"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DeviceNotProvisionedDto"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DeviceNotProvisionedDto"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "DevicesNotProvisioned"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateDeviceNotProvisionedDto"
+                            }
+                        },
+                        "text/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateDeviceNotProvisionedDto"
+                            }
+                        },
+                        "application/*+json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateDeviceNotProvisionedDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DeviceNotProvisionedDto"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DeviceNotProvisionedDto"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DeviceNotProvisionedDto"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/features/v1/devicesNotProvisioned/toSupply": {
+            "put": {
+                "tags": [
+                    "DevicesNotProvisioned"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateDeviceToBeProvisionedDto"
+                            }
+                        },
+                        "text/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateDeviceToBeProvisionedDto"
+                            }
+                        },
+                        "application/*+json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateDeviceToBeProvisionedDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DeviceNotProvisionedDto"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DeviceNotProvisionedDto"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DeviceNotProvisionedDto"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/features/v1/externalServices/{id}": {
+            "get": {
+                "tags": [
+                    "ExternalServices"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ExternalServiceDto"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ExternalServiceDto"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ExternalServiceDto"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "ExternalServices"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "type": "integer",
+                                    "format": "int32"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "type": "integer",
+                                    "format": "int32"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "type": "integer",
+                                    "format": "int32"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/features/v1/externalServices/GetByServiceApiProvider": {
+            "get": {
+                "tags": [
+                    "ExternalServices"
+                ],
+                "parameters": [
+                    {
+                        "name": "serviceApiProviderId",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ExternalServiceDto"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ExternalServiceDto"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ExternalServiceDto"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/features/v1/externalServices": {
+            "get": {
+                "tags": [
+                    "ExternalServices"
+                ],
+                "parameters": [
+                    {
+                        "name": "ActualPage",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "PageSize",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "Sort",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "Filters",
+                        "in": "query",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ExternalServiceDtoPagedResultDto"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ExternalServiceDtoPagedResultDto"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ExternalServiceDtoPagedResultDto"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "ExternalServices"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateExternalServiceDto"
+                            }
+                        },
+                        "text/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateExternalServiceDto"
+                            }
+                        },
+                        "application/*+json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateExternalServiceDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ExternalServiceDto"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ExternalServiceDto"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ExternalServiceDto"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "ExternalServices"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateExternalServiceDto"
+                            }
+                        },
+                        "text/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateExternalServiceDto"
+                            }
+                        },
+                        "application/*+json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateExternalServiceDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ExternalServiceDto"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ExternalServiceDto"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ExternalServiceDto"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/features/v1/serviceApiProviders/{id}": {
+            "get": {
+                "tags": [
+                    "ServiceApiProviders"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ServiceApiProviderDto"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ServiceApiProviderDto"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ServiceApiProviderDto"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "ServiceApiProviders"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "type": "integer",
+                                    "format": "int32"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "type": "integer",
+                                    "format": "int32"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "type": "integer",
+                                    "format": "int32"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/features/v1/serviceApiProviders": {
+            "get": {
+                "tags": [
+                    "ServiceApiProviders"
+                ],
+                "parameters": [
+                    {
+                        "name": "ActualPage",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "PageSize",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "Sort",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "Filters",
+                        "in": "query",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ServiceApiProviderDtoPagedResultDto"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ServiceApiProviderDtoPagedResultDto"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ServiceApiProviderDtoPagedResultDto"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "ServiceApiProviders"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateServiceApiProviderDto"
+                            }
+                        },
+                        "text/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateServiceApiProviderDto"
+                            }
+                        },
+                        "application/*+json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateServiceApiProviderDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ServiceApiProviderDto"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ServiceApiProviderDto"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ServiceApiProviderDto"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "ServiceApiProviders"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateServiceApiProviderDto"
+                            }
+                        },
+                        "text/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateServiceApiProviderDto"
+                            }
+                        },
+                        "application/*+json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateServiceApiProviderDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ServiceApiProviderDto"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ServiceApiProviderDto"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ServiceApiProviderDto"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/syncr/{deviceUniqueId}": {
+            "post": {
+                "tags": [
+                    "Tracking"
+                ],
+                "parameters": [
+                    {
+                        "name": "deviceUniqueId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/syncr/syncrAll": {
+            "post": {
+                "tags": [
+                    "Tracking"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IncorrectResultDto"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "AzureFunctionDto": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "name": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "url": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "createdBy": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "changedBy": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "changedAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "deletedBy": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "deletedAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "AzureFunctionDtoPagedResultDto": {
+                "type": "object",
+                "properties": {
+                    "hasNext": {
+                        "type": "boolean"
+                    },
+                    "hasPrev": {
+                        "type": "boolean"
+                    },
+                    "total": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "actualPage": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "pageSize": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "pages": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "results": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/AzureFunctionDto"
+                        },
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "CreateAzureFunctionDto": {
+                "required": [
+                    "name",
+                    "url"
+                ],
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "maxLength": 50,
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "url": {
+                        "maxLength": 100,
+                        "minLength": 1,
+                        "type": "string"
+                    }
+                },
+                "additionalProperties": false
+            },
+            "CreateDeviceDto": {
+                "required": [
+                    "centerGroupId",
+                    "centerId",
+                    "deviceUniqueId",
+                    "name",
+                    "originId",
+                    "originType",
+                    "serviceApiProviderId",
+                    "state"
+                ],
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "maxLength": 50,
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "deviceUniqueId": {
+                        "maxLength": 128,
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "serviceApiProviderId": {
+                        "maximum": 2147483647,
+                        "minimum": 0,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "centerGroupId": {
+                        "maximum": 2147483647,
+                        "minimum": 0,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "centerId": {
+                        "maximum": 2147483647,
+                        "minimum": 0,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "centerGroup": {
+                        "maxLength": 128,
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "center": {
+                        "maxLength": 128,
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "originId": {
+                        "maximum": 2147483647,
+                        "minimum": 0,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "originType": {
+                        "maxLength": 25,
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "ioTHub": {
+                        "maxLength": 50,
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "module": {
+                        "maxLength": 50,
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "state": {
+                        "maxLength": 25,
+                        "minLength": 1,
+                        "type": "string"
+                    }
+                },
+                "additionalProperties": false
+            },
+            "CreateDeviceExternalServiceDto": {
+                "required": [
+                    "deviceId",
+                    "externalServiceId"
+                ],
+                "type": "object",
+                "properties": {
+                    "deviceId": {
+                        "maximum": 2147483647,
+                        "minimum": 0,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "externalServiceId": {
+                        "maximum": 2147483647,
+                        "minimum": 0,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                },
+                "additionalProperties": false
+            },
+            "CreateDeviceLocationDto": {
+                "required": [
+                    "date",
+                    "description",
+                    "deviceUniqueId",
+                    "regNo"
+                ],
+                "type": "object",
+                "properties": {
+                    "regNo": {
+                        "maxLength": 50,
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "date": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "deviceUniqueId": {
+                        "maxLength": 128,
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "speed": {
+                        "minimum": 0,
+                        "type": "number",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "distance": {
+                        "minimum": 0,
+                        "type": "number",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "latitude": {
+                        "minimum": 0,
+                        "type": "number",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "longitude": {
+                        "minimum": 0,
+                        "type": "number",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "description": {
+                        "maxLength": 50,
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "odometer": {
+                        "minimum": 0,
+                        "type": "number",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "operativeTime": {
+                        "minimum": 0,
+                        "type": "number",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "stopTime": {
+                        "minimum": 0,
+                        "type": "number",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "movingTime": {
+                        "minimum": 0,
+                        "type": "number",
+                        "format": "double",
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "CreateDeviceNotProvisionedDto": {
+                "required": [
+                    "deviceUniqueId",
+                    "externalServiceAvailableDriver",
+                    "externalServiceHttpServiceType",
+                    "guid",
+                    "httpServiceTypeId",
+                    "idExternalService",
+                    "invocationDefinitionId",
+                    "invocationDefinitionName",
+                    "permission",
+                    "registerAt"
+                ],
+                "type": "object",
+                "properties": {
+                    "deviceUniqueId": {
+                        "maxLength": 128,
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "registerAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "invocationDefinitionId": {
+                        "maximum": 2147483647,
+                        "minimum": 0,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "idExternalService": {
+                        "maximum": 2147483647,
+                        "minimum": 0,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "httpServiceTypeId": {
+                        "maximum": 2147483647,
+                        "minimum": 0,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "invocationDefinitionName": {
+                        "maxLength": 50,
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "externalServiceHttpServiceType": {
+                        "maxLength": 25,
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "externalServiceAvailableDriver": {
+                        "maxLength": 25,
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "guid": {
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "permission": {
+                        "maximum": 2147483647,
+                        "minimum": 0,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                },
+                "additionalProperties": false
+            },
+            "CreateExternalServiceDto": {
+                "required": [
+                    "authType",
+                    "availableDriverId",
+                    "availableDriverName",
+                    "azureFunctionId",
+                    "cronExpression",
+                    "guid",
+                    "httpServiceTypeId",
+                    "httpServiceTypeName",
+                    "httpVerb",
+                    "invocationDefinitionId",
+                    "invocationDefinitionName",
+                    "permission",
+                    "serviceApiProviderId",
+                    "stateId"
+                ],
+                "type": "object",
+                "properties": {
+                    "url": {
+                        "maxLength": 1000,
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "httpVerb": {
+                        "maximum": 2147483647,
+                        "minimum": 0,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "authType": {
+                        "maxLength": 10,
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "username": {
+                        "maxLength": 25,
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "password": {
+                        "maxLength": 25,
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "oAuthUrl": {
+                        "maxLength": 1000,
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "cronExpression": {
+                        "maxLength": 25,
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "availableDriverId": {
+                        "maximum": 2147483647,
+                        "minimum": 0,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "availableDriverName": {
+                        "maxLength": 25,
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "invocationDefinitionId": {
+                        "maximum": 2147483647,
+                        "minimum": 0,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "invocationDefinitionName": {
+                        "maxLength": 50,
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "httpServiceTypeId": {
+                        "maximum": 2147483647,
+                        "minimum": 0,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "httpServiceTypeName": {
+                        "maxLength": 25,
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "document": {
+                        "maxLength": 100,
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "orgId": {
+                        "maximum": 2147483647,
+                        "minimum": 0,
+                        "type": "integer",
+                        "format": "int32",
+                        "nullable": true
+                    },
+                    "stateId": {
+                        "maximum": 2147483647,
+                        "minimum": 0,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "guid": {
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "permission": {
+                        "maximum": 2147483647,
+                        "minimum": 0,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "serviceApiProviderId": {
+                        "maximum": 2147483647,
+                        "minimum": 0,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "azureFunctionId": {
+                        "maximum": 2147483647,
+                        "minimum": 0,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                },
+                "additionalProperties": false
+            },
+            "CreateServiceApiProviderDto": {
+                "required": [
+                    "name",
+                    "state"
+                ],
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "maxLength": 50,
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "state": {
+                        "type": "boolean"
+                    }
+                },
+                "additionalProperties": false
+            },
+            "DeviceDto": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "name": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "deviceUniqueId": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "serviceApiProviderId": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "centerGroupId": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "centerId": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "serviceApiProviders": {
+                        "$ref": "#/components/schemas/ServiceApiProviderDto"
+                    },
+                    "centerGroup": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "center": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "originId": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "originType": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "ioTHub": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "module": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "state": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "createdBy": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "changedBy": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "changedAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "deletedBy": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "deletedAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "DeviceDtoPagedResultDto": {
+                "type": "object",
+                "properties": {
+                    "hasNext": {
+                        "type": "boolean"
+                    },
+                    "hasPrev": {
+                        "type": "boolean"
+                    },
+                    "total": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "actualPage": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "pageSize": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "pages": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "results": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/DeviceDto"
+                        },
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "DeviceExternalServiceDto": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "deviceId": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "device": {
+                        "$ref": "#/components/schemas/DeviceDto"
+                    },
+                    "externalServiceId": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "externalService": {
+                        "$ref": "#/components/schemas/ExternalServiceDto"
+                    },
+                    "createdBy": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "changedBy": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "changedAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "deletedBy": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "deletedAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "DeviceExternalServiceDtoPagedResultDto": {
+                "type": "object",
+                "properties": {
+                    "hasNext": {
+                        "type": "boolean"
+                    },
+                    "hasPrev": {
+                        "type": "boolean"
+                    },
+                    "total": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "actualPage": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "pageSize": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "pages": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "results": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/DeviceExternalServiceDto"
+                        },
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "DeviceLocationDto": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "regNo": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "deviceUniqueId": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "date": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "speed": {
+                        "type": "number",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "distance": {
+                        "type": "number",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "latitude": {
+                        "type": "number",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "longitude": {
+                        "type": "number",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "description": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "odometer": {
+                        "type": "number",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "operativeTime": {
+                        "type": "number",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "stopTime": {
+                        "type": "number",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "movingTime": {
+                        "type": "number",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "createdBy": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "changedBy": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "changedAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "deletedBy": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "deletedAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "DeviceLocationDtoPagedResultDto": {
+                "type": "object",
+                "properties": {
+                    "hasNext": {
+                        "type": "boolean"
+                    },
+                    "hasPrev": {
+                        "type": "boolean"
+                    },
+                    "total": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "actualPage": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "pageSize": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "pages": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "results": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/DeviceLocationDto"
+                        },
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "DeviceNotProvisionedDto": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "deviceUniqueId": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "registerAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "invocationDefinitionId": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "idExternalService": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "httpServiceTypeId": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "invocationDefinitionName": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "externalServiceHttpServiceType": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "externalServiceAvailableDriver": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "state": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "guid": {
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "permission": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "createdBy": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "changedBy": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "changedAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "deletedBy": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "deletedAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "DeviceNotProvisionedDtoPagedResultDto": {
+                "type": "object",
+                "properties": {
+                    "hasNext": {
+                        "type": "boolean"
+                    },
+                    "hasPrev": {
+                        "type": "boolean"
+                    },
+                    "total": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "actualPage": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "pageSize": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "pages": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "results": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/DeviceNotProvisionedDto"
+                        },
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "ExternalServiceDto": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "url": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "httpVerb": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "authType": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "username": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "password": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "oAuthUrl": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "cronExpression": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "availableDriverId": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "availableDriverName": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "invocationDefinitionId": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "invocationDefinitionName": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "httpServiceTypeId": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "httpServiceTypeName": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "document": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "orgId": {
+                        "type": "integer",
+                        "format": "int32",
+                        "nullable": true
+                    },
+                    "stateId": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "guid": {
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "permission": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "serviceApiProviderId": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "azureFunctionId": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "serviceApiProvider": {
+                        "$ref": "#/components/schemas/ServiceApiProviderDto"
+                    },
+                    "azureFunction": {
+                        "$ref": "#/components/schemas/AzureFunctionDto"
+                    },
+                    "createdBy": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "changedBy": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "changedAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "deletedBy": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "deletedAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "ExternalServiceDtoPagedResultDto": {
+                "type": "object",
+                "properties": {
+                    "hasNext": {
+                        "type": "boolean"
+                    },
+                    "hasPrev": {
+                        "type": "boolean"
+                    },
+                    "total": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "actualPage": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "pageSize": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "pages": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "results": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ExternalServiceDto"
+                        },
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "IncorrectResultDto": {
+                "type": "object",
+                "properties": {
+                    "type": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "description": {
+                        "type": "string",
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "ServiceApiProviderDto": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "name": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "state": {
+                        "type": "boolean"
+                    },
+                    "createdBy": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "changedBy": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "changedAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "deletedBy": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "deletedAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "ServiceApiProviderDtoPagedResultDto": {
+                "type": "object",
+                "properties": {
+                    "hasNext": {
+                        "type": "boolean"
+                    },
+                    "hasPrev": {
+                        "type": "boolean"
+                    },
+                    "total": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "actualPage": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "pageSize": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "pages": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "results": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ServiceApiProviderDto"
+                        },
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "UpdateAzureFunctionDto": {
+                "required": [
+                    "id",
+                    "name",
+                    "url"
+                ],
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "maximum": 2147483647,
+                        "minimum": 0,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "name": {
+                        "maxLength": 50,
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "url": {
+                        "maxLength": 100,
+                        "minLength": 1,
+                        "type": "string"
+                    }
+                },
+                "additionalProperties": false
+            },
+            "UpdateDeviceDto": {
+                "required": [
+                    "centerGroupId",
+                    "centerId",
+                    "deviceUniqueId",
+                    "id",
+                    "name",
+                    "originId",
+                    "originType",
+                    "serviceApiProviderId",
+                    "state"
+                ],
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "maximum": 2147483647,
+                        "minimum": 0,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "name": {
+                        "maxLength": 50,
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "deviceUniqueId": {
+                        "maxLength": 128,
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "centerGroupId": {
+                        "maximum": 2147483647,
+                        "minimum": 0,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "centerId": {
+                        "maximum": 2147483647,
+                        "minimum": 0,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "serviceApiProviderId": {
+                        "maximum": 2147483647,
+                        "minimum": 0,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "centerGroup": {
+                        "maxLength": 128,
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "center": {
+                        "maxLength": 128,
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "originId": {
+                        "maximum": 2147483647,
+                        "minimum": 0,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "originType": {
+                        "maxLength": 25,
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "ioTHub": {
+                        "maxLength": 50,
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "module": {
+                        "maxLength": 50,
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "state": {
+                        "maxLength": 25,
+                        "minLength": 1,
+                        "type": "string"
+                    }
+                },
+                "additionalProperties": false
+            },
+            "UpdateDeviceExternalServiceDto": {
+                "required": [
+                    "deviceId",
+                    "externalServiceId",
+                    "id"
+                ],
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "maximum": 2147483647,
+                        "minimum": 0,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "deviceId": {
+                        "maximum": 2147483647,
+                        "minimum": 0,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "externalServiceId": {
+                        "maximum": 2147483647,
+                        "minimum": 0,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                },
+                "additionalProperties": false
+            },
+            "UpdateDeviceLocationDto": {
+                "required": [
+                    "date",
+                    "description",
+                    "deviceUniqueId",
+                    "id",
+                    "regNo"
+                ],
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "maximum": 2147483647,
+                        "minimum": 0,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "regNo": {
+                        "maxLength": 50,
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "deviceUniqueId": {
+                        "maxLength": 128,
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "date": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "speed": {
+                        "minimum": 0,
+                        "type": "number",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "distance": {
+                        "minimum": 0,
+                        "type": "number",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "latitude": {
+                        "minimum": 0,
+                        "type": "number",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "longitude": {
+                        "minimum": 0,
+                        "type": "number",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "description": {
+                        "maxLength": 50,
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "odometer": {
+                        "minimum": 0,
+                        "type": "number",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "operativeTime": {
+                        "minimum": 0,
+                        "type": "number",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "stopTime": {
+                        "minimum": 0,
+                        "type": "number",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "movingTime": {
+                        "minimum": 0,
+                        "type": "number",
+                        "format": "double",
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "UpdateDeviceNotProvisionedDto": {
+                "required": [
+                    "deviceUniqueId",
+                    "externalServiceAvailableDriver",
+                    "externalServiceHttpServiceType",
+                    "guid",
+                    "httpServiceTypeId",
+                    "id",
+                    "idExternalService",
+                    "invocationDefinitionId",
+                    "invocationDefinitionName",
+                    "permission",
+                    "registerAt",
+                    "state"
+                ],
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "maximum": 2147483647,
+                        "minimum": 0,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "deviceUniqueId": {
+                        "maxLength": 128,
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "registerAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "invocationDefinitionId": {
+                        "maximum": 2147483647,
+                        "minimum": 0,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "idExternalService": {
+                        "maximum": 2147483647,
+                        "minimum": 0,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "httpServiceTypeId": {
+                        "maximum": 2147483647,
+                        "minimum": 0,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "invocationDefinitionName": {
+                        "maxLength": 50,
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "externalServiceHttpServiceType": {
+                        "maxLength": 25,
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "externalServiceAvailableDriver": {
+                        "maxLength": 25,
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "state": {
+                        "maximum": 2147483647,
+                        "minimum": 0,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "guid": {
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "permission": {
+                        "maximum": 2147483647,
+                        "minimum": 0,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                },
+                "additionalProperties": false
+            },
+            "UpdateDeviceToBeProvisionedDto": {
+                "required": [
+                    "id",
+                    "idExternalService"
+                ],
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "maximum": 2147483647,
+                        "minimum": 0,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "idExternalService": {
+                        "maximum": 2147483647,
+                        "minimum": 0,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "deviceName": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "deviceCenterGroupId": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "deviceCenterId": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "deviceOriginId": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "deviceOriginType": {
+                        "type": "string",
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "UpdateExternalServiceDto": {
+                "required": [
+                    "authType",
+                    "availableDriverId",
+                    "availableDriverName",
+                    "azureFunctionId",
+                    "cronExpression",
+                    "guid",
+                    "httpServiceTypeId",
+                    "httpServiceTypeName",
+                    "httpVerb",
+                    "id",
+                    "invocationDefinitionId",
+                    "invocationDefinitionName",
+                    "permission",
+                    "serviceApiProviderId",
+                    "stateId"
+                ],
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "maximum": 2147483647,
+                        "minimum": 0,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "url": {
+                        "maxLength": 1000,
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "httpVerb": {
+                        "maximum": 2147483647,
+                        "minimum": 0,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "authType": {
+                        "maxLength": 10,
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "username": {
+                        "maxLength": 25,
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "password": {
+                        "maxLength": 25,
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "oAuthUrl": {
+                        "maxLength": 1000,
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "cronExpression": {
+                        "maxLength": 25,
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "availableDriverId": {
+                        "maximum": 2147483647,
+                        "minimum": 0,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "availableDriverName": {
+                        "maxLength": 25,
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "invocationDefinitionId": {
+                        "maximum": 2147483647,
+                        "minimum": 0,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "invocationDefinitionName": {
+                        "maxLength": 50,
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "httpServiceTypeId": {
+                        "maximum": 2147483647,
+                        "minimum": 0,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "httpServiceTypeName": {
+                        "maxLength": 25,
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "document": {
+                        "maxLength": 100,
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "orgId": {
+                        "maximum": 2147483647,
+                        "minimum": 0,
+                        "type": "integer",
+                        "format": "int32",
+                        "nullable": true
+                    },
+                    "stateId": {
+                        "maximum": 2147483647,
+                        "minimum": 0,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "guid": {
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "permission": {
+                        "maximum": 2147483647,
+                        "minimum": 0,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "serviceApiProviderId": {
+                        "maximum": 2147483647,
+                        "minimum": 0,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "azureFunctionId": {
+                        "maximum": 2147483647,
+                        "minimum": 0,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                },
+                "additionalProperties": false
+            },
+            "UpdateServiceApiProviderDto": {
+                "required": [
+                    "id",
+                    "name",
+                    "state"
+                ],
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "maximum": 2147483647,
+                        "minimum": 0,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "name": {
+                        "maxLength": 50,
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "state": {
+                        "type": "boolean"
+                    }
+                },
+                "additionalProperties": false
+            }
+        }
+    }
+}

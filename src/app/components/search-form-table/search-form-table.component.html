@@ -1,0 +1,43 @@
+<div class="col-12">
+  <p-accordion>
+    <p-accordionTab>
+      <ng-template pTemplate="header">
+        <div class="ml-2 flex align-items-center gap-2">
+          <img src="/assets/icons/search.svg" class="w-2rem" />
+          <div class="flex flex-column">
+            <span class="font-bold text-xl"> {{ title }} </span>
+          </div>
+        </div>
+      </ng-template>
+      <ng-template pTemplate="body">
+        <form [formGroup]="form">
+          <formly-form
+            [form]="form"
+            [fields]="search_fields"
+            [model]="search_model"
+            [options]="search_options"
+          ></formly-form>
+        </form>
+        <div class="flex align-items-center justify-content-center gap-2">
+          <button
+            pButton
+            pRipple
+            label="Limpiar Búqueda"
+            icon="fas fa-times"
+            (click)="clean_filters()"
+            class="p-button-warning p-button-outlined"
+          ></button>
+
+          <button
+            pButton
+            pRipple
+            icon="fas fa-search"
+            label="Buscar"
+            (click)="search_with_filters()"
+            class="p-button-success"
+          ></button>
+        </div>
+      </ng-template>
+    </p-accordionTab>
+  </p-accordion>
+</div>

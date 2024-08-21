@@ -1,0 +1,181 @@
+<div class="col-12 km-table-valoriza-app">
+  <!-- Buscador -->
+  <app-search-form-table
+    title="Búsqueda de Maquinaria"
+    [search_model]="search_model"
+    [search_options]="search_options"
+    [search_fields]="search_fields"
+    (search)="search($event)"
+  >
+  </app-search-form-table>
+
+  <app-button-download-excel _id="HmKm-export-excel" (_click)="export_excel()">
+  </app-button-download-excel>
+
+  <p-table
+    #dt
+    [value]="value"
+    dataKey="id"
+    styleClass="p-datatable-sm"
+    [lazy]="lazy"
+    [rows]="rows"
+    [rowsPerPageOptions]="rowsPerPageOptions"
+    [loading]="loading"
+    [totalRecords]="totalRecords"
+    [paginator]="paginator"
+    [showCurrentPageReport]="showCurrentPageReport"
+    [currentPageReportTemplate]="currentPageReportTemplate"
+    (onLazyLoad)="loadData($event)"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th></th>
+        <th></th>
+        <th pSortableColumn="nombre">
+          <div>
+            <p-sortIcon class="order" field="nombre" />
+            Centro
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="nombre"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="descripcion">
+          <div>
+            <p-sortIcon class="order" field="descripcion" />
+            SubFamilia
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="descripcion"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="matricula">
+          <div>
+            <p-sortIcon class="order" field="matricula" />
+            Maquinaria
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="matricula"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="marca">
+          <div>
+            <p-sortIcon class="order" field="marca" />
+            Marca
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="marca"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="modelo">
+          <div>
+            <p-sortIcon class="order" field="modelo" />
+            Modelo
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="modelo"
+              display="menu"
+            >
+            </p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="finalHorometer">
+          <div>
+            <p-sortIcon class="order" field="finalHorometer" />
+            Horómetro final
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="finalHorometer"
+              display="menu"
+            >
+            </p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="finalKm">
+          <div>
+            <p-sortIcon class="order" field="finalKm" />
+            Kilómetro final
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="finalKm"
+              display="menu"
+            >
+            </p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="fecha">
+          <div>
+            <p-sortIcon class="order" field="fecha" />
+            Fecha
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="fecha"
+              display="menu"
+            >
+            </p-columnFilter>
+          </div>
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-HmKm>
+      <tr class="body-table" [id]="'hm-km-' + HmKm?.id">
+        <td>
+          <p-button
+            icon="fas fa-pen"
+            severity="success"
+            [text]="true"
+            (click)="edit(HmKm)"
+            [id]="'hm-km-edit-' + HmKm?.id"
+          />
+        </td>
+        <td>
+          <p-button
+            icon="fas fa-trash"
+            severity="danger"
+            [text]="true"
+            (click)="confirm_delete(HmKm)"
+            [id]="'hm-km-delete-' + HmKm?.id"
+          />
+        </td>
+        <td class="hm-km-nombre text-center">
+          {{ HmKm?.maquinaria?.centrosCoste?.nombre }}
+        </td>
+        <td class="hm-km-descripcion text-center">
+          {{ get_hmkm_subfamilia_descripcion(HmKm) }}
+        </td>
+        <td class="hm-km-matricula text-center">
+          {{ HmKm?.maquinaria?.matricula }}
+        </td>
+        <td class="hm-km-marca text-center">
+          {{ HmKm?.maquinaria?.chasis?.marca }}
+        </td>
+        <td class="hm-km-modelo text-center">
+          {{ HmKm?.maquinaria?.chasis?.modelo }}
+        </td>
+        <td class="hm-km-finalHorometer text-center">{{ HmKm?.horas }}</td>
+        <td class="hm-km-finalKm text-center">{{ HmKm?.kilometros }}</td>
+        <td class="hm-km-fecha text-center">
+          {{ HmKm?.fecha | date : "dd/MM/yyyy" }}
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+  <p-confirmDialog [style]="{ width: '50vw' }"></p-confirmDialog>
+  <p-toast></p-toast>
+</div>

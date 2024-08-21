@@ -1,0 +1,14 @@
+.container {
+  margin: 0 auto;
+  display: flex;
+  width: 97%;
+  margin-top: 20px;
+}
+
+.left-column {
+  flex: 1;
+}
+
+.right-column {
+  flex: 1;
+}

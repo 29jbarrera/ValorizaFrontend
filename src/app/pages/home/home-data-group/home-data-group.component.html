@@ -1,0 +1,11 @@
+<div class="data-group">
+  <div class="data-group-header">{{ title }}</div>
+  <div class="data-group-body">
+    <app-home-data-item *ngFor="let item of data"
+                         [icon]="item.icon"
+                         [title]="item.title"
+                         [description]="item.description">
+    </app-home-data-item>
+  </div>
+</div>
+

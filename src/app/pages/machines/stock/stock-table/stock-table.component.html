@@ -1,0 +1,157 @@
+<div
+  *ngIf="loading"
+  id="loading-table"
+  class="car p-4 col-12 km-table-valoriza-app"
+>
+  <p-progressBar mode="indeterminate" [style]="{ height: '6px' }" />
+</div>
+<div class="col-12 km-table-valoriza-app">
+  <div class="flex align-items-center justify-content-end mb-3">
+    <app-button-download-excel
+      _id="stock-export-excel"
+      (_click)="export_excel()"
+    >
+    </app-button-download-excel>
+  </div>
+
+  <p-table
+    #dt
+    [value]="stock"
+    dataKey="id"
+    styleClass="p-datatable-sm"
+    [rowsPerPageOptions]="[5, 10, 20]"
+    [paginator]="true"
+    [rows]="5"
+    *ngIf="!loading"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <!-- <th></th>
+        <th></th> -->
+        <th pSortableColumn="centro.grupoCentro.nombre">
+          <div>
+            <p-sortIcon class="order" field="centro.grupoCentro.nombre" />
+            Nombre centro
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="centro.grupoCentro.nombre"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="referenciaMaterial.codigoCategoria ">
+          <div>
+            <p-sortIcon
+              class="order"
+              field="referenciaMaterial.codigoCategoria "
+            />
+            Nombre referencia material
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="referenciaMaterial.codigoCategoria "
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="referenciaMaterial.descripcion">
+          <div>
+            <p-sortIcon class="order" field="referenciaMaterial.descripcion" />
+            Descripción referencia material
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="referenciaMaterial.descripcion"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="cantidad">
+          <div>
+            <p-sortIcon class="order" field="cantidad" />
+            Cantidad
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="cantidad"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="valor">
+          <div>
+            <p-sortIcon class="order" field="valor" />
+            Importe
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="valor"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="codMoneda">
+          <div>
+            <p-sortIcon class="order" field="codMoneda" />
+            Divisa
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="codMoneda"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-stock>
+      <tr class="body-table" [id]="'stock-' + stock?.id">
+        <!-- <td>
+          <p-button
+            icon="fas fa-pen"
+            severity="success"
+            [text]="true"
+            (click)="edit(stock)"
+            [id]="'stock-edit-' + stock?.id"
+          />
+        </td>
+        <td>
+          <p-button
+            icon="fas fa-trash"
+            severity="danger"
+            [text]="true"
+            (click)="confirm_delete(stock)"
+            [id]="'stock-delete-' + stock?.id"
+          />
+        </td> -->
+        <td class="stock-nombre text-center">
+          {{ stock?.centro?.grupoCentro?.nombre }}
+        </td>
+        <td class="stock-codigoCategoria text-center">
+          {{ stock?.referenciaMaterial?.codigoCategoria }}
+        </td>
+        <td class="stock-descripcion text-center">
+          {{ stock?.referenciaMaterial?.descripcion }}
+        </td>
+        <td class="stock-cantidad text-center">{{ stock?.cantidad }}</td>
+        <td class="stock-valor text-center">{{ stock?.valor }}</td>
+        <td class="stock-codMoneda text-center">{{ stock?.codMoneda }}</td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="footer">
+      <tr>
+        <td colspan="8">
+          <div class="pl-2">
+            Resultado totales:
+            <span class="font-bold" id="total-length-stock">{{
+              stock.length || 0
+            }}</span>
+          </div>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+  <p-confirmDialog [style]="{ width: '50vw' }"></p-confirmDialog>
+  <p-toast></p-toast>
+</div>

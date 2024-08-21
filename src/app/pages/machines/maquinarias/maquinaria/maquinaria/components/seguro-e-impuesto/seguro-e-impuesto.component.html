@@ -1,0 +1,36 @@
+<div class="col-12">
+  <p-accordion>
+    <p-accordionTab>
+      <ng-template pTemplate="header">
+        <div class="ml-2 flex align-items-center gap-2">
+          <img src="/assets/icons/seguro.svg" class="w-2rem" />
+          <div class="flex flex-column">
+            <span class="font-bold text-xl"> Seguro e impuesto</span>
+            <span class="text-600 text-sm">
+              Información General del elemento
+            </span>
+          </div>
+        </div>
+      </ng-template>
+      <ng-template pTemplate="body">
+        <form [formGroup]="form_seguro_e_impuesto">
+          <formly-form
+            [form]="form_seguro_e_impuesto"
+            [fields]="fields_seguro_e_impuestos"
+            [model]="model_seguro_e_impuestos"
+            [options]="options_seguro_e_impuestos"
+          ></formly-form>
+          <div class="text-right">
+            <button
+              pButton
+              pRipple
+              label="Guardar"
+              (click)="save_changes()"
+              class="p-button-success"
+            ></button>
+          </div>
+        </form>
+      </ng-template>
+    </p-accordionTab>
+  </p-accordion>
+</div>

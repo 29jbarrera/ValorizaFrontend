@@ -1,0 +1,285 @@
+<div class="col-12 km-table-valoriza-app">
+  <app-search-form-table
+    title="Búsqueda de Maquinaria"
+    [search_model]="search_model"
+    [search_options]="search_options"
+    [search_fields]="search_fields"
+    (search)="search($event)"
+  >
+  </app-search-form-table>
+
+  <!-- Boton crear y descargar -->
+  <app-button-create-and-export-to-excel
+    id_create="create-instalation"
+    id_export_excel="instalaciones-export-excel"
+    (click_to_create)="open_modal_to_create()"
+    (click_to_excel)="export_excel()"
+  >
+  </app-button-create-and-export-to-excel>
+
+  <p-table
+    #dt
+    [value]="instalaciones"
+    dataKey="id"
+    styleClass="p-datatable-sm"
+    [lazy]="lazy"
+    [rows]="rows"
+    [rowsPerPageOptions]="rowsPerPageOptions"
+    [loading]="loading"
+    [totalRecords]="totalRecords"
+    [paginator]="paginator"
+    [showCurrentPageReport]="showCurrentPageReport"
+    [currentPageReportTemplate]="currentPageReportTemplate"
+    (onLazyLoad)="loadData($event)"
+    [expandedRowKeys]="expandedRowsInstalaciones"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th pSortableColumn="centro.nombre ">
+          <div>
+            <p-sortIcon class="order" field="centro.nombre " />
+            Centro
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="centro.nombre "
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="nombre">
+          <div>
+            <p-sortIcon class="order" field="nombre" />
+            Nombre
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="nombre"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+
+        <th pSortableColumn="comentarios">
+          <div>
+            <p-sortIcon class="order" field="comentarios" />
+            Comentarios
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="comentarios"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+      </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body" let-instalacion let-expanded="expanded">
+      <tr class="body-table" [id]="'instalacion-' + instalacion?.id">
+        <td class="buttons">
+          <p-button
+            type="button"
+            pRipple
+            [pRowToggler]="instalacion"
+            [text]="true"
+            [rounded]="true"
+            [plain]="true"
+            [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"
+            [id]="'instalacion-expand-row-' + instalacion?.id"
+          />
+        </td>
+        <td class="buttons">
+          <p-button
+            icon="fas fa-pen"
+            severity="success"
+            [text]="true"
+            (click)="edit_instalacion(instalacion)"
+            [id]="'instalacion-edit-' + instalacion?.id"
+          />
+        </td>
+        <td class="buttons">
+          <p-button
+            icon="fas fa-trash"
+            severity="danger"
+            [text]="true"
+            (click)="confirm_delete_instalacion(instalacion)"
+            [id]="'instalacion-delete-' + instalacion?.id"
+          />
+        </td>
+        <td class="instalacion-nombre-centro">
+          {{ instalacion.centro.nombre }}
+        </td>
+        <td class="instalacion-nombre">{{ instalacion.nombre }}</td>
+        <td class="instalacion-comentarios">{{ instalacion.comentarios }}</td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="rowexpansion" let-instalacion>
+      <tr class="no-style-background">
+        <td colspan="6">
+          <!-- Tabla Elementos -->
+          <div class="pl-4 py-5 surface-50">
+            <h2 class="m-0 text-teal-700">Elementos</h2>
+            <app-button-create
+              _id="create-element"
+              (_click)="open_modal_to_create_elemento(instalacion.id)"
+            >
+            </app-button-create>
+
+            <p-table
+              [value]="instalacion.elementos"
+              dataKey="id"
+              [expandedRowKeys]="expandedRowsElementos"
+            >
+              <ng-template pTemplate="header">
+                <tr>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                  <th>Descripción</th>
+                </tr>
+              </ng-template>
+              <ng-template
+                pTemplate="body"
+                let-elemento
+                let-expanded_elemento="expanded"
+              >
+                <tr
+                  [id]="
+                    'instalacion-' + instalacion.id + '-elemento-' + elemento.id
+                  "
+                >
+                  <td>
+                    <p-button
+                      type="button"
+                      pRipple
+                      [pRowToggler]="elemento"
+                      [text]="true"
+                      [rounded]="true"
+                      [plain]="true"
+                      [icon]="
+                        expanded_elemento
+                          ? 'pi pi-chevron-down'
+                          : 'pi pi-chevron-right'
+                      "
+                      [id]="'instalacion-elemento-expand-row-' + elemento.id"
+                    />
+                  </td>
+                  <td>
+                    <p-button
+                      icon="fas fa-pen"
+                      severity="success"
+                      [text]="true"
+                      (click)="edit_elemento(elemento)"
+                      [id]="'instalacion-elemento-edit-' + elemento?.id"
+                    />
+                  </td>
+                  <td class="buttons">
+                    <p-button
+                      icon="fas fa-trash"
+                      severity="danger"
+                      [text]="true"
+                      (click)="confirm_delete_elemento(elemento)"
+                      [id]="'instalacion-elemento-delete-' + elemento?.id"
+                    />
+                  </td>
+                  <td>{{ elemento.descripcion }}</td>
+                </tr>
+              </ng-template>
+              <ng-template pTemplate="rowexpansion" let-elemento>
+                <tr class="no-style-background">
+                  <td colspan="6">
+                    <!-- Tabla Operaciones -->
+                    <div class="pl-4 py-5 surface-100">
+                      <h2 class="m-0 text-teal-700">Operaciones</h2>
+
+                      <app-button-create
+                        _id="create-element"
+                        (_click)="open_modal_to_create_operacion(elemento.id)"
+                      >
+                      </app-button-create>
+                      <p-table [value]="elemento.operaciones" dataKey="id">
+                        <ng-template pTemplate="header">
+                          <tr>
+                            <th></th>
+                            <th></th>
+                            <th>Descripción</th>
+                            <th>Frecuencia</th>
+                            <th>Fecha</th>
+                            <th>Actuante</th>
+                          </tr>
+                        </ng-template>
+                        <ng-template pTemplate="body" let-operacion>
+                          <tr
+                            [id]="
+                              'instalacion-' +
+                              instalacion.id +
+                              '-elemento-' +
+                              elemento.id +
+                              '-operacion-' +
+                              operacion.id
+                            "
+                          >
+                            <td>
+                              <p-button
+                                icon="fas fa-pen"
+                                severity="success"
+                                [text]="true"
+                                (click)="edit_operacion(operacion)"
+                                [id]="
+                                  'instalacion-elemento-operacion-edit-' +
+                                  operacion.id
+                                "
+                              />
+                            </td>
+                            <td class="buttons">
+                              <p-button
+                                icon="fas fa-trash"
+                                severity="danger"
+                                [text]="true"
+                                [id]="
+                                  'instalacion-elemento-operacion-delete-' +
+                                  operacion.id
+                                "
+                                (click)="confirm_delete_operacion(operacion)"
+                              />
+                            </td>
+                            <td>{{ get_description_operation(operacion) }}</td>
+                            <td>{{ operacion?.frecuencia }}</td>
+                            <td>
+                              {{ operacion?.createdAt | date : "dd/MM/yyyy" }}
+                            </td>
+                            <td>{{ operacion?.actuante }}</td>
+                          </tr>
+                        </ng-template>
+                        <ng-template pTemplate="emptymessage">
+                          <tr>
+                            <td colspan="6">
+                              No existen operaciones para este elemento
+                            </td>
+                          </tr>
+                        </ng-template>
+                      </p-table>
+                    </div>
+                  </td>
+                </tr>
+              </ng-template>
+              <ng-template pTemplate="emptymessage">
+                <tr>
+                  <td colspan="6">
+                    No existen elementos para esta instalación
+                  </td>
+                </tr>
+              </ng-template>
+            </p-table>
+          </div>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+  <p-confirmDialog [style]="{ width: '50vw' }"></p-confirmDialog>
+  <p-toast></p-toast>
+</div>

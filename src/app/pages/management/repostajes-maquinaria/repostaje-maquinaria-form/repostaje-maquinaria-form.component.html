@@ -1,0 +1,225 @@
+<form class="col-12">
+    <div
+      class="p-2 grid mx-2 surface-ground border-round-xl surface-border border-2 border-dashed"
+    >
+
+    <div class="col-12 lg:col-6">
+        <div class="text-left text-xs mb-2 pl-1 font-light text-700">
+            Código
+        </div>
+        <span class="p-input-icon-left w-full">
+          <i class="fa fa-building"></i>
+          <input
+            id="code"
+            formControlName="code"
+            type="number"
+            class="w-full input-text-valoriza"
+            placeholder="Introduce código..."
+            pInputText
+          />
+        </span>
+      </div>
+
+      <div class="col-12 lg:col-6">
+        <div class="text-left text-xs mb-2 pl-1 font-light text-700">
+          Nombre
+        </div>
+        <span class="p-input-icon-left w-full">
+          <i class="fa fa-building"></i>
+          <input
+            id="center"
+            formControlName="center"
+            type="text"
+            class="w-full input-text-valoriza"
+            placeholder=""
+            pInputText
+            disabled
+          />
+        </span>
+      </div>
+
+      <div class="col-12 lg:col-6">
+        <div class="text-left text-xs mb-2 pl-1 font-light text-700">
+          Matrícula
+        </div>
+        <span class="p-input-icon-left w-full">
+          <i class="fa fa-building"></i>
+          <input
+            id="tuition"
+            formControlName="tuition"
+            type="text"
+            class="w-full input-text-valoriza"
+            placeholder="Introduce matrícula..."
+            pInputText
+          />
+        </span>
+      </div>
+
+      <div class="col-12 lg:col-6">
+        <div class="text-left text-xs mb-2 pl-1 font-light text-700">
+          Bastidor
+        </div>
+        <span class="p-input-icon-left w-full">
+          <i class="fa fa-building"></i>
+          <input
+            id="bastidor"
+            formControlName="bastidor"
+            type="text"
+            class="w-full input-text-valoriza"
+            placeholder=""
+            pInputText
+            disabled
+          />
+        </span>
+      </div>
+
+      <div class="col-12 lg:col-6">
+        <div class="text-left text-xs mb-2 pl-1 font-light text-700">
+          Fecha desde
+        </div>
+        <span class="p-input-icon-left w-full">
+          <i class="fa fa-building"></i>
+          <p-calendar
+            selectionMode="single"
+            [firstDayOfWeek]="1"
+            styleClass="w-full input-calendar-valoriza"
+            [showIcon]="true"
+            dateFormat="dd/mm/yy"
+            placeholder="dd/mm/yy"
+            pRipple
+          />
+        </span>
+      </div>
+
+      <div class="col-12 lg:col-6">
+        <div class="text-left text-xs mb-2 pl-1 font-light text-700">
+            Cantidad desde
+        </div>
+        <span class="p-input-icon-left w-full">
+          <i class="fa fa-building"></i>
+          <input
+            id="amount"
+            formControlName="amount"
+            type="number"
+            class="w-full input-text-valoriza"
+            placeholder="Introduce cantidad desde..."
+            pInputText
+          />
+        </span>
+      </div>
+
+      <div class="col-12 lg:col-6">
+        <div class="text-left text-xs mb-2 pl-1 font-light text-700">
+          Fecha hasta
+        </div>
+        <span class="p-input-icon-left w-full">
+          <i class="fa fa-building"></i>
+          <p-calendar
+            selectionMode="single"
+            [firstDayOfWeek]="1"
+            styleClass="w-full input-calendar-valoriza"
+            [showIcon]="true"
+            dateFormat="dd/mm/yy"
+            placeholder="dd/mm/yy"
+            pRipple
+          />
+        </span>
+      </div>
+
+      <div class="col-12 lg:col-6">
+        <div class="text-left text-xs mb-2 pl-1 font-light text-700">
+            Cantidad hasta
+        </div>
+        <span class="p-input-icon-left w-full">
+          <i class="fa fa-building"></i>
+          <input
+            id="amount"
+            formControlName="amount"
+            type="number"
+            class="w-full input-text-valoriza"
+            placeholder="Introduce cantidad hasta..."
+            pInputText
+          />
+        </span>
+      </div>
+
+      <div class="col-12 lg:col-4">
+        <div class="text-left text-xs mb-2 pl-1 font-light text-700">
+          Tipo Combustible Repostaje
+        </div>
+        <p-dropdown
+          id="maintenanceType"
+          formControlName="maintenanceType"
+          placeholder="Selecciona tipo de combustible repostaje..."
+          [options]="[
+            { label: 'Todas', value: 0 },
+            { label: 'Tipo Combustible Repostaje 1', value: 1 },
+            { label: 'Tipo Combustible Repostaje 2', value: 2 }
+          ]"
+          optionLabel="label"
+          optionValue="value"
+          styleClass="w-full dropdown-valoriza"
+          [showClear]="true">
+      </p-dropdown>
+      </div>
+
+      <div class="col-12 lg:col-4">
+        <div class="text-left text-xs mb-2 pl-1 font-light text-700">
+          Tipo Repostaje
+        </div>
+        <p-dropdown
+          id="maintenanceType"
+          formControlName="maintenanceType"
+          placeholder="Selecciona tipo de repostaje..."
+          [options]="[
+            { label: 'Todas', value: 0 },
+            { label: 'Tipo Repostaje 1', value: 1 },
+            { label: 'Tipo Repostaje 2', value: 2 }
+          ]"
+          optionLabel="label"
+          optionValue="value"
+          styleClass="w-full dropdown-valoriza"
+          [showClear]="true">
+      </p-dropdown>
+      </div>
+
+      <div class="col-12 lg:col-4">
+        <div class="text-left text-xs mb-2 pl-1 font-light text-700">
+          Tipo Combustible maquinaria
+        </div>
+        <p-dropdown
+          id="maintenanceType"
+          formControlName="maintenanceType"
+          placeholder="Selecciona tipo de combustible maquinaria..."
+          [options]="[
+            { label: 'Todas', value: 0 },
+            { label: 'Tipo Combustible maquinaria 1', value: 1 },
+            { label: 'Tipo Combustible maquinaria  2', value: 2 }
+          ]"
+          optionLabel="label"
+          optionValue="value"
+          styleClass="w-full dropdown-valoriza"
+          [showClear]="true">
+      </p-dropdown>
+      </div>
+
+
+    <div class="col-12">
+        <div
+          class="flex flex-column lg:flex-row lg:justify-content-end gap-3 align-items-center justify-content-center">
+          <button
+            pButton
+            type="reset"
+            label="Limpiar búsqueda"
+            class="km-button-secondary-valoriza-app">
+        </button>
+          <button
+            pButton
+            type="button"
+            label="Buscar"
+            class="km-button-primary-valoriza-app">
+        </button>
+        </div>
+      </div>
+    </div>
+</form>

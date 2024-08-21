@@ -1,0 +1,19 @@
+<div
+  class="surface-ground surface-border border-2 border-dashed col-12 py-4 border-round-xl"
+>
+  <!-- Tabla Mecanicos -->
+  <app-table-mecanicos [mecanicos]="mecanicos"></app-table-mecanicos>
+
+  <!-- Descripción avería y Trabajo realizado -->
+   <!-- TODO: Estilo visual  -->
+  <div class="col-12">
+    <form [formGroup]="form">
+      <formly-form
+        [form]="form"
+        [fields]="fields"
+        [model]="model"
+        [options]="options"
+      ></formly-form>
+    </form>
+  </div>
+</div>

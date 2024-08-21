@@ -1,0 +1,122 @@
+<div class="col-12 km-table-valoriza-app">
+  <!-- Buscador -->
+  <app-search-form-table
+    title="Búsqueda de Maquinaria"
+    [search_model]="search_model"
+    [search_options]="search_options"
+    [search_fields]="search_fields"
+    (search)="search($event)"
+  >
+  </app-search-form-table>
+
+  <p-table
+    #dt
+    [value]="value"
+    dataKey="id"
+    styleClass="p-datatable-sm"
+    [lazy]="lazy"
+    [rows]="rows"
+    [rowsPerPageOptions]="rowsPerPageOptions"
+    [loading]="loading"
+    [totalRecords]="totalRecords"
+    [paginator]="paginator"
+    [showCurrentPageReport]="showCurrentPageReport"
+    [currentPageReportTemplate]="currentPageReportTemplate"
+    (onLazyLoad)="loadData($event)"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th></th>
+        <!-- <th></th> -->
+        <th pSortableColumn="codigo" style="width: 25%">
+          <div>
+            <p-sortIcon class="order" field="codigo" />
+            Código
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="codigo"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="nombre" style="width: 25%">
+          <div>
+            <p-sortIcon class="order" field="nombre" />
+            Nombre
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="nombre"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="delegacion" style="width: 25%">
+          <div>
+            <p-sortIcon class="order" field="delegacion " />
+            Delegación
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="delegacion "
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="otros " style="width: 25%">
+          <div>
+            <p-sortIcon class="order" field="otros " />
+            Coste
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="otros "
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+      </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body" let-reparacionCentro>
+      <tr
+        class="body-table"
+        [id]="'reparaciones-centro-' + reparacionCentro?.id"
+      >
+        <td>
+          <!-- <p-button
+            icon="fas fa-pen"
+            severity="success"
+            [text]="true"
+            (click)="edit(reparacionesCentro)"
+            [id]="'reparacion-centro-edit-' + reparacionesCentro?.id"
+          /> -->
+        </td>
+        <!-- <td>
+          <p-button
+            icon="fas fa-trash"
+            severity="danger"
+            [text]="true"
+            (click)="confirm_delete(reparacionesCentro)"
+            [id]="'reparacion-centro-delete-' + reparacionesCentro?.id"
+          />
+        </td> -->
+        <td class="reparacion-centro-codigo text-center">
+          {{ reparacionCentro?.centro?.codigo }}
+        </td>
+        <td class="reparacion-centro-nombre text-center">
+          {{ reparacionCentro?.centro?.nombre }}
+        </td>
+        <td class="reparacion-centro-delegacion text-center">
+          {{ reparacionCentro?.centro?.grupoCentro?.nombre }}
+        </td>
+        <td class="reparacion-centro-coste text-center">
+          {{ reparacionCentro?.otros }}
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+  <p-confirmDialog [style]="{ width: '50vw' }"></p-confirmDialog>
+  <p-toast></p-toast>
+</div>

@@ -1,0 +1,197 @@
+<div
+  *ngIf="loading"
+  id="loading-table"
+  class="car p-4 col-12 km-table-valoriza-app"
+>
+  <p-progressBar mode="indeterminate" [style]="{ height: '6px' }" />
+</div>
+<div class="col-12 km-table-valoriza-app">
+  <!-- Buscador -->
+  <app-search-form-table
+    title="Búsqueda de Maquinaria"
+    [search_model]="search_model"
+    [search_options]="search_options"
+    [search_fields]="search_fields"
+    (search)="search($event)"
+  >
+  </app-search-form-table>
+
+  <p-table
+    #dt
+    [value]="repostajeVehiculos"
+    dataKey="id"
+    styleClass="p-datatable-sm"
+    [rowsPerPageOptions]="[5, 10, 20]"
+    [paginator]="true"
+    [rows]="5"
+    *ngIf="!loading"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th></th>
+        <th></th>
+        <th pSortableColumn="nombre ">
+          <div>
+            <p-sortIcon class="order" field="nombre " />
+            Centro Maquinas
+            <p-columnFilter
+              type="text"
+              field="nombre "
+              class="filter"
+              display="menu"
+            />
+          </div>
+        </th>
+        <th pSortableColumn="descripcion ">
+          <div>
+            <p-sortIcon class="order" field="descripcion " />
+            Depósito
+            <p-columnFilter
+              type="text"
+              field="descripcion "
+              class="filter"
+              display="menu"
+            />
+          </div>
+        </th>
+        <!-- TODO: Falta matrícula en el objeto -->
+        <th pSortableColumn="matricula ">
+          <div>
+            <p-sortIcon class="order" field="matricula " />
+            Maquinaria
+            <p-columnFilter
+              type="text"
+              field="matricula "
+              class="filter"
+              display="menu"
+            />
+          </div>
+        </th>
+        <th pSortableColumn="idBidon">
+          <div>
+            <p-sortIcon class="order" field="idBidon" />
+            Bidón
+            <p-columnFilter
+              type="text"
+              field="idBidon"
+              class="filter"
+              display="menu"
+            />
+          </div>
+        </th>
+        <th pSortableColumn="fecha">
+          <div>
+            <p-sortIcon class="order" field="fecha" />
+            Fecha
+            <p-columnFilter
+              type="text"
+              field="fecha"
+              class="filter"
+              display="menu"
+            />
+          </div>
+        </th>
+        <th pSortableColumn="cantidad">
+          <div>
+            <p-sortIcon class="order" field="cantidad" />
+            Cantidad
+            <p-columnFilter
+              type="text"
+              field="cantidad"
+              class="filter"
+              display="menu"
+            />
+          </div>
+        </th>
+        <th pSortableColumn="cuenta">
+          <div>
+            <p-sortIcon class="order" field="cuenta" />
+            Cuenta
+            <p-columnFilter
+              type="text"
+              field="cuenta"
+              class="filter"
+              display="menu"
+            />
+          </div>
+        </th>
+        <th pSortableColumn="tarjeta">
+          <div>
+            <p-sortIcon class="order" field="tarjeta" />
+            Tarjeta
+            <p-columnFilter
+              type="text"
+              field="tarjeta"
+              class="filter"
+              display="menu"
+            />
+          </div>
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-repostajeVehiculos>
+      <tr
+        class="body-table"
+        [id]="'repostaje-vehiculo-' + repostajeVehiculos?.id"
+      >
+        <td>
+          <p-button
+            icon="fas fa-pen"
+            severity="success"
+            [text]="true"
+            (click)="edit(repostajeVehiculos)"
+            [id]="'repostaje-vehiculo-edit-' + repostajeVehiculos?.id"
+          />
+        </td>
+        <td>
+          <p-button
+            icon="fas fa-trash"
+            severity="danger"
+            [text]="true"
+            (click)="confirm_delete(repostajeVehiculos)"
+            [id]="'repostaje-vehiculo-delete-' + repostajeVehiculos?.id"
+          />
+        </td>
+        <td class="repostaje-vehiculo-nombre text-center">
+          {{ repostajeVehiculos?.centro?.nombre }}
+        </td>
+        <td class="repostaje-vehiculo-descripcion text-center">
+          {{ repostajeVehiculos?.deposito?.descripcion }}
+        </td>
+        <td class="repostaje-vehiculo-matricula text-center">
+          {{ repostajeVehiculos?.matricula }}
+        </td>
+        <td class="repostaje-vehiculo-idBidon text-center">
+          {{ repostajeVehiculos?.idBidon }}
+        </td>
+        <td class="repostaje-vehiculo-fecha text-center">
+          {{ repostajeVehiculos?.fecha | date : "dd/MM/yyyy" }}
+        </td>
+        <td class="repostaje-vehiculo-cantidad text-center">
+          {{ repostajeVehiculos?.cantidad }} -
+          {{ repostajeVehiculos?.codUnidad }}
+        </td>
+        <td class="repostaje-vehiculo-cuenta text-center">
+          {{ repostajeVehiculos?.cuenta }}
+        </td>
+        <td class="repostaje-vehiculo-tarjeta text-center">
+          {{ repostajeVehiculos?.tarjeta }}
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="footer">
+      <tr>
+        <td colspan="10">
+          <div class="pl-2">
+            Resultado totales:
+            <span class="font-bold" id="total-length-repostajes-vehiculos">{{
+              repostajeVehiculos.length || 0
+            }}</span>
+          </div>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+  <p-confirmDialog [style]="{ width: '50vw' }"></p-confirmDialog>
+  <p-toast></p-toast>
+</div>

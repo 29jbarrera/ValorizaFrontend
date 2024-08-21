@@ -1,0 +1,17 @@
+<div class="flex flex-column">
+  <label for="">
+    {{ props.label }}
+    <span *ngIf="props.required" class="text-danger">*</span>
+  </label>
+
+  <p-dropdown
+    [options]="props.options"
+    [formControl]="formControl"
+    [formlyAttributes]="field"
+    [filter]="true"
+    [placeholder]="props.placeholder"
+    [showClear]="true"
+    styleClass="w-full"
+  >
+  </p-dropdown>
+</div>

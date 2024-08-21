@@ -1,0 +1,255 @@
+<div class="col-12 km-table-valoriza-app">
+  <!-- Buscador -->
+  <app-search-form-table
+    title="Búsqueda de Maquinaria"
+    [search_model]="search_model"
+    [search_options]="search_options"
+    [search_fields]="search_fields"
+    (search)="search($event)"
+  >
+  </app-search-form-table>
+
+  <!-- Boton crear y descargar -->
+  <app-button-create-and-export-to-excel
+    id_create="create-gasto-taller"
+    id_export_excel="gasto-taller-export-excel"
+  >
+  </app-button-create-and-export-to-excel>
+
+  <p-table
+    #dt
+    [value]="value"
+    dataKey="id"
+    styleClass="p-datatable-sm"
+    [lazy]="lazy"
+    [rows]="rows"
+    [rowsPerPageOptions]="rowsPerPageOptions"
+    [loading]="loading"
+    [totalRecords]="totalRecords"
+    [paginator]="paginator"
+    [showCurrentPageReport]="showCurrentPageReport"
+    [currentPageReportTemplate]="currentPageReportTemplate"
+    (onLazyLoad)="loadData($event)"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th></th>
+        <th></th>
+        <th pSortableColumn="centro-nombre">
+          <div>
+            <p-sortIcon class="order" field="centro-nombre" />
+            Centro proveedor
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="centro-nombre"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+
+        <th pSortableColumn="empresa.nombre ">
+          <div>
+            <p-sortIcon class="order" field="empresa.nombre " />
+            Delegación
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="empresa.nombre "
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="fecha">
+          <div>
+            <p-sortIcon class="order" field="fecha" />
+            Fecha
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="fecha"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="proveedor.nombre ">
+          <div>
+            <p-sortIcon class="order" field="proveedor.nombre " />
+            Proveedor
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="proveedor.nombre "
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="importe">
+          <div>
+            <p-sortIcon class="order" field="importe" />
+            Importe
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="importe"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="codMoneda">
+          <div>
+            <p-sortIcon class="order" field="codMoneda" />
+            Divisa
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="codMoneda"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="idReferenciaMaterial">
+          <div>
+            <p-sortIcon class="order" field="idReferenciaMaterial" />
+            Material Ref.
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="idReferenciaMaterial"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="descripcion">
+          <div>
+            <p-sortIcon class="order" field="descripcion" />
+            Description Ref.
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="descripcion"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="cantidad">
+          <div>
+            <p-sortIcon class="order" field="cantidad" />
+            Cantidad
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="cantidad"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="gastoConmutable">
+          <div>
+            <p-sortIcon class="order" field="gastoConmutable" />
+            Gasto conmutable
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="gastoConmutable"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="descripcion">
+          <div>
+            <p-sortIcon class="order" field="descripcion" />
+            Descripción
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="descripcion"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="factura">
+          <div>
+            <p-sortIcon class="order" field="factura" />
+            Albarán
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="factura"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="file">
+          <div>
+            <p-sortIcon class="order" field="file" />
+            Archivo
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="file"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-gastosTaller>
+      <tr class="body-table" [id]="'gasto-taller-' + gastosTaller?.id">
+        <td>
+          <p-button
+            icon="fas fa-pen"
+            severity="success"
+            [text]="true"
+            (click)="edit(gastosTaller)"
+            [id]="'gasto-taller-edit-' + gastosTaller?.id"
+          />
+        </td>
+        <td>
+          <p-button
+            icon="fas fa-trash"
+            severity="danger"
+            [text]="true"
+            (click)="confirm_delete(gastosTaller)"
+            [id]="'gasto-taller-delete-' + gastosTaller?.id"
+          />
+        </td>
+        <td class="text-center gasto-taller-centro-nombre">
+          {{ gastosTaller?.centro?.nombre }}
+        </td>
+        <td class="text-center gasto-taller-centro-grupoCentro-nombre">
+          {{ gastosTaller?.centro?.grupoCentro?.nombre }}
+        </td>
+        <td class="text-center gasto-taller-fecha">{{ gastosTaller.fecha }}</td>
+        <td class="text-center gasto-taller-proveedor">
+          {{ gastosTaller?.proveedor?.nombre }}
+        </td>
+        <td class="text-center gasto-taller-importe">
+          {{ gastosTaller?.importe }}
+        </td>
+        <td class="text-center gasto-taller-codMoneda">
+          {{ gastosTaller?.codMoneda }}
+        </td>
+        <td class="text-center gasto-taller-referenciaMaterial">
+          {{ gastosTaller?.referenciaMaterial }}
+        </td>
+        <td class="text-center gasto-taller-">{{ "" }}</td>
+        <td class="text-center gasto-taller-cantidad">
+          {{ gastosTaller?.cantidad }}
+        </td>
+        <td class="text-center gasto-taller-gastoConmutable">
+          {{ gastosTaller?.gastoConmutable }}
+        </td>
+        <td class="text-center gasto-taller-descripcion">
+          {{ gastosTaller?.descripcion }}
+        </td>
+        <td class="text-center gasto-taller-factura">
+          {{ gastosTaller?.factura }}
+        </td>
+        <td class="text-center gasto-taller-">{{ "" }}</td>
+      </tr>
+    </ng-template>
+  </p-table>
+  <p-confirmDialog [style]="{ width: '50vw' }"></p-confirmDialog>
+  <p-toast></p-toast>
+</div>

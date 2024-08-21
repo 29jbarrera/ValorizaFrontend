@@ -1,0 +1,212 @@
+<form class="col-12">
+  <div
+    class="p-2 grid mx-2 surface-ground border-round-xl surface-border border-2 border-dashed"
+  >
+    <!-- Centro Reparador -->
+    <div class="col-12 lg:col-6">
+      <div class="text-left text-xs mb-2 pl-1 font-light text-700">
+        Centro Reparador
+      </div>
+      <span class="p-input-icon-left w-full">
+        <i class="fa fa-building"></i>
+        <input
+          id="centro"
+          formControlName="centro"
+          type="text"
+          class="w-full input-text-valoriza"
+          placeholder="Introduce centro..."
+          pInputText
+        />
+      </span>
+    </div>
+
+    <!-- Divisa -->
+    <div class="col-12 lg:col-6">
+      <div class="text-left text-xs mb-2 pl-1 font-light text-700">Divisa</div>
+      <span class="p-input-icon-left w-full">
+        <i class="fa fa-building"></i>
+        <p-dropdown
+          id="currency"
+          formControlName="currency"
+          [options]="[]"
+          optionLabel="name"
+          placeholder="Selecciona Divisa..."
+          styleClass="w-full input-text-valoriza"
+        />
+      </span>
+    </div>
+
+    <!-- Maquinaria -->
+    <div class="col-12 lg:col-6">
+      <div class="text-left text-xs mb-2 pl-1 font-light text-700">
+        Maquinaria
+      </div>
+      <span class="p-input-icon-left w-full">
+        <i class="fa fa-building"></i>
+        <input
+          id="centro"
+          formControlName="centro"
+          type="text"
+          class="w-full input-text-valoriza"
+          placeholder="Introduce maquinaria..."
+          pInputText
+        />
+      </span>
+    </div>
+
+    <!-- Proveedor -->
+    <div class="col-12 lg:col-6">
+      <div class="text-left text-xs mb-2 pl-1 font-light text-700">
+        Proveedor
+      </div>
+      <span class="p-input-icon-left w-full">
+        <i class="fa fa-building"></i>
+        <input
+          id="centro"
+          formControlName="centro"
+          type="text"
+          class="w-full input-text-valoriza"
+          placeholder="Introduce proveedor..."
+          pInputText
+        />
+      </span>
+    </div>
+
+    <!-- Tipo Actuación -->
+    <div class="col-12 lg:col-6">
+      <div class="text-left text-xs mb-2 pl-1 font-light text-700">
+        Tipo Actuación
+      </div>
+      <span class="p-input-icon-left w-full">
+        <i class="fa fa-building"></i>
+        <p-dropdown
+          id="currency"
+          formControlName="currency"
+          [options]="[]"
+          optionLabel="name"
+          placeholder="Selecciona tipo de actuación..."
+          styleClass="w-full input-text-valoriza"
+        />
+      </span>
+    </div>
+
+    <!-- Tipo Mantenimiento -->
+    <div class="col-12 lg:col-6">
+      <div class="text-left text-xs mb-2 pl-1 font-light text-700">
+        Tipo Mantenimiento
+      </div>
+      <span class="p-input-icon-left w-full">
+        <i class="fa fa-building"></i>
+        <p-dropdown
+          id="currency"
+          formControlName="currency"
+          [options]="[]"
+          optionLabel="name"
+          placeholder="Selecciona tipo de mantenimiento..."
+          styleClass="w-full input-text-valoriza"
+        />
+      </span>
+    </div>
+
+    <!-- Descripción -->
+    <div class="col-12">
+      <div class="text-left text-xs mb-2 pl-1 font-light text-700">
+        Descripción
+      </div>
+      <span class="p-input-icon-left w-full">
+        <i class="fa fa-building"></i>
+        <input
+          id="centro"
+          formControlName="centro"
+          type="text"
+          class="w-full input-text-valoriza"
+          placeholder="Introduce descripción..."
+          pInputText
+        />
+      </span>
+    </div>
+
+    <!-- Albaran -->
+    <div class="col-12 lg:col-6">
+      <div class="text-left text-xs mb-2 pl-1 font-light text-700">Albaran</div>
+      <span class="p-input-icon-left w-full">
+        <i class="fa fa-building"></i>
+        <input
+          id="centro"
+          formControlName="centro"
+          type="text"
+          class="w-full input-text-valoriza"
+          placeholder="Introduce albaran..."
+          pInputText
+        />
+      </span>
+    </div>
+
+    <!-- Coste -->
+    <div class="col-12 lg:col-6">
+      <div class="text-left text-xs mb-2 pl-1 font-light text-700">Coste</div>
+      <span class="p-input-icon-left w-full">
+        <i class="fa fa-building"></i>
+        <input
+          id="centro"
+          formControlName="centro"
+          type="text"
+          class="w-full input-text-valoriza"
+          placeholder="Introduce coste..."
+          pInputText
+        />
+      </span>
+    </div>
+
+    <!-- Fecha desde -->
+    <div class="col-12 lg:col-6">
+      <div class="text-left text-xs mb-2 pl-1 font-light text-700">
+        Fecha desde
+      </div>
+      <p-calendar
+        selectionMode="single"
+        [firstDayOfWeek]="1"
+        styleClass="w-full input-calendar-valoriza"
+        [showIcon]="true"
+        dateFormat="dd/mm/yy"
+        placeholder="dd/mm/yy"
+        pRipple
+      ></p-calendar>
+    </div>
+    <!-- Fecha hasta -->
+    <div class="col-12 lg:col-6">
+      <div class="text-left text-xs mb-2 pl-1 font-light text-700">
+        Fecha hasta
+      </div>
+      <p-calendar
+        selectionMode="single"
+        [firstDayOfWeek]="1"
+        styleClass="w-full input-calendar-valoriza"
+        [showIcon]="true"
+        dateFormat="dd/mm/yy"
+        placeholder="dd/mm/yy"
+        pRipple
+      ></p-calendar>
+    </div>
+
+    <!-- Botones -->
+    <div class="col-12">
+      <div
+        class="flex flex-column lg:flex-row lg:justify-content-end gap-3 align-items-center justify-content-center"
+      >
+        <button
+          pButton
+          type="reset"
+          label="Limpiar búsqueda"
+          class="km-button-secondary-valoriza-app"
+        ></button>
+        <button
+          pButton
+          type="button"
+          label="Buscar"
+          class="km-button-primary-valoriza-app"
+        ></button>
+      </div>
+    </div>
+  </div>
+</form>

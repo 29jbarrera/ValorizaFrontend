@@ -1,0 +1,163 @@
+<div class="col-12 km-table-valoriza-app">
+  <!-- Buscador -->
+  <app-search-form-table
+    title="Búsqueda de Maquinaria"
+    [search_model]="search_model"
+    [search_options]="search_options"
+    [search_fields]="search_fields"
+    (search)="search($event)"
+  >
+  </app-search-form-table>
+  <p-table
+    #dt
+    [value]="value"
+    dataKey="id"
+    styleClass="p-datatable-sm"
+    [lazy]="lazy"
+    [rows]="rows"
+    [rowsPerPageOptions]="rowsPerPageOptions"
+    [loading]="loading"
+    [totalRecords]="totalRecords"
+    [paginator]="paginator"
+    [showCurrentPageReport]="showCurrentPageReport"
+    [currentPageReportTemplate]="currentPageReportTemplate"
+    (onLazyLoad)="loadData($event)"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th></th>
+        <th></th>
+        <th pSortableColumn="seguro.fechaInicio ">
+          <div>
+            <p-sortIcon class="order" field="seguro.fechaInicio " />
+            Fecha Desde
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="seguro.fechaInicio "
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="seguro.fechaFin ">
+          <div>
+            <p-sortIcon class="order" field="seguro.fechaFin " />
+            Fecha Hasta
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="seguro.fechaFin "
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="empresa.nombre ">
+          <div>
+            <p-sortIcon class="order" field="empresa.nombre " />
+            Delegación
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="empresa.nombre "
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="empresa.codigo">
+          <div>
+            <p-sortIcon class="order" field="empresa.codigo" />
+            Codigo
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="empresa.codigo"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="servicio ">
+          <div>
+            <p-sortIcon class="order" field="servicio " />
+            Nombre
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="servicio "
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="impuesto.importe">
+          <div>
+            <p-sortIcon class="order" field="impuesto.importe" />
+            Coste
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="impuesto.importe"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="codMoneda">
+          <div>
+            <p-sortIcon class="order" field="codMoneda" />
+            Divisa
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="codMoneda"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+      </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body" let-tasasCentro>
+      <tr class="body-table" [id]="'tasa-centro-' + tasasCentro?.id">
+        <td>
+          <p-button
+            icon="fas fa-pen"
+            severity="success"
+            [text]="true"
+            (click)="confirm_edit(tasasCentro)"
+            [id]="'tasa-centro-edit-' + tasasCentro?.id"
+          />
+        </td>
+        <td>
+          <p-button
+            icon="fas fa-trash"
+            severity="danger"
+            [text]="true"
+            (click)="confirm_delete(tasasCentro)"
+            [id]="'tasa-centro-delete-' + tasasCentro?.id"
+          />
+        </td>
+        <td class="tasa-centro-fechaInicio">
+          {{ tasasCentro.maquinaria.seguro.fechaInicio }}
+        </td>
+        <td class="tasa-centro-fechaHasta-">
+          {{ tasasCentro.maquinaria.seguro.fechaFin }}
+        </td>
+        <td class="tasa-centro-nombre">
+          {{ tasasCentro.maquinaria.empresa.nombre }}
+        </td>
+        <td class="tasa-centro-codigo">
+          {{ tasasCentro.maquinaria.empresa.codigo }}
+        </td>
+        <td class="tasa-centro-servicio">
+          {{ tasasCentro.maquinaria.servicio }}
+        </td>
+        <td class="tasa-centro-importe">
+          {{ tasasCentro.maquinaria.impuesto.importe }}
+        </td>
+        <td class="tasa-centro-divisa">
+          {{ tasasCentro.maquinaria.codMoneda }}
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+  <p-confirmDialog [style]="{ width: '50vw' }"></p-confirmDialog>
+  <p-toast></p-toast>
+</div>

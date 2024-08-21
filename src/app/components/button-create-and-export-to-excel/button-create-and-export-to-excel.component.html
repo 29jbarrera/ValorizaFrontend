@@ -1,0 +1,11 @@
+<div class="flex align-items-center justify-content-between">
+  <app-button-create
+    (_click)="click_to_create.emit($event)"
+    [_id]="id_create"
+  ></app-button-create>
+
+  <app-button-download-excel
+    (_click)="click_to_excel.emit($event)"
+    [_id]="id_export_excel"
+  ></app-button-download-excel>
+</div>

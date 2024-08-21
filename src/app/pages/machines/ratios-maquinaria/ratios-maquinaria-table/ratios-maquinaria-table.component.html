@@ -1,0 +1,248 @@
+<div
+  *ngIf="loading"
+  id="loading-table"
+  class="car p-4 col-12 km-table-valoriza-app"
+>
+  <p-progressBar mode="indeterminate" [style]="{ height: '6px' }" />
+</div>
+<div class="col-12 km-table-valoriza-app">
+  <!-- Buscador -->
+  <app-search-form-table
+    title="Búsqueda de Maquinaria"
+    [search_model]="search_model"
+    [search_options]="search_options"
+    [search_fields]="search_fields"
+    (search)="search($event)"
+  >
+  </app-search-form-table>
+
+  <p-table
+    #dt
+    [value]="value"
+    dataKey="id"
+    styleClass="p-datatable-sm"
+    [lazy]="lazy"
+    [rows]="rows"
+    [rowsPerPageOptions]="rowsPerPageOptions"
+    [loading]="loading"
+    [totalRecords]="totalRecords"
+    [paginator]="paginator"
+    [showCurrentPageReport]="showCurrentPageReport"
+    [currentPageReportTemplate]="currentPageReportTemplate"
+    (onLazyLoad)="loadData($event)"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th></th>
+        <th></th>
+        <th pSortableColumn="dateDesde">
+          <div>
+            <p-sortIcon class="order" field="dateDesde" />
+            Desde
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="dateDesde"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="dateHasta">
+          <div>
+            <p-sortIcon class="order" field="dateHasta" />
+            Desde
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="dateHasta"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="matricula">
+          <div>
+            <p-sortIcon class="order" field="matricula" />
+            Matricula
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="matricula"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="centro">
+          <div>
+            <p-sortIcon class="order" field="centro" />
+            Centro
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="centro"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="repairs">
+          <div>
+            <p-sortIcon class="order" field="repairs" />
+            Reparaciones
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="repairs"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="seguro">
+          <div>
+            <p-sortIcon class="order" field="seguro" />
+            Seguro
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="seguro"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="impuesto">
+          <div>
+            <p-sortIcon class="order" field="impuesto" />
+            Impuesto
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="impuesto"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="amortizaciones">
+          <div>
+            <p-sortIcon class="order" field="amortizaciones" />
+            Amortizaciones
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="amortizaciones"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="financieros">
+          <div>
+            <p-sortIcon class="order" field="financieros" />
+            Financieros
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="financieros"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="tasa">
+          <div>
+            <p-sortIcon class="order" field="tasa" />
+            Tasa
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="tasa"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="ratio">
+          <div>
+            <p-sortIcon class="order" field="ratio" />
+            Ratio
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="ratio"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="divisa">
+          <div>
+            <p-sortIcon class="order" field="divisa" />
+            Divisa
+            <p-columnFilter
+              class="filter"
+              type="text"
+              field="divisa"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+      </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body" let-ratiosMaquinaria>
+      <tr class="body-table" [id]="'ratio-maquinaria-' + ratiosMaquinaria?.id">
+        <td>
+          <p-button
+            icon="fas fa-pen"
+            severity="success"
+            [text]="true"
+            (click)="confirm_edit(ratiosMaquinaria)"
+            [id]="'ratio-maquinaria-edit-' + ratiosMaquinaria?.id"
+          />
+        </td>
+        <td>
+          <p-button
+            icon="fas fa-trash"
+            severity="danger"
+            [text]="true"
+            (click)="confirm_delete(ratiosMaquinaria)"
+            [id]="'ratio-maquinaria-delete-' + ratiosMaquinaria?.id"
+          />
+        </td>
+        <td class="ratio-maquinaria-fechaDesde">
+          {{ ratiosMaquinaria.dateFrom | date : "dd/MM/yyyy" }}
+        </td>
+        <td class="ratio-maquinaria-fechaHasta">
+          {{ ratiosMaquinaria.dateUntil | date : "dd/MM/yyyy" }}
+        </td>
+        <td class="ratio-maquinaria-matricula">
+          {{ ratiosMaquinaria.tuition }}
+        </td>
+        <td class="ratio-maquinaria-centro">{{ ratiosMaquinaria.centre }}</td>
+        <td class="ratio-maquinaria-raparacion">
+          {{ ratiosMaquinaria.repairs }}
+        </td>
+        <td class="ratio-maquinaria-seguro">
+          {{ ratiosMaquinaria.insurance }}
+        </td>
+        <td class="ratio-maquinaria-impuesto">{{ ratiosMaquinaria.tax }}</td>
+        <td class="ratio-maquinaria-amortizacion">
+          {{ ratiosMaquinaria.amortization }}
+        </td>
+        <td class="ratio-maquinaria-financiero">
+          {{ ratiosMaquinaria.financial }}
+        </td>
+        <td class="ratio-maquinaria-tasa">{{ ratiosMaquinaria.rate }}</td>
+        <td class="ratio-maquinaria-ratio">{{ ratiosMaquinaria.ratio }}</td>
+        <td class="ratio-maquinaria-divisa">{{ ratiosMaquinaria.currency }}</td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="footer">
+      <tr>
+        <td colspan="14">
+          <div class="pl-2">
+            Resultado totales:
+            <span class="font-bold" id="total-length-stock">{{
+              ratiosMaquinaria.length || 0
+            }}</span>
+          </div>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+  <p-confirmDialog [style]="{ width: '50vw' }"></p-confirmDialog>
+  <p-toast></p-toast>
+</div>

@@ -1,0 +1,42 @@
+<app-logotype></app-logotype>
+<ul>
+  <li *ngFor="let item of menu_items">
+    <p>
+      {{ item.name }}
+    </p>
+    <ul>
+      <li
+        *ngFor="let item2 of item.items"
+        [ngClass]="{ 'li-active': get_if_path_is_active(item, item2) }"
+      >
+        <a
+          (click)="navigate(item, item2)"
+          class="cursor-pointer"
+          [id]="item2.id"
+        >
+          <i [class]="item2.class"></i>
+          <span>{{ item2.name }}</span>
+          <b>
+            <span
+              *ngFor="let status of get_status(item2)"
+              [ngClass]="get_background_color(item2, status)"
+            >
+              {{ get_abreviation(status) }}
+            </span>
+          </b>
+        </a>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<div class="user">
+  <i class="fas fa-user"></i>
+  <div>
+    <b>{{ account?.name }}</b>
+    <span>
+      {{ account?.username }}
+    </span>
+  </div>
+  <i class="fas fa-angle-down"></i>
+</div>

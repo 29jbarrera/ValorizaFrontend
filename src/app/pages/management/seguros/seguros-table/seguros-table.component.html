@@ -1,0 +1,208 @@
+<div class="col-12 km-table-valoriza-app">
+  <app-button-download-excel
+    _id="seguros-export-excel"
+    (_click)="export_excel()"
+  >
+  </app-button-download-excel>
+  <p-table
+    #dt
+    [value]="value"
+    dataKey="id"
+    styleClass="p-datatable-sm"
+    [lazy]="lazy"
+    [rows]="rows"
+    [rowsPerPageOptions]="rowsPerPageOptions"
+    [loading]="loading"
+    [totalRecords]="totalRecords"
+    [paginator]="paginator"
+    [showCurrentPageReport]="showCurrentPageReport"
+    [currentPageReportTemplate]="currentPageReportTemplate"
+    (onLazyLoad)="loadData($event)"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th></th>
+        <!-- <th></th> -->
+        <th pSortableColumn="centro ">
+          <div>
+            <p-sortIcon class="order" field="centro " />
+            Centro
+            <p-columnFilter
+              type="text"
+              field="centro "
+              class="filter"
+              display="menu"
+            />
+          </div>
+        </th>
+        <th pSortableColumn="matricula">
+          <div>
+            <p-sortIcon class="order" field="matricula" />
+            Maquinaria
+            <p-columnFilter
+              type="text"
+              field="matricula"
+              class="filter"
+              display="menu"
+            />
+          </div>
+        </th>
+        <th pSortableColumn="aseguradora ">
+          <div>
+            <p-sortIcon class="order" field="aseguradora " />
+            Aseguradora
+            <p-columnFilter
+              type="text"
+              field="aseguradora "
+              class="filter"
+              display="menu"
+            />
+          </div>
+        </th>
+        <th pSortableColumn="codEstadoSeguro">
+          <div>
+            <p-sortIcon class="order" field="codEstadoSeguro" />
+            Estado
+            <p-columnFilter
+              type="text"
+              field="codEstadoSeguro"
+              class="filter"
+              display="menu"
+            />
+          </div>
+        </th>
+        <th pSortableColumn="codTipoSeguro">
+          <div>
+            <p-sortIcon class="order" field="codTipoSeguro" />
+            Tipo
+            <p-columnFilter
+              type="text"
+              field="codTipoSeguro"
+              class="filter"
+              display="menu"
+            />
+          </div>
+        </th>
+        <th pSortableColumn="codigo">
+          <div>
+            <p-sortIcon class="order" field="codigo" />
+            Nº Póliza
+            <p-columnFilter
+              type="text"
+              field="codigo"
+              class="filter"
+              display="menu"
+            />
+          </div>
+        </th>
+        <th pSortableColumn="fechaInicio">
+          <div>
+            <p-sortIcon class="order" field="fechaInicio" />
+            Fecha inicio
+            <p-columnFilter
+              type="text"
+              field="fechaInicio"
+              class="filter"
+              display="menu"
+            />
+          </div>
+        </th>
+        <th pSortableColumn="fechaFin">
+          <div>
+            <p-sortIcon class="order" field="fechaFin" />
+            Fecha fin
+            <p-columnFilter
+              type="text"
+              field="fechaFin"
+              class="filter"
+              display="menu"
+            />
+          </div>
+        </th>
+        <th pSortableColumn="importe">
+          <div>
+            <p-sortIcon class="order" field="importe" />
+            Importe
+            <p-columnFilter
+              type="text"
+              field="importe"
+              class="filter"
+              display="menu"
+            />
+          </div>
+        </th>
+        <th pSortableColumn="codMoneda">
+          <div>
+            <p-sortIcon class="order" field="codMoneda" />
+            Divisa
+            <p-columnFilter
+              type="text"
+              field="codMoneda"
+              class="filter"
+              display="menu"
+            />
+          </div>
+        </th>
+        <th pSortableColumn="comentario">
+          <div>
+            <p-sortIcon class="order" field="comentario" />
+            Comentario
+            <p-columnFilter
+              type="text"
+              field="comentario"
+              class="filter"
+              display="menu"
+            />
+          </div>
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-seguro>
+      <tr class="body-table" [id]="'seguro-' + seguro?.id">
+        <td>
+          <p-button
+            icon="fas fa-pen"
+            severity="success"
+            [text]="true"
+            (click)="edit(seguro)"
+            [id]="'button-seguro-edit-' + seguro?.id"
+          />
+        </td>
+        <!-- <td>
+          <p-button
+            icon="fas fa-trash"
+            severity="danger"
+            [text]="true"
+            (click)="confirm_delete(seguro)"
+            [id]="'button-seguro-delete-' + seguro?.id"
+          />
+        </td> -->
+        <td class="seguro-nombre-centro">
+          {{ seguro?.maquinaria?.nombreCentro }}
+        </td>
+        <td class="seguro-matricula text-center">
+          {{ seguro?.maquinaria?.matricula }}
+        </td>
+        <td class="seguro-aseguradora text-center">
+          {{ seguro?.aseguradora }}
+        </td>
+        <td class="seguro-estado text-center">{{ get_estado(seguro) }}</td>
+        <td class="seguro-tipo text-center">
+          {{ get_tipo(seguro) }}
+        </td>
+        <td class="seguro-poliza text-center">{{ seguro?.codigo }}</td>
+        <td class="seguro-fechaInicio text-center">
+          {{ seguro?.fechaInicio }}
+        </td>
+        <td class="seguro-fechaFin text-center">{{ seguro?.fechaFin }}</td>
+        <td class="seguro-importe text-center">
+          {{ format_price_amount(seguro?.importe) }}
+        </td>
+        <td class="seguro-divisa text-center">{{ seguro?.codMoneda }}</td>
+        <td class="seguro-comentario">{{ seguro?.comentario }}</td>
+      </tr>
+    </ng-template>
+  </p-table>
+  <p-confirmDialog [style]="{ width: '50vw' }"></p-confirmDialog>
+  <p-toast></p-toast>
+</div>

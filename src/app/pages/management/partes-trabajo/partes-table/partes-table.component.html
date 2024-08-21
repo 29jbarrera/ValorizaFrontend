@@ -1,0 +1,183 @@
+<div class="col-12 km-table-valoriza-app">
+  <!-- Buscador -->
+  <app-search-form-table
+    title="Búsqueda de Maquinaria"
+    [search_model]="search_model"
+    [search_options]="search_options"
+    [search_fields]="search_fields"
+    (search)="search($event)"
+  >
+  </app-search-form-table>
+
+  <app-button-create-and-export-to-excel
+    id="create-parte"
+    (click_to_create)="open_modal_to_create()"
+    _id="parte-export-excel"
+    (click_to_excel)="export_excel()"
+  >
+  </app-button-create-and-export-to-excel>
+
+  <p-table
+    #dt
+    [value]="partes"
+    dataKey="id"
+    styleClass="p-datatable-sm"
+    [rowsPerPageOptions]="[5, 10, 20]"
+    [paginator]="true"
+    [rows]="5"
+    *ngIf="!loading"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <!-- <th></th>
+        <th></th> -->
+        <th pSortableColumn="centro.nombre">
+          <div>
+            <p-sortIcon class="order" field="centro.nombre" />
+            Nombre del centro
+            <p-columnFilter
+              type="text"
+              field="centro.nombre"
+              class="filter"
+              display="menu"
+            />
+          </div>
+        </th>
+        <th pSortableColumn="grupoCentro.nombre ">
+          <div>
+            <p-sortIcon class="order" field="grupoCentro.nombre " />
+            Delegación
+            <p-columnFilter
+              type="text"
+              field="grupoCentro.nombre "
+              class="filter"
+              display="menu"
+            />
+          </div>
+        </th>
+        <th pSortableColumn="matricula ">
+          <div>
+            <p-sortIcon class="order" field="matricula " />
+            Matrícula
+            <p-columnFilter
+              type="text"
+              field="matricula "
+              class="filter"
+              display="menu"
+            />
+          </div>
+        </th>
+        <th pSortableColumn="nombre">
+          <div>
+            <p-sortIcon class="order" field="nombre" />
+            Nombre
+            <p-columnFilter
+              type="text"
+              field="nombre"
+              class="filter"
+              display="menu"
+            />
+          </div>
+        </th>
+        <th pSortableColumn="fecha">
+          <div>
+            <p-sortIcon class="order" field="fecha" />
+            Fecha
+            <p-columnFilter
+              type="text"
+              field="fecha"
+              class="filter"
+              display="menu"
+            />
+          </div>
+        </th>
+        <th pSortableColumn="codEstado">
+          <div>
+            <p-sortIcon class="order" field="codEstado" />
+            Estado
+            <p-columnFilter
+              type="text"
+              field="codEstado"
+              class="filter"
+              display="menu"
+            />
+          </div>
+        </th>
+        <th pSortableColumn="codTipoMantenimiento">
+          <div>
+            <p-sortIcon class="order" field="codTipoMantenimiento" />
+            Tipo de mantenimiento
+            <p-columnFilter
+              type="text"
+              field="codTipoMantenimiento"
+              class="filter"
+              display="menu"
+            />
+          </div>
+        </th>
+        <th></th>
+      </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body" let-partes>
+      <tr class="body-table" [id]="'partes-trabajo-' + partes?.id">
+        <!-- <td>
+          <p-button
+            icon="fas fa-pen"
+            severity="success"
+            [text]="true"
+            (click)="edit(partes)"
+            [id]="'parte-edit-' + partes?.id"
+          />
+        </td> -->
+        <!-- <td>
+          <p-button
+            icon="fas fa-trash"
+            severity="danger"
+            [text]="true"
+            (click)="confirm_delete(partes)"
+            [id]="'parte-delete-' + partes?.id"
+          />
+        </td> -->
+        <!-- TODO: ADD valores objeto -->
+        <td class="partes-trabajo-nombre-centro text-center">
+          {{ partes?.centro?.nombre }}
+        </td>
+        <td class="partes-trabajo-delegacion text-center">
+          {{ partes?.centro?.grupoCentro?.nombre }}
+        </td>
+        <td class="partes-trabajo-matricula text-center">
+          {{ partes?.maquinaria?.matricula }}
+        </td>
+        <td class="partes-trabajo-nombre text-center">{{ partes?.nombre }}</td>
+        <td class="partes-trabajo-fecha text-center">{{ partes?.fecha }}</td>
+        <td class="partes-trabajo-estado text-center">
+          {{ getEstate(partes?.codEstado) }}
+        </td>
+        <td class="partes-trabajo-tipo-mantenimiento text-center">
+          {{ partes?.codTipoMantenimiento }}
+        </td>
+        <td
+          class="partes-trabajo-button-view-parte-trabajo text-center"
+          (click)="viewParteTrabajo(partes?.id)"
+        >
+          <button><i class="pi pi-external-link"></i></button>
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="footer">
+      <tr>
+        <td colspan="9">
+          <div class="pl-2">
+            Resultado totales:
+            <span class="font-bold" id="total-length-partes">{{
+              partes.length || 0
+            }}</span>
+          </div>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+  <p-confirmDialog [style]="{ width: '50vw' }"></p-confirmDialog>
+  <p-toast></p-toast>
+</div>

@@ -1,0 +1,165 @@
+<div
+  *ngIf="loading"
+  id="loading-table"
+  class="car p-4 col-12 km-table-valoriza-app"
+>
+  <p-progressBar mode="indeterminate" [style]="{ height: '6px' }" />
+</div>
+<div class="col-12 km-table-valoriza-app">
+  <!-- Buscador -->
+  <app-search-form-table
+    title="Búsqueda de Maquinaria"
+    [search_model]="search_model"
+    [search_options]="search_options"
+    [search_fields]="search_fields"
+    (search)="search($event)"
+  >
+  </app-search-form-table>
+
+  <app-button-download-excel
+    _id="cambio-centro-export-excel"
+    (_click)="export_excel()"
+  >
+  </app-button-download-excel>
+  <p-table
+    #dt
+    [value]="cambioCentro"
+    [(selection)]="selectCambioCentro"
+    dataKey="centerCode"
+    styleClass="p-datatable-sm"
+    [rowsPerPageOptions]="[5, 10, 20]"
+    [paginator]="true"
+    [rows]="5"
+    *ngIf="!loading"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th></th>
+        <th></th>
+        <th pSortableColumn="selected">
+          <div>
+            <p-sortIcon class="order" field="selected" />
+            Seleccionado
+            <p-columnFilter
+              type="text"
+              field="selected"
+              class="filter"
+              display="menu"
+            />
+          </div>
+        </th>
+        <th pSortableColumn="matricula">
+          <div>
+            <p-sortIcon class="order" field="matricula" />
+            Matrícula Maquinaria
+            <p-columnFilter
+              type="text"
+              field="matricula"
+              class="filter"
+              display="menu"
+            />
+          </div>
+        </th>
+        <th pSortableColumn="codigo ">
+          <div>
+            <p-sortIcon class="order" field="codigo " />
+            Código Centro
+            <p-columnFilter
+              type="text"
+              field="codigo "
+              class="filter"
+              display="menu"
+            />
+          </div>
+        </th>
+        <th pSortableColumn="nombre">
+          <div>
+            <p-sortIcon class="order" field="nombre" />
+            Nombre Centro
+            <p-columnFilter
+              type="text"
+              field="nombre"
+              class="filter"
+              display="menu"
+            />
+          </div>
+        </th>
+        <th pSortableColumn="centroCompra.codigo">
+          <div>
+            <p-sortIcon class="order" field="centroCompra.codigo" />
+            Código centro destino
+            <p-columnFilter
+              type="text"
+              field="centroCompra.codigo"
+              class="filter"
+              display="menu"
+            />
+          </div>
+        </th>
+        <th pSortableColumn="centroCompra.nombre">
+          <div>
+            <p-sortIcon class="order" field="centroCompra.nombre" />
+            Nombre centro destino
+            <p-columnFilter
+              type="text"
+              field="centroCompra.nombre"
+              class="filter"
+              display="menu"
+            />
+          </div>
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-cambioCentro>
+      <tr class="body-table" [id]="'cambio-centro-' + cambioCentro?.id">
+        <td>
+          <p-button
+            icon="fas fa-pen"
+            severity="success"
+            [text]="true"
+            (click)="edit(cambioCentro)"
+            [id]="'cambio-centro-edit-' + cambioCentro?.id"
+          />
+        </td>
+        <td>
+          <p-button
+            icon="fas fa-trash"
+            severity="danger"
+            [text]="true"
+            (click)="confirm_delete(cambioCentro)"
+            [id]="'cambio-centro-delete-' + cambioCentro?.id"
+          />
+        </td>
+        <td class="text-center">
+          <p-checkbox [binary]="true" inputId="binary" />
+        </td>
+        <td class="cambio-centro-matricula text-center">
+          {{ cambioCentro?.matricula }}
+        </td>
+        <td class="cambio-centro-codigo text-center">
+          {{ cambioCentro?.centrosCoste?.codigo }}
+        </td>
+        <td class="cambio-centro-nombre text-center">
+          {{ cambioCentro?.centrosCoste?.nombre }}
+        </td>
+        <!-- TODO: FALTA Código centro de compra y Nombre de centro de compra -->
+        <td></td>
+        <td></td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="footer">
+      <tr>
+        <td colspan="8">
+          <div class="pl-2">
+            Resultado totales:
+            <span class="font-bold" id="total-length-cambio-centro">{{
+              cambioCentro.length || 0
+            }}</span>
+          </div>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+  <p-confirmDialog [style]="{ width: '50vw' }"></p-confirmDialog>
+  <p-toast></p-toast>
+</div>

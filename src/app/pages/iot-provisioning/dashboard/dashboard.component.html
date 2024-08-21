@@ -1,0 +1,38 @@
+<div class="app-card-information-container">
+  <app-card-information
+    class="app-card"
+    [image]="'../../../assets/images/disco-duro.png'"
+    [amount]="'1'"
+    [text]="'Drivers'"
+  >
+  </app-card-information>
+  <app-card-information
+    class="app-card"
+    [image]="'../../../assets/images/cadena.png'"
+    [amount]="'1638'"
+    [text]="'Dispositivos activos'"
+  >
+  </app-card-information>
+  <app-card-information
+    class="app-card"
+    [image]="'../../../assets/images/conectar.png'"
+    [amount]="'1'"
+    [text]="'Iot Hubs'"
+  >
+  </app-card-information>
+  <app-card-information
+    class="app-card"
+    [image]="'../../../assets/images/mensajes.png'"
+    [amount]="'12345'"
+    [text]="'Mensajes enviados (30 días)'"
+  >
+  </app-card-information>
+</div>
+
+
+<div class="app-card-list-container">
+<app-card-list class="app-card" [title]="'Estado drivers HTTP'" [data]="dates"></app-card-list>
+<app-card-list class="app-card" [title]="'Última ejecución'" [data]="dataUltimaEjecucion"></app-card-list>
+<app-card-list class="app-card" [title]="'Tiempo medio ejecución'" [data]="dates"></app-card-list>
+<app-card-list class="app-card" [title]="'Mensajes desconocidos'" [data]="dates"></app-card-list>
+</div>
