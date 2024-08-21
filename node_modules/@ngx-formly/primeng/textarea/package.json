@@ -1,0 +1,10 @@
+{
+  "module": "../fesm2015/ngx-formly-primeng-textarea.mjs",
+  "es2020": "../fesm2020/ngx-formly-primeng-textarea.mjs",
+  "esm2020": "../esm2020/textarea/ngx-formly-primeng-textarea.mjs",
+  "fesm2020": "../fesm2020/ngx-formly-primeng-textarea.mjs",
+  "fesm2015": "../fesm2015/ngx-formly-primeng-textarea.mjs",
+  "typings": "ngx-formly-primeng-textarea.d.ts",
+  "sideEffects": false,
+  "name": "@ngx-formly/primeng/textarea"
+}

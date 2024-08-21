@@ -1,0 +1,10 @@
+{
+  "module": "../fesm2015/ngx-formly-primeng-radio.mjs",
+  "es2020": "../fesm2020/ngx-formly-primeng-radio.mjs",
+  "esm2020": "../esm2020/radio/ngx-formly-primeng-radio.mjs",
+  "fesm2020": "../fesm2020/ngx-formly-primeng-radio.mjs",
+  "fesm2015": "../fesm2015/ngx-formly-primeng-radio.mjs",
+  "typings": "ngx-formly-primeng-radio.d.ts",
+  "sideEffects": false,
+  "name": "@ngx-formly/primeng/radio"
+}

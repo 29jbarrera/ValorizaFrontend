@@ -1,0 +1,10 @@
+{
+  "module": "../fesm2015/ngx-formly-primeng-input.mjs",
+  "es2020": "../fesm2020/ngx-formly-primeng-input.mjs",
+  "esm2020": "../esm2020/input/ngx-formly-primeng-input.mjs",
+  "fesm2020": "../fesm2020/ngx-formly-primeng-input.mjs",
+  "fesm2015": "../fesm2015/ngx-formly-primeng-input.mjs",
+  "typings": "ngx-formly-primeng-input.d.ts",
+  "sideEffects": false,
+  "name": "@ngx-formly/primeng/input"
+}

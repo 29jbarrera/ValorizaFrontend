@@ -1,0 +1,5 @@
+/*
+ * Public API Surface of primeng
+ */
+export * from './lib/ui-primeng';
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoicHVibGljX2FwaS5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uL3NyYy91aS9wcmltZW5nL3NyYy9wdWJsaWNfYXBpLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBOztHQUVHO0FBRUgsY0FBYyxrQkFBa0IsQ0FBQyIsInNvdXJjZXNDb250ZW50IjpbIi8qXG4gKiBQdWJsaWMgQVBJIFN1cmZhY2Ugb2YgcHJpbWVuZ1xuICovXG5cbmV4cG9ydCAqIGZyb20gJy4vbGliL3VpLXByaW1lbmcnO1xuIl19

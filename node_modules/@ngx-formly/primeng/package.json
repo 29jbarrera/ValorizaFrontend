@@ -1,0 +1,97 @@
+{
+  "name": "@ngx-formly/primeng",
+  "version": "6.3.0",
+  "license": "MIT",
+  "dependencies": {
+    "tslib": "^2.0.0"
+  },
+  "peerDependencies": {
+    "@ngx-formly/core": "6.3.0",
+    "primeng": ">=13.0.0"
+  },
+  "module": "fesm2015/ngx-formly-primeng.mjs",
+  "es2020": "fesm2020/ngx-formly-primeng.mjs",
+  "esm2020": "esm2020/ngx-formly-primeng.mjs",
+  "fesm2020": "fesm2020/ngx-formly-primeng.mjs",
+  "fesm2015": "fesm2015/ngx-formly-primeng.mjs",
+  "typings": "ngx-formly-primeng.d.ts",
+  "exports": {
+    "./package.json": {
+      "default": "./package.json"
+    },
+    ".": {
+      "types": "./ngx-formly-primeng.d.ts",
+      "esm2020": "./esm2020/ngx-formly-primeng.mjs",
+      "es2020": "./fesm2020/ngx-formly-primeng.mjs",
+      "es2015": "./fesm2015/ngx-formly-primeng.mjs",
+      "node": "./fesm2015/ngx-formly-primeng.mjs",
+      "default": "./fesm2020/ngx-formly-primeng.mjs"
+    },
+    "./checkbox": {
+      "types": "./checkbox/ngx-formly-primeng-checkbox.d.ts",
+      "esm2020": "./esm2020/checkbox/ngx-formly-primeng-checkbox.mjs",
+      "es2020": "./fesm2020/ngx-formly-primeng-checkbox.mjs",
+      "es2015": "./fesm2015/ngx-formly-primeng-checkbox.mjs",
+      "node": "./fesm2015/ngx-formly-primeng-checkbox.mjs",
+      "default": "./fesm2020/ngx-formly-primeng-checkbox.mjs"
+    },
+    "./datepicker": {
+      "types": "./datepicker/ngx-formly-primeng-datepicker.d.ts",
+      "esm2020": "./esm2020/datepicker/ngx-formly-primeng-datepicker.mjs",
+      "es2020": "./fesm2020/ngx-formly-primeng-datepicker.mjs",
+      "es2015": "./fesm2015/ngx-formly-primeng-datepicker.mjs",
+      "node": "./fesm2015/ngx-formly-primeng-datepicker.mjs",
+      "default": "./fesm2020/ngx-formly-primeng-datepicker.mjs"
+    },
+    "./form-field": {
+      "types": "./form-field/ngx-formly-primeng-form-field.d.ts",
+      "esm2020": "./esm2020/form-field/ngx-formly-primeng-form-field.mjs",
+      "es2020": "./fesm2020/ngx-formly-primeng-form-field.mjs",
+      "es2015": "./fesm2015/ngx-formly-primeng-form-field.mjs",
+      "node": "./fesm2015/ngx-formly-primeng-form-field.mjs",
+      "default": "./fesm2020/ngx-formly-primeng-form-field.mjs"
+    },
+    "./input": {
+      "types": "./input/ngx-formly-primeng-input.d.ts",
+      "esm2020": "./esm2020/input/ngx-formly-primeng-input.mjs",
+      "es2020": "./fesm2020/ngx-formly-primeng-input.mjs",
+      "es2015": "./fesm2015/ngx-formly-primeng-input.mjs",
+      "node": "./fesm2015/ngx-formly-primeng-input.mjs",
+      "default": "./fesm2020/ngx-formly-primeng-input.mjs"
+    },
+    "./radio": {
+      "types": "./radio/ngx-formly-primeng-radio.d.ts",
+      "esm2020": "./esm2020/radio/ngx-formly-primeng-radio.mjs",
+      "es2020": "./fesm2020/ngx-formly-primeng-radio.mjs",
+      "es2015": "./fesm2015/ngx-formly-primeng-radio.mjs",
+      "node": "./fesm2015/ngx-formly-primeng-radio.mjs",
+      "default": "./fesm2020/ngx-formly-primeng-radio.mjs"
+    },
+    "./select": {
+      "types": "./select/ngx-formly-primeng-select.d.ts",
+      "esm2020": "./esm2020/select/ngx-formly-primeng-select.mjs",
+      "es2020": "./fesm2020/ngx-formly-primeng-select.mjs",
+      "es2015": "./fesm2015/ngx-formly-primeng-select.mjs",
+      "node": "./fesm2015/ngx-formly-primeng-select.mjs",
+      "default": "./fesm2020/ngx-formly-primeng-select.mjs"
+    },
+    "./textarea": {
+      "types": "./textarea/ngx-formly-primeng-textarea.d.ts",
+      "esm2020": "./esm2020/textarea/ngx-formly-primeng-textarea.mjs",
+      "es2020": "./fesm2020/ngx-formly-primeng-textarea.mjs",
+      "es2015": "./fesm2015/ngx-formly-primeng-textarea.mjs",
+      "node": "./fesm2015/ngx-formly-primeng-textarea.mjs",
+      "default": "./fesm2020/ngx-formly-primeng-textarea.mjs"
+    }
+  },
+  "sideEffects": false,
+  "homepage": "https://github.com/ngx-formly/ngx-formly#readme",
+  "description": "Formly is a dynamic (JSON powered) form library for Angular that bring unmatched maintainability to your application's forms.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ngx-formly/ngx-formly.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ngx-formly/ngx-formly/issues"
+  }
+}
